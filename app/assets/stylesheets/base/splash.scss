@@ -1,5 +1,8 @@
 .main-splash-page {
-  background-image: image-url("login-background.jpg");
+  background-image: linear-gradient(
+                     rgba(20,20,20, .5),
+                     rgba(20,20,20, .5)),
+                     image-url("login-background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
@@ -8,13 +11,88 @@
   flex-direction: column;
  }
 
-.splash-links {
+.splash-whole {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 180px;
 }
 
-.splash-description {
+.splash-left {
+  font-family: sans-serif;
+  padding: 45px;
+  width: 410px;
+}
+
+.splash-middle {
+  border-left: 1px solid white;
+  height: 300px;
+}
+
+.splash-right {
   color: #FFFFFF;
+  font-family: sans-serif;
+  padding: 45px;
+  position: relative;
+  width: 630px;
+  display: table-cell;
+  vertical-align: middle;
 }
 
-.splash-description > h2 {
-  color: #1DB954;
+.splash-right > h2 {
+  color: #07d159;
+  font-size: 50px;
+  font-weight: 700;
+}
+
+.splash-right > h3 {
+  margin-bottom: 35px;
+  line-height: 1.2em;
+  font-weight: 100;
+}
+
+.splash-right > ul {
+  padding: .225em 0 .625em 2.25em;
+  vertical-align: middle;
+}
+
+.btn-signup {
+  background-color: #1db954; /* Green */
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius:2em;
+  padding: 0.8em 6em;
+  margin: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.btn-login {
+  background-color: #FFFFFF; /* Green */
+  border: none;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius:2em;
+  padding: 0.8em 6.3em;
+  margin: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+
+#header {
+  font-size: 40px;
+  color: white;
+  font-family: 'Rubik', sans-serif;
+  font-weight: ;
+}
+
+#left-separator{
+  color: grey;
 }

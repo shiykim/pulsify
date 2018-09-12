@@ -4,10 +4,7 @@ import { withRouter } from 'react-router-dom';
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      username: '',
-      password: ''
-    };
+    this.state = this.props.user;
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -35,24 +32,6 @@ class SessionForm extends React.Component {
     );
   }
 
-  loggingIn(){
-    return (
-      <div>
-        <button>Log In As Demo User</button>
-      </div>
-    );
-  }
-
-  signingUp(){
-    return (
-      <div>
-        <button>Log In As Demo User</button>
-      </div>
-    );
-  }
-
-
-
   render() {
     let question;
     if (this.props.formType === 'signup'){
@@ -60,6 +39,22 @@ class SessionForm extends React.Component {
     } else {
       question = ("Don't have an account?");
     }
+
+    let signupInfo;
+    if (this.props.formType === 'signup'){
+      signupInfo = (
+        <div>
+          <label>Email:
+            <input type="text"
+              value={this.state.email}
+              onChange={this.update('email')}
+              className="login-input"
+            />
+          </label>
+        </div>
+      );
+    }
+
     return (
       <div className="login-form-container">
         <form onSubmit={this.handleSubmit} className="login-form-box">
@@ -78,6 +73,7 @@ class SessionForm extends React.Component {
               />
             </label>
             <br/>
+            {signupInfo}
             <label>Password:
               <input type="password"
                 value={this.state.password}
