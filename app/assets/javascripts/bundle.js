@@ -612,7 +612,7 @@ function (_React$Component) {
         className: "main-splash-page"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "splash-whole"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "splash-left"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         id: "header"
@@ -628,11 +628,11 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         className: "btn-login"
-      }, "LOG IN"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "LOG IN"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "splash-middle"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "splash-right"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, " Get the right music, right now"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, " Listen to millions of songs for free."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " Search & discover music you'll love"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " Create playlists of your favorite music")))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, " Get the right music, "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, " right now"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, " Listen to millions of songs for free."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " Search & discover music you'll love"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " Create playlists of your favorite music")))));
     }
   }]);
 

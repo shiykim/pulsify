@@ -8,7 +8,7 @@ class SplashIndex extends React.Component {
     return (
       <div className='main-splash-page'>
           <div className='splash-whole'>
-            <div className='splash-left'>
+            <section className='splash-left'>
               <h1 id='header'>Pulsify</h1>
               <Link to='/signup'>
                 <button type="button" className="btn-signup">SIGN UP</button>
@@ -20,18 +20,19 @@ class SplashIndex extends React.Component {
                 <button type="button" className="btn-login">LOG IN</button>
               </Link>
 
-            </div>
+            </section>
 
-            <div className='splash-middle'></div>
+            <section className='splash-middle'></section>
 
-            <div className='splash-right'>
-              <h2> Get the right music, right now</h2>
+            <section className='splash-right'>
+              <h2> Get the right music, </h2>
+              <h2> right now</h2>
               <h3> Listen to millions of songs for free.</h3>
               <ul>
                 <li> Search & discover music you'll love</li>
                 <li> Create playlists of your favorite music</li>
               </ul>
-            </div>
+            </section>
 
           </div>
       </div>
