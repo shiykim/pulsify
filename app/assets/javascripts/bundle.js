@@ -368,7 +368,8 @@ var mapStateToProps = function mapStateToProps(_ref) {
     errors: errors.session,
     formType: 'LOGIN',
     navLink: react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-      to: "/signup"
+      to: "/signup",
+      id: "session-link"
     }, "Sign Up"),
     user: {
       username: '',
@@ -582,7 +583,8 @@ var mapStateToProps = function mapStateToProps(_ref) {
     errors: errors.session,
     formType: 'SIGN UP',
     navLink: react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-      to: "/login"
+      to: "/login",
+      id: "session-link"
     }, "Log In"),
     user: {
       username: '',
