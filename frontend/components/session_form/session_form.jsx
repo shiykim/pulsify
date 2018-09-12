@@ -21,6 +21,11 @@ class SessionForm extends React.Component {
     this.props.processForm(user);
   }
 
+  signInDemoUser(){
+    const demoUser = {username:'demo', password: 'demouser'};
+    this.props.login(demoUser);
+  }
+
   renderErrors() {
     return(
       <ul>
@@ -65,7 +70,7 @@ class SessionForm extends React.Component {
             <h1 id='session-header'>Pulsify</h1>
           </Link>
           <div id='session-separator'></div>
-          <button type="button" className="btn-session">LOG IN AS DEMO USER</button>
+          <button type="button" className="btn-session" onClick={() => this.signInDemoUser()}>LOG IN AS DEMO USER</button>
           <section id='session-or'>or</section>
           {this.renderErrors()}
           <div className="session-form">
