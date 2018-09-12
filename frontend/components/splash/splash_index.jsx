@@ -23,8 +23,19 @@ class SplashIndex extends React.Component {
     } else {
       button = (
         <div>
-          <Link to='/signup'>Sign Up</Link>
-          <Link to='/login'>Login</Link>
+          <div className='splash-links'>
+            <Link to='/signup'>Sign Up</Link>
+            <p> -- ALREADY HAVE AN ACCOUNT? --</p>
+            <Link to='/login'>Login</Link>
+          </div>
+          <div className='splash-description'>
+          <h2> Get the right music, right now</h2>
+          <h3> Listen to millions of songs for free.</h3>
+          <ul>
+            <li> Search & discover music you'll love</li>
+            <li> Create playlists of your favorite music</li>
+          </ul>
+          </div>
         </div>
       );
     }

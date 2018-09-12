@@ -35,13 +35,38 @@ class SessionForm extends React.Component {
     );
   }
 
+  loggingIn(){
+    return (
+      <div>
+        <button>Log In As Demo User</button>
+      </div>
+    );
+  }
+
+  signingUp(){
+    return (
+      <div>
+        <button>Log In As Demo User</button>
+      </div>
+    );
+  }
+
+
+
   render() {
+    let question;
+    if (this.props.formType === 'signup'){
+      question = ("Already have an account?");
+    } else {
+      question = ("Don't have an account?");
+    }
     return (
       <div className="login-form-container">
         <form onSubmit={this.handleSubmit} className="login-form-box">
-          Welcome to Pulsify!
+          <h1>Pulsify!</h1>
           <br/>
-          Please {this.props.formType} or {this.props.navLink}
+          <button> Log In As Demo User </button>
+          <p> - OR - </p>
           {this.renderErrors()}
           <div className="login-form">
             <br/>
@@ -64,6 +89,7 @@ class SessionForm extends React.Component {
             <input className="session-submit" type="submit" value={this.props.formType} />
           </div>
         </form>
+        {question} {this.props.navLink}
       </div>
     );
   }

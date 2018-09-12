@@ -11,20 +11,16 @@ import {
 import SplashContainer from './splash/splash_container';
 import LoginFormContainer from './session_form/login_form_container';
 import SignupFormContainer from './session_form/signup_form_container';
-import { AuthRoute } from '../util/route_util';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import test from './test';
 
 const App = () => (
-  <div>
-   <header>
-     <Link to="/" className="header-link">
-
-     </Link>
-     <SplashContainer />
-   </header>
-
+  <div className='all-content'>
+  <ProtectedRoute path="/" component={test}/>
    <Switch>
      <AuthRoute exact path="/login" component={LoginFormContainer} />
      <AuthRoute exact path="/signup" component={SignupFormContainer} />
+     <AuthRoute path="/" component={SplashContainer} />
    </Switch>
  </div>
 );
