@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -34,21 +35,23 @@ class SessionForm extends React.Component {
 
   render() {
     let question;
-    if (this.props.formType === 'signup'){
+    if (this.props.formType === 'SIGN UP'){
       question = ("Already have an account?");
     } else {
       question = ("Don't have an account?");
     }
 
     let signupInfo;
-    if (this.props.formType === 'signup'){
+    if (this.props.formType === 'SIGN UP'){
       signupInfo = (
         <div>
-          <label>Email:
+          <h2 id="session-signup-text">Sign up with your email address</h2>
+          <label>
             <input type="text"
               value={this.state.email}
               onChange={this.update('email')}
               className="login-input"
+              placeholder="Email"
             />
           </label>
         </div>
@@ -56,36 +59,42 @@ class SessionForm extends React.Component {
     }
 
     return (
-      <div className="login-form-container">
+      <div className="session-form-whole">
         <form onSubmit={this.handleSubmit} className="login-form-box">
-          <h1>Pulsify!</h1>
-          <br/>
-          <button> Log In As Demo User </button>
-          <p> - OR - </p>
+          <Link to='/'>
+            <h1 id='session-header'>Pulsify</h1>
+          </Link>
+          <div id='session-separator'></div>
+          <button type="button" className="btn-session">LOG IN AS DEMO USER</button>
+          <section id='session-or'>or</section>
           {this.renderErrors()}
-          <div className="login-form">
+          <div className="session-form">
             <br/>
-            <label>Username:
+            {signupInfo}
+            <label>
               <input type="text"
                 value={this.state.username}
                 onChange={this.update('username')}
                 className="login-input"
+                placeholder="Username"
               />
             </label>
             <br/>
-            {signupInfo}
-            <label>Password:
+            <label>
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
                 className="login-input"
+                placeholder="Password"
               />
             </label>
             <br/>
-            <input className="session-submit" type="submit" value={this.props.formType} />
+            <input className="btn-submit" type="submit" value={this.props.formType} />
+            <section id='session-question'>
+              {question} {this.props.navLink}
+            </section>
           </div>
         </form>
-        {question} {this.props.navLink}
       </div>
     );
   }

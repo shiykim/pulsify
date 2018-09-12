@@ -14,7 +14,7 @@ class SplashIndex extends React.Component {
                 <button type="button" className="btn-signup">SIGN UP</button>
               </Link>
 
-              <p id='left-separator'> -- ALREADY HAVE AN ACCOUNT? --</p>
+              <p id='left-separator'> ALREADY HAVE AN ACCOUNT? </p>
 
               <Link to='/login'>
                 <button type="button" className="btn-login">LOG IN</button>

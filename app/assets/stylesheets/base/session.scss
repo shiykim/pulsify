@@ -1,0 +1,103 @@
+.session-form-whole {
+  font-family: sans-serif;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+}
+
+.login-input {
+  width: 450px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+  text-align: left;
+  font-size: 15px;
+}
+
+.btn-submit {
+  background-color: #1db954;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius:2em;
+  min-width: 300px;
+  min-height: 50px;
+  margin: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.session-submit:hover {
+  background-color: #45a049;
+}
+
+.btn-session {
+  background-color: #3b5998;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius:2em;
+  min-width: 300px;
+  min-height: 50px;
+  margin: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+#session-header {
+  font-size: 40px;
+  font-family: 'Rubik', sans-serif;
+  font-weight: bold;
+  text-align: center;
+  color: black;
+  padding: 20px;
+  margin: 40px;
+  border-bottom: 0.5px solid lightgrey;
+  width: 100vw;
+}
+
+#session-signup-text {
+  font-size: 18px;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+#session-or {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#session-or::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  height: 1px;
+  width: 200px;
+  background-color: lightgrey;
+  left: 53%;
+  top: 37%;
+}
+
+#session-or::after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  width: 200px;
+  background-color: lightgrey;
+  right: 53%;
+  top: 37%;
+}
+
+#session-question {
+  flex-direction: column;
+}
