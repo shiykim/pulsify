@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PlaylistShowContainer from './playlist_show_container';
+import { ProtectedRoute } from '../../util/route_util';
 
 class PlaylistIndex extends React.Component {
   constructor(props){
@@ -16,7 +18,7 @@ class PlaylistIndex extends React.Component {
     if (this.props.playlists){
       playlists = this.props.playlists.map( playlist => {
         if (playlist.author_id === this.currentUser.id){
-          return (<li className='playlist-li'> { playlist.title }</li>);
+          return (<li className='playlist-li'><Link to={`/collection/playlists/${playlist.id}`}> {playlist.title}</Link></li>);
         }
       });
     } else {
@@ -24,7 +26,6 @@ class PlaylistIndex extends React.Component {
     }
     return (
       <div className='browse-main'>
-        <button type="button" id="btn-playlist-new">NEW PLAYLIST</button>
         <ul className='playlist-ul'>
         {playlists}
         </ul>

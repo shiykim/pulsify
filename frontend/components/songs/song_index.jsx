@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ProtectedRoute } from '../../util/route_util';
 
 class SongIndex extends React.Component {
   componentDidMount(){
