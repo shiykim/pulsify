@@ -24,13 +24,6 @@ class PlaylistIndex extends React.Component {
     }
     return (
       <div className='browse-main'>
-        <ul className='playlist-nav'>
-          <li>PLAYLISTS</li>
-          <li>YOUR DAILY MIX</li>
-          <li>SONGS</li>
-          <li>ALBUMS</li>
-          <li>ARTISTS</li>
-        </ul>
         <button type="button" id="btn-playlist-new">NEW PLAYLIST</button>
         <ul className='playlist-ul'>
         {playlists}

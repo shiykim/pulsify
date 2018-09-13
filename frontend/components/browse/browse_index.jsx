@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PlaylistIndexContainer from '../playlists/playlist_index_container';
+import SongIndexContainer from '../songs/song_index_container';
+import AlbumIndexContainer from '../albums/album_index_container';
+import ArtistIndexContainer from '../artists/artist_index_container';
+
 import { ProtectedRoute } from '../../util/route_util';
 
 class Browse extends React.Component {
@@ -23,7 +27,17 @@ class Browse extends React.Component {
           </section>
         </div>
         <div className='main'>
+          <ul className='playlist-nav'>
+            <li><Link to="/collection/playlists">PLAYLISTS</Link></li>
+            <li><Link to="/browse">YOUR DAILY MIX</Link></li>
+            <li><Link to="/collection/songs">SONGS</Link></li>
+            <li><Link to="/collection/albums">ALBUMS</Link></li>
+            <li><Link to="/collection/artist">ARTISTS</Link></li>
+          </ul>
           <ProtectedRoute path="/collection/playlists" component={PlaylistIndexContainer}/>
+          <ProtectedRoute path="/collection/songs" component={SongIndexContainer}/>
+          <ProtectedRoute path="/collection/albums" component={AlbumIndexContainer}/>
+          <ProtectedRoute path="/collection/artist" component={ArtistIndexContainer}/>
         </div>
     </div>
     );
