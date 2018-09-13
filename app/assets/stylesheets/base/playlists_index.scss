@@ -1,0 +1,50 @@
+.browse-main {
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+
+.playlist-nav {
+  padding-top: 40px;
+  display: flex;
+  justify-content: space-around;
+  letter-spacing: 1px;
+  font-size: 15px;
+}
+
+.playlist-nav > li {
+  color: white;
+  cursor: pointer;
+}
+
+.playlist-ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.playlist-li {
+  width: 150px;
+  height: 150px;
+  border: 5px solid black;
+  background-image: image-url("pirates.jpg");
+  cursor: pointer;
+  color: white;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#btn-playlist-new {
+  background-color: #1db954;
+  border: none;
+  color: white;
+  text-align: center;
+  display: inline-block;
+  font-size: 13px;
+  border-radius:2em;
+  min-width: 160px;
+  min-height: 38px;
+  margin: 30px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+}

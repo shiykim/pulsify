@@ -78,26 +78,32 @@
   font-weight: bold;
 }
 
-#session-or::before {
-  content: "";
-  display: inline-block;
-  position: absolute;
-  height: 1px;
-  width: 200px;
-  background-color: lightgrey;
-  left: 53%;
-  top: 37%;
-}
+// #session-border {
+//   border-bottom: 1px solid lightgrey;
+//   position: relative;
+//   top: 50px;
+// }
 
-#session-or::after {
-  content: "";
-  position: absolute;
-  height: 1px;
-  width: 200px;
-  background-color: lightgrey;
-  right: 53%;
-  top: 37%;
-}
+// #session-or::before {
+//   content: "";
+//   display: inline-block;
+//   position: absolute;
+//   height: 1px;
+//   width: 200px;
+//   background-color: lightgrey;
+//   left: 53%;
+//   top: 43%;
+// }
+//
+// #session-or::after {
+//   content: "";
+//   position: absolute;
+//   height: 1px;
+//   width: 200px;
+//   background-color: lightgrey;
+//   right: 53%;
+//   top: 43%;
+// }
 
 #session-question {
   flex-direction: column;

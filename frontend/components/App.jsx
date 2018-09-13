@@ -12,16 +12,14 @@ import Splash from './splash/splash_index';
 import LoginFormContainer from './session_form/login_form_container';
 import SignupFormContainer from './session_form/signup_form_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
-import NavbarContainer from './navbar/navbar_container';
+import BrowseContainer from './browse/browse_container';
 
 const App = () => (
   <div className='all-content'>
-   <Switch>
      <AuthRoute exact path="/login" component={LoginFormContainer} />
      <AuthRoute exact path="/signup" component={SignupFormContainer} />
-     <AuthRoute path="/" component={Splash} />
-   </Switch>
-   <ProtectedRoute path="/" component={NavbarContainer}/>
+     <AuthRoute exact path="/" component={Splash} />
+     <ProtectedRoute path="/" component={BrowseContainer}/>
  </div>
 );
 

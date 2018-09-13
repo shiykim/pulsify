@@ -2,7 +2,6 @@ class Api::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.img_url = 'blankfornow'
     if @user.save
       login(@user)
       render "api/users/show"
