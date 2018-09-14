@@ -20,7 +20,7 @@ class PlaylistShow extends React.Component {
       playlist = null;
     }
     return (
-      <div>
+      <div class='pshow-main'>
         {playlist}
       </div>
     );

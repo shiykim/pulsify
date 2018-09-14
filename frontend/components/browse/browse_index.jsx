@@ -25,7 +25,7 @@ class Browse extends React.Component {
         </div>
         <Switch>
           <ProtectedRoute path="/collection/playlists/:id" component={PlaylistShowContainer}/>
-          <ProtectedRoute path="/collection/playlists" component={BrowseContent} />
+          <ProtectedRoute path="/collection" component={BrowseContent} />
         </Switch>
     </div>
     );

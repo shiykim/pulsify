@@ -2,6 +2,7 @@ import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import { createPlaylist } from '../../actions/playlist_actions';
+import { withRouter } from 'react-router';
 
 class Modal extends React.Component {
 
@@ -16,6 +17,14 @@ class Modal extends React.Component {
    return (e) => {
      this.setState({[field]: e.target.value});
    };
+  }
+
+  handleCreate(){
+    this.props.createPlaylist(this.state).then((playlist) => {
+      this.props.closeModal();
+      this.props.history.push(`/collection/playlists/${playlist.playlist.id}`);
+    });
+    this.state.title = '';
   }
 
   render () {
@@ -33,7 +42,7 @@ class Modal extends React.Component {
             <input id='playlist-title' placeholder="Start typing..." value={this.state.title} onChange={this.update('title')} />
           </section>
           <button onClick={() => this.props.closeModal()} className="close-x btn-modal-cancel">CANCEL</button>
-          <button onClick={() => this.props.createPlaylist(this.state)} className="btn-modal-submit">CREATE</button>
+          <button onClick={() => this.handleCreate()} className="btn-modal-submit">CREATE</button>
         </div>
       </div>
     );
@@ -54,4 +63,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Modal);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Modal));

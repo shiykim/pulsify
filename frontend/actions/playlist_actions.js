@@ -43,6 +43,7 @@ export const createPlaylist = playlist => {
   };
 };
 
+
 export const updatePlaylist = playlist => {
   return dispatch => {
     return PlaylistApiUtil.updatePlaylist(playlist).then( playlist => {

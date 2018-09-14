@@ -5,7 +5,7 @@
     z-index: 1;
     top: 0;
     left: 0;
-    background: #191919;
+    background: #191414;
     overflow-x: hidden;
     padding-top: 20px;
     color: white;
@@ -29,6 +29,7 @@
   background: linear-gradient(352deg, rgba(3,1,32,1) 4%, rgba(29,29,47,1) 51%, rgba(68,94,105,1) 93%);
   height: 100vh;
   width: 100wh;
+  background-size: cover;
 }
 
 #navbar-header {
