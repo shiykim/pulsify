@@ -16,7 +16,7 @@ class SongIndex extends React.Component {
       songs = null;
     }
     return (
-      <div className='browse-main'>
+      <div className='songs-main'>
         <ul>
           {songs}
         </ul>

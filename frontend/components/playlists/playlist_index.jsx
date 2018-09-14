@@ -6,7 +6,7 @@ import { ProtectedRoute } from '../../util/route_util';
 class PlaylistIndex extends React.Component {
   constructor(props){
     super(props);
-    this.currentUser = this.props.currentUser
+    this.currentUser = this.props.currentUser;
   }
 
   componentDidMount(){
