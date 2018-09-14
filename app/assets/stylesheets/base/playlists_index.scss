@@ -1,5 +1,5 @@
-.browse-main {
-  font-family: 'Roboto', sans-serif;
+.content-main {
+  font-family: 'Rubik', sans-serif;
   text-align: center;
 }
 
@@ -7,15 +7,19 @@
   padding-top: 40px;
   display: flex;
   justify-content: center;
-  letter-spacing: 1px;
-  font-size: 15px;
+  letter-spacing: 1.4px;
+  font-size: 13px;
 }
 
 .playlist-nav > li {
   color: white;
   cursor: pointer;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 20px;
+  margin-right: 20px;
+  opacity: 0.8;
+}
+.playlist-nav > li:hover {
+  opacity: 1;
 }
 
 .playlist-ul {
@@ -45,12 +49,19 @@
   color: white;
   text-align: center;
   display: inline-block;
-  font-size: 13px;
+  font-size: 12px;
   border-radius:2em;
-  min-width: 160px;
-  min-height: 38px;
+  min-width: 140px;
+  min-height: 33px;
   margin: 30px;
-  font-weight: bold;
   letter-spacing: 1px;
   cursor: pointer;
+  font-weight: 300;
+}
+
+#btn-playlist-new:hover {
+  background-color: #00cc00;
+  transition: background-color 0.2s ease-in-out;
+  min-width: 145px;
+  min-height: 35px;
 }

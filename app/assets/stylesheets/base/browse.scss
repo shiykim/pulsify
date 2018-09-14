@@ -1,21 +1,54 @@
 .navbar-main {
-    height: 100%;
-    width: 220px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background: #191414;
-    overflow-x: hidden;
-    padding-top: 20px;
-    color: white;
-    display: flex;
-    justify-content: space-around;
+  height: 100%;
+  width: 220px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background: black;
+  overflow-x: hidden;
+  padding-top: 20px;
+  display: flex;
+  opacity: 0.8;
 }
 
 .navbar-content {
   flex-direction: column;
   font-family: 'Roboto', sans-serif;
+  padding-left: 20px;
+  opacity: 0.8;
+  color: #FFFFFF;
+}
+
+.navbar-header {
+  font-size: 25px;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 500;
+  margin-top: 10px;
+  margin-left: 45px;
+  margin-bottom: 20px;
+  opacity: 1;
+}
+
+.navbar-logo {
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  position: absolute;
+  top: 23px;
+  left: 20px;
+}
+
+.navbar-links {
+  padding: 5px;
+}
+
+.navbar-links > li {
+  padding: 14px;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 500;
+  text-align: left;
+  display: flex;
 }
 
 .navbar-user {
@@ -23,17 +56,27 @@
   position: absolute;
 }
 
+// .navbar-links > li:hover {
+//   transition: background-color 0.2s ease-in-out;
+//   font-weight: bold;
+// }
+
 .main {
-  margin-left: 220px;
   background: rgb(3,1,32);
   background: linear-gradient(352deg, rgba(3,1,32,1) 4%, rgba(29,29,47,1) 51%, rgba(68,94,105,1) 93%);
   height: 100vh;
   width: 100wh;
   background-size: cover;
+  overflow-y: auto;
 }
 
-#navbar-header {
-  font-size: 28px;
-  font-family: 'Rubik', sans-serif;
-  font-weight: normal;
+.content-main{
+  padding-left: 220px;
+}
+
+.navbar-images {
+  width: 20px;
+  height: 20px;
+  background-size: cover;
+  margin-right: 15px;
 }

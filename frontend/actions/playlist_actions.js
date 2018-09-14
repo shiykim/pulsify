@@ -37,6 +37,7 @@ export const fetchPlaylist = id => {
 
 export const createPlaylist = playlist => {
   return dispatch => {
+    debugger
     return PlaylistApiUtil.createPlaylist(playlist).then( playlist => {
       return dispatch(receivePlaylist(playlist));
     });

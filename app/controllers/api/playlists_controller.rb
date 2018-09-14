@@ -6,6 +6,7 @@ class Api::PlaylistsController < ApplicationController
 
   def show
     @playlist = Playlist.find(params[:id])
+    @username = User.find(@playlist.author_id)
   end
 
   def create

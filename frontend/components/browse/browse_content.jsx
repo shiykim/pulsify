@@ -15,9 +15,9 @@ class BrowseContent extends React.Component {
   render () {
     return (
         <div className='main'>
+          <div className='content-main'>
           <ul className='playlist-nav'>
             <li><Link to="/collection/playlists">PLAYLISTS</Link></li>
-            <li><Link to="/browse">YOUR DAILY MIX</Link></li>
             <li><Link to="/collection/songs">SONGS</Link></li>
             <li><Link to="/collection/albums">ALBUMS</Link></li>
             <li><Link to="/collection/artist">ARTISTS</Link></li>
@@ -27,6 +27,7 @@ class BrowseContent extends React.Component {
           <ProtectedRoute path="/collection/songs" component={SongIndexContainer}/>
           <ProtectedRoute path="/collection/albums" component={AlbumIndexContainer}/>
           <ProtectedRoute path="/collection/artist" component={ArtistIndexContainer}/>
+        </div>
       </div>
     );
   }
@@ -37,7 +38,7 @@ const mapDispatchToProps = dispatch => {
     closeModal: () => dispatch(closeModal()),
     openModal: (
      <button id="btn-playlist-new" onClick={() => dispatch(openModal('createplaylist'))}>
-       New Playlist
+       NEW PLAYLIST
      </button>
    )
   };

@@ -1,0 +1,39 @@
+.pshow-whole {
+  background: linear-gradient(356deg, rgba(0,0,0,1) 28%, rgba(157,51,51,1) 94%);
+  height: 100vh;
+  width: 100wh;
+  background-size: cover;
+  overflow-y: auto;
+}
+
+.pshow-main {
+  margin-left: 360px;
+  margin-top: 40px;
+  display: flex;
+}
+
+.pshow-img {
+  min-width: 350px;
+  min-height: 350px;
+  background-image: image-url("awakenmylove.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.pshow-info {
+  position: relative;
+  color: white;
+}
+
+
+#pshow-title {
+
+}
+
+#pshow-username {
+
+}
+
+#pshow-username{
+
+}

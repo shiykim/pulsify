@@ -38,7 +38,7 @@ class Modal extends React.Component {
           <div onClick={() => this.props.closeModal()} className="close-x" id='modal-close'>X</div>
           <h1 id="modal-header"> Create new playlist</h1>
           <section className='modal-playlist'>
-            <h3 id='modal-instruction'>Playlist Name</h3>
+            <div id='modal-instruction'>Playlist Name</div>
             <input id='playlist-title' placeholder="Start typing..." value={this.state.title} onChange={this.update('title')} />
           </section>
           <button onClick={() => this.props.closeModal()} className="close-x btn-modal-cancel">CANCEL</button>

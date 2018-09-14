@@ -1,0 +1,33 @@
+.search-main {
+  background: black;
+  height: 100vh;
+  background-size: cover;
+  overflow-y: auto;
+}
+
+.search-bar {
+  height: 150px;
+  background-color: #303030;
+  text-align: left;
+  font-family: 'Roboto', sans-serif;
+}
+
+#search-text {
+  font-size: 50px;
+  padding-left: 33px;
+  font-weight: bold;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+}
+
+#search-instruction {
+  color: white;
+  padding-top: 30px;
+  padding-left: 37px;
+  padding-bottom: 10px;
+  font-size: 14px;
+}
+
+#search-text:focus {
+  caret-color: green;
+}

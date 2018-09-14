@@ -5,7 +5,7 @@ import { fetchPlaylist, updatePlaylist, deletePlaylist } from '../../actions/pla
 
 const mapStateToProps = ({ entities: { playlists }}, ownProps) => {
   return {
-    playlist: playlists[ownProps.match.params.id]
+    playlist: playlists[ownProps.match.params.id],
   };
 };
 
