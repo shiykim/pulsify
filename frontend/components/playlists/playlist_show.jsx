@@ -42,7 +42,6 @@ class PlaylistShow extends React.Component {
           { this.playlistSongs() }
         </div>
       );
-
       playlist =  (
         <ul className='pshow-info'>
           <li id='pshow-title'>{this.props.playlist.title}</li>

@@ -10,7 +10,7 @@
   margin-left: 270px;
   margin-top: 25px;
   display: flex;
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .pshow-img {
@@ -29,11 +29,9 @@
   text-align: center;
 }
 
-
-
 #pshow-title {
   font-size: 27px;
-  font-weight: 700;
+  font-weight: 900;
 }
 
 #pshow-username {
@@ -74,4 +72,10 @@
   transition: background-color 0.2s ease-in-out;
   min-width: 127px;
   min-height: 36px;
+}
+
+.pshow-more{
+  display: flex;
+  position: absolute;
+  left: 46%;
 }

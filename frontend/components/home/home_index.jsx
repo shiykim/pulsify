@@ -9,10 +9,10 @@ class HomeIndex extends React.Component {
       <div className='home-main'>
         <div className='content-main'>
           <ul className='playlist-nav'>
-            <li><Link to="/playlists">PLAYLISTS</Link></li>
-            <li><Link to="/songs">SONGS</Link></li>
-            <li><Link to="/albums">ALBUMS</Link></li>
-            <li><Link to="/discover">USERS</Link></li>
+            <li>PLAYLISTS</li>
+            <li>SONGS</li>
+            <li>ALBUMS</li>
+            <li>USERS</li>
           </ul>
         </div>
       </div>

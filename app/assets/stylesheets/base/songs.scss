@@ -5,13 +5,19 @@
   width: 55%;
 }
 
-.song {
-  padding: 13px;
+.song-whole {
+
 }
 
-.song:hover {
+
+.song-whole:hover {
   background-color: rgba(0, 0, 0, 0.4);
   transition: background-color 0.2s ease-in-out;
+}
+
+.song {
+  padding: 13px;
+  padding-left: 30px;
 }
 
 .song-single {
@@ -55,19 +61,24 @@
 
 #song-image {
   background-image: image-url("eighth-note.png");
+  display: inline-block;
+  position: absolute;
+  left: 4px;
 }
 
 #song-option {
   background-image: image-url("more.png");
   display: none;
+  right: 12%;
+  position: absolute;
 }
 
-.song:hover #song-image {
+.song-whole:hover #song-image {
   background-image: image-url("play-button.png");
   transition: background-image 0.2s ease-in-out;
 }
 
-.song:hover #song-option{
+.song-whole:hover #song-option{
   display: block;
   transition: display 0.2s ease-in-out;
 }

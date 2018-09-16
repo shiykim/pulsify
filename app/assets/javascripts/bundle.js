@@ -1040,15 +1040,7 @@ function (_React$Component) {
         className: "content-main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "playlist-nav"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/playlists"
-      }, "PLAYLISTS")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/songs"
-      }, "SONGS")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/albums"
-      }, "ALBUMS")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/discover"
-      }, "USERS")))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "PLAYLISTS"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "SONGS"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "ALBUMS"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "USERS"))));
     }
   }]);
 
@@ -1817,7 +1809,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_7__["closeModal"])());
     },
     openModal: react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-      className: "navbar-images",
+      className: "navbar-images pshow-more",
       style: {
         backgroundImage: "url(".concat(window.more, ")")
       },
@@ -1886,14 +1878,18 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "song"
+        className: "song-whole"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "song-image"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "song"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "song-single"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        id: "song-image"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "song-title"
       }, this.props.song.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        id: "song-option"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "song-length"
       }, this.props.song.length)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "artist-album-list"
@@ -1903,9 +1899,7 @@ function (_React$Component) {
         className: "song-separator"
       }, "\xB7"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "song-album"
-      }, this.props.song.album.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "song-option"
-      }));
+      }, this.props.song.album.title))));
     }
   }]);
 
@@ -2454,9 +2448,11 @@ function (_React$Component) {
         className: "splash-whole"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "splash-left"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "header"
-      }, "Pulsify"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "logo"
+      }, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Pulsify")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/signup"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
@@ -2472,7 +2468,11 @@ function (_React$Component) {
         className: "splash-middle"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "splash-right"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, " Get the right music, "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, " right now"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, " Listen to millions of songs for free."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " Search & discover music you'll love"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " Create playlists of your favorite music")))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, " Get the right music, "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, " right now"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, " Listen to millions of songs for free."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        id: "ticks"
+      }, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " Search & discover music you'll love"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        id: "ticks"
+      }, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, " Create playlists of your favorite music")))));
     }
   }]);
 

@@ -93,11 +93,27 @@
 
 
 #header {
+  text-align: center;
+  padding: 15px;
+}
+
+#header > h1 {
+  padding-left: 10px;
+  display: inline-block;
   font-size: 40px;
   color: white;
   font-family: 'Rubik', sans-serif;
-  font-weight: medium;
-  text-align: center;
+  font-weight: 500;
+}
+
+#logo {
+  background-image: image-url("white_logo.png");
+  position: relative;
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  vertical-align: top;
+  line-height: 1;
 }
 
 #left-separator {
@@ -105,6 +121,24 @@
   text-align: center;
   font-size: 14px;
 }
+
+#ticks, #logo {
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#ticks {
+  background-image: image-url("tick.png");
+  display: inline-block;
+  position: absolute;
+  left: 50px;
+  height: 15px;
+  width: 15px;
+}
+
+
+
+
 
 // #left-separator::before {
 //     content: "";
