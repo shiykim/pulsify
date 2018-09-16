@@ -21,12 +21,9 @@ class PlaylistShow extends React.Component {
     if (this.props.songs[0]){
       songs = (
         this.props.songs.map( song => {
-          return(
-            <li>
-              {song.title}
-              {song.artist.name}
-              {song.album.title}
-            </li>);
+          return (
+            <SongItemShow song={song} />
+          );
         })
       );
     } else {
@@ -37,24 +34,28 @@ class PlaylistShow extends React.Component {
 
   render() {
     let playlist;
+    let playlistsongs;
+
     if (this.props.playlist){
-      playlist =  (
-        <div>
-          <ul className='pshow-songlist'>
-            { this.playlistSongs() }
-          </ul>
-          <ul className='pshow-info'>
-            <li id='pshow-title'>{this.props.playlist.title}</li>
-            <li id='pshow-username'>{this.props.playlist.username}</li>
-            <li id='pshow-length'>{this.props.playlist.song_ids.length} songs</li>
-            <button id='btn-pshow-play'>PLAY</button>
-            {this.props.openModal}
-            <div onClick={this.props.closeModal} className="close-x"></div>
-          </ul>
+      playlistsongs = (
+        <div className='pshow-songlist'>
+          { this.playlistSongs() }
         </div>
+      );
+
+      playlist =  (
+        <ul className='pshow-info'>
+          <li id='pshow-title'>{this.props.playlist.title}</li>
+          <li id='pshow-username'>{this.props.playlist.username}</li>
+          <li id='pshow-length'>{this.props.playlist.song_ids.length} songs</li>
+          <button id='btn-pshow-play'>PLAY</button>
+          {this.props.openModal}
+          <div onClick={this.props.closeModal} className="close-x"></div>
+        </ul>
       );
     } else {
       playlist = null;
+      playlistsongs = null;
     }
 
     return (
@@ -63,6 +64,7 @@ class PlaylistShow extends React.Component {
           <section className='pshow-img'>
             {playlist}
           </section>
+          {playlistsongs}
         </div>
       </div>
     );

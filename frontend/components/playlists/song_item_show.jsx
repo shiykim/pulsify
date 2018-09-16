@@ -6,35 +6,26 @@ import { fetchArtists } from '../../actions/artist_actions';
 
 class SongItemShow extends React.Component {
 
-  componentDidMount(){
-
-  }
-
 
   render () {
-    let playlist;
-    if (this.props.artist){
-      playlist =  (
-        <div>
-          { this.songItem() }
-        </div>
-      );
-    } else {
-      playlist = null;
-    }
 
     return (
-      {playlist}
+      <div className='song'>
+        <div id='song-image'></div>
+        <ul className='song-single'>
+          <li className='song-title'>{this.props.song.title}</li>
+          <li className='song-length'>{this.props.song.length}</li>
+        </ul>
+        <ul className='artist-album-list'>
+          <li className='song-artist'>{this.props.song.artist.name}</li>
+          <li className='song-separator'>·</li>
+          <li className='song-album'>{this.props.song.album.title}</li>
+        </ul>
+        <div id='song-option'></div>
+      </div>
     );
   }
 
 }
 
-const mapStateToProps = ({ entities: { artists, albums } }) => {
-  return {
-    artists: artists,
-    albums: albums,
-  };
-};
-
-export default connect(mapStateToProps, null)(SongItemShow);
+export default SongItemShow;

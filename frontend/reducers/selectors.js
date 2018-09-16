@@ -11,11 +11,3 @@ export const selectPlaylistSongs = (state, playlist) => {
   }
   return songs;
 };
-
-export const selectSongAlbum = (state, albumId) => {
-  return state[albumId];
-};
-
-export const selectSongArtist = (state, artistId) => {
-  return state[artistId];
-};

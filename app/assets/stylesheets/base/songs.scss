@@ -1,5 +1,73 @@
-// .songs-main {
-//   background: linear-gradient(356deg, rgba(0,0,0,1) 28%, rgba(51,59,157,1) 94%);
-//   height: 100vh;
-//   width: 100wh;
-// }
+.pshow-songlist {
+  color: white;
+  left: 350px;
+  position: relative;
+  width: 55%;
+}
+
+.song {
+  padding: 13px;
+}
+
+.song:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.song-single {
+  display: flex;
+  justify-content: space-between;
+}
+
+.artist-album-list {
+  display: flex;
+}
+
+.song-title {
+  font-size: 17px;
+  font-weight: 100px;
+}
+
+.song-length, .song-artist, .song-album, .song-separator {
+  color: darkgrey;
+  font-size: 14px;
+  font-weight: 100px;
+}
+
+.song-separator{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.song-length:hover, .song-artist:hover, .song-album:hover, {
+  color: white;
+  transition: color 0.2s ease-in-out;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#song-image, #song-option {
+  height: 15px;
+  width: 15px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#song-image {
+  background-image: image-url("eighth-note.png");
+}
+
+#song-option {
+  background-image: image-url("more.png");
+  display: none;
+}
+
+.song:hover #song-image {
+  background-image: image-url("play-button.png");
+  transition: background-image 0.2s ease-in-out;
+}
+
+.song:hover #song-option{
+  display: block;
+  transition: display 0.2s ease-in-out;
+}
