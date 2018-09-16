@@ -1,53 +1,39 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import { createPlaylist } from '../../actions/playlist_actions';
-import { withRouter } from 'react-router';
+import CreatePlaylist from '../playlists/create_playlist';
+import DeletePlaylist from '../playlists/delete_playlist';
+import MorePlaylist from '../playlists/more_playlist';
 
-class Modal extends React.Component {
-
-  constructor(props){
-    super(props);
-    this.state = {
-      title: ''
-    };
+function Modal({modal, closeModal}) {
+  if (!modal) {
+    return null;
   }
-
-  update(field) {
-   return (e) => {
-     this.setState({[field]: e.target.value});
-   };
-  }
-
-  handleCreate(){
-    this.props.createPlaylist(this.state).then((playlist) => {
-      this.props.closeModal();
-      this.props.history.push(`/collection/playlists/${playlist.playlist.id}`);
-    });
-    this.state.title = '';
-  }
-
-  render () {
-    if (!this.props.modal) {
+  let component;
+  switch (modal) {
+    case 'createplaylist':
+      component = <CreatePlaylist />;
+      break;
+    case 'deleteplaylist':
+      component = <DeletePlaylist />;
+      break;
+    case 'updateplaylist':
+      component = <UpdatePlaylist />;
+      break;
+    case 'moreplaylist':
+      component = <MorePlaylist />;
+      break;
+    default:
       return null;
-    }
-
-    return (
-      <div className="modal-background" onClick={closeModal}>
-        <div className="modal-child" onClick={e => e.stopPropagation()}>
-          <div onClick={() => this.props.closeModal()} className="close-x" id='modal-close'>X</div>
-          <h1 id="modal-header"> Create new playlist</h1>
-          <section className='modal-playlist'>
-            <div id='modal-instruction'>Playlist Name</div>
-            <input id='playlist-title' placeholder="Start typing..." value={this.state.title} onChange={this.update('title')} />
-          </section>
-          <button onClick={() => this.props.closeModal()} className="close-x btn-modal-cancel">CANCEL</button>
-          <button onClick={() => this.handleCreate()} className="btn-modal-submit">CREATE</button>
-        </div>
-      </div>
-    );
   }
 
+  return (
+    <div className="modal-background" onClick={closeModal}>
+      <div className="modal-child" onClick={e => e.stopPropagation()}>
+        { component }
+      </div>
+    </div>
+  );
 }
 
 const mapStateToProps = state => {
@@ -58,9 +44,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    closeModal: () => dispatch(closeModal()),
-    createPlaylist: (playlist) => dispatch(createPlaylist(playlist))
+    closeModal: () => dispatch(closeModal())
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Modal));
+export default connect(mapStateToProps, mapDispatchToProps)(Modal);

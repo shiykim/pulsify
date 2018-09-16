@@ -7,33 +7,76 @@
 }
 
 .pshow-main {
-  margin-left: 360px;
-  margin-top: 40px;
+  margin-left: 270px;
+  margin-top: 25px;
   display: flex;
+  font-family: 'Rubik', sans-serif;
 }
 
 .pshow-img {
-  min-width: 350px;
-  min-height: 350px;
+  min-width: 250px;
+  min-height: 250px;
   background-image: image-url("awakenmylove.png");
   background-size: cover;
   background-repeat: no-repeat;
+  position:absolute;
 }
 
 .pshow-info {
   position: relative;
   color: white;
+  top: 250px;
+  text-align: center;
+}
+
+.pshow-songlist {
+  color: white;
+  left: 300px;
+  position: relative;
 }
 
 
 #pshow-title {
-
+  font-size: 27px;
+  font-weight: 700;
 }
 
 #pshow-username {
-
+  font-size: 15px;
+  margin: 5px;
+  color: darkgrey;
 }
 
-#pshow-username{
+#pshow-username:hover {
+  color: white;
+  text-decoration: underline;
+}
 
+#pshow-length{
+  padding-top: 5px;
+  font-size: 13px;
+  color: darkgrey;
+}
+
+#btn-pshow-play {
+  position: relative;
+  background-color: #1db954;
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+  border-radius: 2em;
+  min-width: 125px;
+  min-height: 34px;
+  margin: 20px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin-top: 40px;
+  font-weight: 300;
+}
+
+#btn-pshow-play:hover {
+  background-color: #00cc00;
+  transition: background-color 0.2s ease-in-out;
+  min-width: 127px;
+  min-height: 36px;
 }

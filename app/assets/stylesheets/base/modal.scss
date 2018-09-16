@@ -4,9 +4,9 @@
   bottom: 0;
   right: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.7);
   z-index: 10;
   font-family: 'Roboto', sans-serif;
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .modal-child {
@@ -30,6 +30,7 @@
   font-family: sans-serif;
   font-size: 2.3em;
   transform: scale(1.4, 1);
+  cursor: pointer;
 }
 
 .modal-playlist {
@@ -50,10 +51,15 @@
   min-width: 150px;
   min-height: 40px;
   margin: 20px;
-  font-weight: bold;
+  font-weight: 300;
   letter-spacing: 1px;
   cursor: pointer;
   border: 1px solid white;
+}
+
+.btn-modal-cancel:hover {
+  min-width: 151px;
+  min-height: 41px;
 }
 
 .btn-modal-submit {
@@ -66,13 +72,21 @@
   min-width: 150px;
   min-height: 40px;
   margin: 20px;
-  font-weight: bold;
+  font-weight: 300;
   letter-spacing: 1px;
   cursor: pointer;
 }
 
+.btn-modal-submit:hover {
+  background-color: #00cc00;
+  transition: background-color 0.2s ease-in-out;
+  min-width: 151px;
+  min-height: 41px;
+}
+
 #playlist-title {
   font-size: 50px;
+  padding-top: 10px;
   padding-left: 33px;
   font-weight: 500px;
   font-weight: bold;

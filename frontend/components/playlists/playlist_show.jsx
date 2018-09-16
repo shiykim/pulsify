@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SongItemShow from './song_item_show';
 
 class PlaylistShow extends React.Component {
+
   componentDidMount() {
     this.props.fetchPlaylist(this.props.match.params.id);
     this.props.fetchSongs();
@@ -10,20 +12,21 @@ class PlaylistShow extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.id !== nextProps.match.params.id) {
       this.props.fetchPlaylist(nextProps.match.params.id);
+      this.props.fetchSongs();
     }
   }
 
   playlistSongs(){
     let songs;
-    if (this.props.playlist.song_ids){
-      const playlist_songs = [];
-      this.props.playlist.song_ids.map (id => {
-        playlist_songs.push(this.props.songs[id]);
-      });
-
+    if (this.props.songs[0]){
       songs = (
-        playlist_songs.map( song => {
-          return(<li>{song.title}</li>);
+        this.props.songs.map( song => {
+          return(
+            <li>
+              {song.title}
+              {song.artist.name}
+              {song.album.title}
+            </li>);
         })
       );
     } else {
@@ -32,18 +35,22 @@ class PlaylistShow extends React.Component {
     return songs;
   }
 
-
   render() {
     let playlist;
     if (this.props.playlist){
       playlist =  (
         <div>
-        <ul className='pshow-info'>
-          <li id='pshow-title'>{this.props.playlist.title}</li>
-          <li id='pshow-username'>{this.props.playlist.username}</li>
-          <li id='pshow-songs'>{this.props.playlist.song_ids.length} songs</li>
-        </ul>
-        {this.playlistSongs()}
+          <ul className='pshow-songlist'>
+            { this.playlistSongs() }
+          </ul>
+          <ul className='pshow-info'>
+            <li id='pshow-title'>{this.props.playlist.title}</li>
+            <li id='pshow-username'>{this.props.playlist.username}</li>
+            <li id='pshow-length'>{this.props.playlist.song_ids.length} songs</li>
+            <button id='btn-pshow-play'>PLAY</button>
+            {this.props.openModal}
+            <div onClick={this.props.closeModal} className="close-x"></div>
+          </ul>
         </div>
       );
     } else {
@@ -53,10 +60,9 @@ class PlaylistShow extends React.Component {
     return (
       <div className='pshow-whole'>
         <div className='pshow-main'>
-        <section className='pshow-img'> </section>
-        <section>
-          {playlist}
-        </section>
+          <section className='pshow-img'>
+            {playlist}
+          </section>
         </div>
       </div>
     );

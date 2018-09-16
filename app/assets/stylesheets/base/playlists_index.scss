@@ -26,13 +26,13 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding-left: 100px;
-  padding-right: 100px;
+  padding-left: 60px;
+  padding-right: 60px;
 }
 
 .playlist-li {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   border: 5px solid black;
   background-image: image-url("pirates.jpg");
   cursor: pointer;

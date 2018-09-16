@@ -4,9 +4,17 @@ import { ProtectedRoute } from '../../util/route_util';
 import BrowseContent from './browse_content';
 import PlaylistShowContainer from '../playlists/playlist_show_container';
 import HomeIndex from '../home/home_index';
-import SearchIndex from '../search/search_index'
+import SearchIndex from '../search/search_index';
 
 class Browse extends React.Component {
+
+  componentDidMount() {
+    this.props.fetchPlaylists();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.props.fetchPlaylists();
+  }
 
   render () {
     return (
