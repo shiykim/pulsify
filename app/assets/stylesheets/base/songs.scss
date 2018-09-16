@@ -76,9 +76,11 @@
 .song-whole:hover #song-image {
   background-image: image-url("play-button.png");
   transition: background-image 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 .song-whole:hover #song-option{
   display: block;
   transition: display 0.2s ease-in-out;
+  cursor: pointer;
 }

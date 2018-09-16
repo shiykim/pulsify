@@ -5,11 +5,11 @@ import { updatePlaylist } from '../../actions/playlist_actions';
 import { withRouter } from 'react-router';
 
 class UpdatePlaylist extends React.Component {
+
   constructor(props){
     super(props);
     this.state = {
-      title: '',
-      id: this.props.playlist.id
+      title: ''
     };
   }
 
@@ -22,7 +22,6 @@ class UpdatePlaylist extends React.Component {
   handleUpdate(){
     this.props.updatePlaylist(this.state).then((playlist) => {
       this.props.closeModal();
-      this.props.history.push(`/collection/playlists/${playlist.playlist.id}`);
     });
     this.state.title = '';
   }
@@ -35,13 +34,12 @@ class UpdatePlaylist extends React.Component {
     return (
       <div>
         <div onClick={() => this.props.closeModal()} className="close-x" id='modal-close'>X</div>
-        <h1 id="modal-header"> Update playlist</h1>
-        <section className='modal-playlist'>
-          <div id='modal-instruction'>Playlist Name</div>
-          <input id='playlist-title' placeholder="Start typing..." value={this.state.title} onChange={this.update('title')} />
-        </section>
-        <button onClick={() => this.props.closeModal()} className="close-x btn-modal-cancel">CANCEL</button>
-        <button onClick={() => this.handleUpdate()} className="btn-modal-submit">CREATE</button>
+          <section className='modal-playlist'>
+            <div id='modal-instruction'>Playlist Name</div>
+            <input id='playlist-title' placeholder="Start typing..." value={this.state.title} onChange={this.update('title')} />
+          </section>
+          <button onClick={() => this.props.closeModal()} className="close-x btn-modal-cancel">CANCEL</button>
+      <button onClick={() => this.handleUpdate()} className="btn-modal-submit">UPDATE</button>
       </div>
     );
   }
@@ -50,7 +48,7 @@ class UpdatePlaylist extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     modal: state.ui.modal,
-    playlist: state.playlists[ownProps.match.params.id]
+    playlist: state.entities.playlists[ownProps.match.params.id]
   };
 };
 

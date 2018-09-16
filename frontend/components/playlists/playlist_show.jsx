@@ -1,8 +1,29 @@
 import React from 'react';
+import onClickOutside from "react-onclickoutside";
 import { Link } from 'react-router-dom';
 import SongItemShow from './song_item_show';
+import DropDownList from './drop_down_list';
 
 class PlaylistShow extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      listOpen: false
+    };
+  }
+
+  handleClickOutside(){
+    this.setState({
+      listOpen: false
+    });
+  }
+
+  toggleList(){
+    this.setState(prevState => ({
+      listOpen: !prevState.listOpen
+    }));
+  }
 
   componentDidMount() {
     this.props.fetchPlaylist(this.props.match.params.id);
@@ -48,8 +69,8 @@ class PlaylistShow extends React.Component {
           <li id='pshow-username'>{this.props.playlist.username}</li>
           <li id='pshow-length'>{this.props.playlist.song_ids.length} songs</li>
           <button id='btn-pshow-play'>PLAY</button>
-          {this.props.openModal}
-          <div onClick={this.props.closeModal} className="close-x"></div>
+          <button className='navbar-images pshow-more' onClick={() => this.toggleList()} style={{backgroundImage: `url(${window.more})`}} />
+          {this.state.listOpen ? <DropDownList show="open" /> : null }
         </ul>
       );
     } else {
@@ -71,4 +92,4 @@ class PlaylistShow extends React.Component {
 }
 
 
-export default PlaylistShow;
+export default onClickOutside(PlaylistShow);

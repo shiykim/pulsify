@@ -3,6 +3,7 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import CreatePlaylist from '../playlists/create_playlist';
 import DeletePlaylist from '../playlists/delete_playlist';
+import UpdatePlaylist from '../playlists/update_playlist';
 import MorePlaylist from '../playlists/more_playlist';
 
 function Modal({modal, closeModal}) {

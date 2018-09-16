@@ -34,7 +34,7 @@ class DeletePlaylist extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     modal: state.ui.modal,
-    playlist: state.playlists[ownProps.match.params.id]
+    playlist: state.entities.playlists[ownProps.match.params.id]
   };
 };
 
