@@ -3,13 +3,12 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import { deletePlaylist } from '../../actions/playlist_actions';
 import { withRouter } from 'react-router';
+import { userPlaylists } from '../../reducers/selectors'
+class AddPlaylistSong extends React.Component {
 
-class DeletePlaylist extends React.Component {
-
-  handleDelete(){
-    this.props.deletePlaylist(this.props.playlist.id).then(() => {
+  handle(){
+    this.props.addPlaylistSong((this.props.playlist.id), (this.props.song.id)).then(() => {
       this.props.closeModal();
-      this.props.history.push(`/collection/playlists/`);
     });
   }
 
@@ -22,7 +21,7 @@ class DeletePlaylist extends React.Component {
       <div className="modal-background" onClick={closeModal}>
         <div className="modal-child" onClick={e => e.stopPropagation()}>
           <div onClick={() => this.props.closeModal()} className="close-x" id='modal-close'>X</div>
-          <h1 id="modal-header">Do you really want to delete this playlist?</h1>
+          <h1 id="modal-header">Add to Playlist</h1>
           <button onClick={() => this.props.closeModal()} className="close-x btn-modal-cancel">CANCEL</button>
           <button onClick={() => this.handleDelete()} className="btn-modal-submit">DELETE</button>
         </div>
@@ -34,15 +33,17 @@ class DeletePlaylist extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     modal: state.ui.modal,
-    playlist: state.entities.playlists[ownProps.location.pathname.split('/').pop()],
+    song: state.ui.currentSong,
+    playlists: userPlaylists(state)
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     closeModal: () => dispatch(closeModal()),
-    deletePlaylist: id => dispatch(deletePlaylist(id))
+    addPlaylistSong: (artist_id, song_id) => dispatch(addPlaylistSong(artist_id, song_id))
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(DeletePlaylist));
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AddPlaylistSong));

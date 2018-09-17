@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import CreatePlaylist from '../playlists/create_playlist';
 import DeletePlaylist from '../playlists/delete_playlist';
 import UpdatePlaylist from '../playlists/update_playlist';
-import MorePlaylist from '../playlists/more_playlist';
+import AddPlaylistSong from '../songs/add_playlistsong';
 
 function Modal({modal, closeModal}) {
   if (!modal) {
@@ -21,8 +21,8 @@ function Modal({modal, closeModal}) {
     case 'updateplaylist':
       component = <UpdatePlaylist />;
       break;
-    case 'moreplaylist':
-      component = <MorePlaylist />;
+    case 'addplaylistsong':
+      component = <AddPlaylistSong />;
       break;
     default:
       return null;

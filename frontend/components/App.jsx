@@ -17,7 +17,7 @@ import BrowseContainer from './browse/browse_container';
 
 const App = () => (
   <div className='all-content'>
-     <Modal />
+     <Route path="/" component={Modal} />
      <AuthRoute exact path="/login" component={LoginFormContainer} />
      <AuthRoute exact path="/signup" component={SignupFormContainer} />
      <AuthRoute exact path="/" component={Splash} />

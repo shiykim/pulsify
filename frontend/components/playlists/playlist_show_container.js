@@ -23,9 +23,6 @@ const mapDispatchToProps = dispatch => {
     fetchAlbums: () => dispatch(fetchAlbums()),
     fetchArtists: () => dispatch(fetchArtists()),
     closeModal: () => dispatch(closeModal()),
-    openModal: (
-     <button className='navbar-images pshow-more' style={{backgroundImage: `url(${window.more})`}} onClick={() => dispatch(openModal('moreplaylist'))}/>
-   ),
   };
 };
 

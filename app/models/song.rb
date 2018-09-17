@@ -3,6 +3,8 @@ class Song < ApplicationRecord
 
   after_initialize :ensure_song_url
 
+  has_one_attached :mp3
+
   belongs_to :artist,
     class_name: 'Artist',
     foreign_key: :artist_id,

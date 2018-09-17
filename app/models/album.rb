@@ -3,6 +3,8 @@ class Album < ApplicationRecord
 
   after_initialize :ensure_img_url
 
+  has_one_attached :photo
+
   has_many :songs,
     class_name: 'Song',
     foreign_key: :album_id,

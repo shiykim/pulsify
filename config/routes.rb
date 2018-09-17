@@ -6,8 +6,11 @@ Rails.application.routes.draw do
      resources :users, only: [:create, :index]
      resource :session, only: [:create, :destroy]
      resources :playlists
-     resources :songs, only: [:index]
+     resources :songs, only: [:index, :show]
      resources :albums, only: [:index, :show]
      resources :artists, only: [:index, :show]
+
+     delete '/playlist_songs/:playlist_id/:song_id', to: 'playlists#destroy_playlist_song'
+     post '/playlist_songs', to: 'playlists#add_playlist_song'
    end
 end

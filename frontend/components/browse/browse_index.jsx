@@ -49,7 +49,7 @@ class Browse extends React.Component {
           </section>
         </div>
         <Switch>
-          <ProtectedRoute exact path="/collection/playlists/:id" component={PlaylistShowContainer}/>
+          <ProtectedRoute path="/collection/playlists/:id" component={PlaylistShowContainer}/>
           <ProtectedRoute path="/collection" component={BrowseContent} />
           <ProtectedRoute path="/search" component={SearchIndex} />
           <ProtectedRoute path="/browse" component={HomeIndex} />

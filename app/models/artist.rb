@@ -3,6 +3,8 @@ class Artist < ApplicationRecord
 
   after_initialize :ensure_img_url
 
+  has_one_attached :photo
+  
   has_many :albums,
     class_name: 'Album',
     foreign_key: :artist_id,

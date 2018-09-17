@@ -9,7 +9,8 @@ class UpdatePlaylist extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      title: ''
+      title: '',
+      id: this.props.playlist.id
     };
   }
 
@@ -48,7 +49,7 @@ class UpdatePlaylist extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     modal: state.ui.modal,
-    playlist: state.entities.playlists[ownProps.match.params.id]
+    playlist: state.entities.playlists[ownProps.location.pathname.split('/').pop()],
   };
 };
 
