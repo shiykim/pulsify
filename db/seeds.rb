@@ -24,18 +24,18 @@ b = Artist.create(name: "Artic Monkeys")
 c = Artist.create(name: "Joji")
 d = Artist.create(name: "Drake")
 
-e = Album.create(title: 'Be the Cowboy', artist_id: a.id, release_year: 2018)
-f = Album.create(title: 'AM', artist_id: b.id, release_year: 2013)
-g = Album.create(title: 'In Tongues', artist_id: c.id, release_year: 2017)
-h = Album.create(title: 'Scorpion', artist_id: d.id, release_year: 2018)
-
-i = Song.create(artist_id: a.id, title:'Nobody', album_id: e.id, length: "3:13")
-j = Song.create(artist_id: a.id, title:'Geyser', album_id: e.id, length: "2:24")
-k = Song.create(artist_id: b.id, title:'Do I Wanna Know?', album_id: f.id, length: "4:32")
-l = Song.create(artist_id: b.id, title:'R U Mine?', album_id: f.id, length: "3:20")
-m = Song.create(artist_id: c.id, title:'Will He', album_id: g.id, length: "3:22")
-
-add_seed(Album,e.id,"https://s3.amazonaws.com/pulsify-dev/album+covers/be-the-cowboy.jpg", 'be-the-cowboy.jpg');
-add_seed(Album,f.id,"https://s3.amazonaws.com/pulsify-dev/album+covers/artic.jpg", 'artic.jpg');
-add_seed(Album,g.id,"https://s3.amazonaws.com/pulsify-dev/album+covers/in-tongues.jpg", 'in-tongues.jpg');
-add_seed(Album,h.id,"https://s3.amazonaws.com/pulsify-dev/album+covers/scorpion.jpg", 'scorpion.jpg');
+# e = Album.create(title: 'Be the Cowboy', artist_id: a.id, release_year: 2018)
+# f = Album.create(title: 'AM', artist_id: b.id, release_year: 2013)
+# g = Album.create(title: 'In Tongues', artist_id: c.id, release_year: 2017)
+# h = Album.create(title: 'Scorpion', artist_id: d.id, release_year: 2018)
+#
+# i = Song.create(artist_id: a.id, title:'Nobody', album_id: e.id, length: "3:13")
+# j = Song.create(artist_id: a.id, title:'Geyser', album_id: e.id, length: "2:24")
+# k = Song.create(artist_id: b.id, title:'Do I Wanna Know?', album_id: f.id, length: "4:32")
+# l = Song.create(artist_id: b.id, title:'R U Mine?', album_id: f.id, length: "3:20")
+# m = Song.create(artist_id: c.id, title:'Will He', album_id: g.id, length: "3:22")
+#
+# add_seed(Album,e.id,"https://s3.amazonaws.com/pulsify-dev/album+covers/be-the-cowboy.jpg", 'be-the-cowboy.jpg');
+# add_seed(Album,f.id,"https://s3.amazonaws.com/pulsify-dev/album+covers/artic.jpg", 'artic.jpg');
+# add_seed(Album,g.id,"https://s3.amazonaws.com/pulsify-dev/album+covers/in-tongues.jpg", 'in-tongues.jpg');
+# add_seed(Album,h.id,"https://s3.amazonaws.com/pulsify-dev/album+covers/scorpion.jpg", 'scorpion.jpg');
