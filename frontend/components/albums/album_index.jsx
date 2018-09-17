@@ -10,7 +10,7 @@ class AlbumIndex extends React.Component {
     let albums;
     if (this.props.albums){
       albums = this.props.albums.map( album => {
-        return (<li className='song-li'> { album.title }</li>);
+        return (<li className='album-li'> <img src={album.photoUrl} /></li>);
       });
     } else {
       albums = null;

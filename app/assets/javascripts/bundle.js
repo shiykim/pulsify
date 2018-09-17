@@ -569,8 +569,10 @@ function (_React$Component) {
       if (this.props.albums) {
         albums = this.props.albums.map(function (album) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-            className: "song-li"
-          }, " ", album.title);
+            className: "album-li"
+          }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: album.photoUrl
+          }));
         });
       } else {
         albums = null;
