@@ -6,6 +6,6 @@ if @username
   json.extract! @username, :username
 end
 
-if @playlist_song
-  json.extract! @playlist_song, :id, :playlist_id, :song_id, :songs
+if @playlist.playlist_songs.length > 0
+  json.photoUrl url_for(@songs[@playlist.song_ids[0]].album.photo)
 end

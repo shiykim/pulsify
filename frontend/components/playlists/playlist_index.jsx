@@ -13,12 +13,35 @@ class PlaylistIndex extends React.Component {
     this.props.fetchPlaylists();
   }
 
+  playlistImage(playlist){
+    let cover = playlist.photoUrl;
+    if (cover) {
+      return (
+        <li className='playlist-li'>
+          <Link to={`/collection/playlists/${playlist.id}`}><img src={playlist.photoUrl} />
+          <div className='playlist-title'>{playlist.title}</div>
+          <div className='playlist-title'>{playlist.username}</div>
+        </Link>
+      </li>
+      );
+    } else {
+      return (
+        <li className='playlist-li'>
+          <Link to={`/collection/playlists/${playlist.id}`}><img src={window.playlist_default}/>
+          <div className='playlist-title'>{playlist.title}</div>
+          <div className='playlist-title'>{playlist.username}</div>
+        </Link>
+        </li>
+      );
+    }
+  }
+
   render () {
     let playlists;
     if (this.props.playlists){
       playlists = this.props.playlists.map( playlist => {
         if (playlist.author_id === this.currentUser.id){
-          return (<li className='playlist-li'><Link to={`/collection/playlists/${playlist.id}`}> {playlist.title}</Link></li>);
+          return (this.playlistImage(playlist));
         }
       });
     } else {

@@ -6,11 +6,24 @@ class ArtistIndex extends React.Component {
     this.props.fetchArtists();
   }
 
+  artistImage(artist){
+    let cover = artist.photoUrl;
+    if (cover) {
+      return (
+        <li className='playlist-li'>
+          <Link to={`/artists/${artist.id}`}><img src={artist.photoUrl} />
+          <div className='playlist-title'>{artist.name}</div>
+        </Link>
+      </li>
+      );
+    }
+  }
+
   render () {
     let artists;
     if (this.props.artists){
       artists = this.props.artists.map( (artist,i) => {
-        return (<li className='song-li' key={`artist-${i}`}> { artist.name }</li>);
+        return (this.artistImage(artist));
       });
     } else {
       artists = null;

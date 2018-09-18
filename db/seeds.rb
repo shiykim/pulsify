@@ -17,7 +17,7 @@ def add_seed(model, id, link, filename)
   model_instance.save!
 end
 
-User.create(username:'demo', password: 'demouser', email: 'demo@email.com')
+user = User.create(username:'demo', password: 'demouser', email: 'demo@email.com')
 
 a = Artist.create(name: "Mitski")
 b = Artist.create(name: "Artic Monkeys")
@@ -34,6 +34,12 @@ j = Song.create(artist_id: a.id, title:'Geyser', album_id: e.id, length: "2:24")
 k = Song.create(artist_id: b.id, title:'Do I Wanna Know?', album_id: f.id, length: "4:32")
 l = Song.create(artist_id: b.id, title:'R U Mine?', album_id: f.id, length: "3:20")
 m = Song.create(artist_id: c.id, title:'Will He', album_id: g.id, length: "3:22")
+
+n = Playlist.create(title: 'Morning Songs', author_id: user.id)
+o = Playlist.create(title: 'Work Out Tunes', author_id: user.id) 
+
+q = PlaylistSong.create(playlist_id: n.id, song_id: m.id)
+r = PlaylistSong.create(playlist_id: n.id, song_id: i.id)
 
 add_seed(Album,e.id,"https://s3.us-east-2.amazonaws.com/pulsify-dev-aa/album-covers/bethecowboy.jpg", 'bethecowboy.jpg');
 add_seed(Album,f.id,"https://s3.us-east-2.amazonaws.com/pulsify-dev-aa/album-covers/artic.jpg", 'artic.jpg');

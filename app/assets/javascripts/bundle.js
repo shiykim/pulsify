@@ -441,6 +441,7 @@ var fetchSong = function fetchSong(song) {
 var addPlaylistSong = function addPlaylistSong(playlistId, songId) {
   return function (dispatch) {
     return _util_song_api_util__WEBPACK_IMPORTED_MODULE_0__["addPlaylistSong"](playlistId, songId).then(function (payload) {
+      debugger;
       return dispatch(receivePlaylistSong(payload));
     });
   };
@@ -943,16 +944,32 @@ function (_React$Component) {
       this.props.fetchArtists();
     }
   }, {
+    key: "artistImage",
+    value: function artistImage(artist) {
+      var cover = artist.photoUrl;
+
+      if (cover) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "playlist-li"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/artists/".concat(artist.id)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: artist.photoUrl
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "playlist-title"
+        }, artist.name)));
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this = this;
+
       var artists;
 
       if (this.props.artists) {
         artists = this.props.artists.map(function (artist, i) {
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-            className: "song-li",
-            key: "artist-".concat(i)
-          }, " ", artist.name);
+          return _this.artistImage(artist);
         });
       } else {
         artists = null;
@@ -2117,17 +2134,46 @@ function (_React$Component) {
       this.props.fetchPlaylists();
     }
   }, {
+    key: "playlistImage",
+    value: function playlistImage(playlist) {
+      var cover = playlist.photoUrl;
+
+      if (cover) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "playlist-li"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/collection/playlists/".concat(playlist.id)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: playlist.photoUrl
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "playlist-title"
+        }, playlist.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "playlist-title"
+        }, playlist.username)));
+      } else {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "playlist-li"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/collection/playlists/".concat(playlist.id)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: window.playlist_default
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "playlist-title"
+        }, playlist.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "playlist-title"
+        }, playlist.username)));
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var playlists;
 
       if (this.props.playlists) {
         playlists = this.props.playlists.map(function (playlist) {
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-            className: "playlist-li"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-            to: "/collection/playlists/".concat(playlist.id)
-          }, " ", playlist.title));
+          return _this2.playlistImage(playlist);
         });
       } else {
         playlists = null;
@@ -2224,6 +2270,37 @@ function (_React$Component) {
       this.props.fetchPlaylists();
     }
   }, {
+    key: "playlistImage",
+    value: function playlistImage(playlist) {
+      var cover = playlist.photoUrl;
+
+      if (cover) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "playlist-li"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/collection/playlists/".concat(playlist.id)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: playlist.photoUrl
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "playlist-title"
+        }, playlist.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "playlist-title"
+        }, playlist.username)));
+      } else {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "playlist-li"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/collection/playlists/".concat(playlist.id)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: window.playlist_default
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "playlist-title"
+        }, playlist.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "playlist-title"
+        }, playlist.username)));
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -2233,11 +2310,7 @@ function (_React$Component) {
       if (this.props.playlists) {
         playlists = this.props.playlists.map(function (playlist) {
           if (playlist.author_id === _this2.currentUser.id) {
-            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-              className: "playlist-li"
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-              to: "/collection/playlists/".concat(playlist.id)
-            }, " ", playlist.title));
+            return _this2.playlistImage(playlist);
           }
         });
       } else {
