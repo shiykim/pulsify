@@ -109,3 +109,16 @@
   color: red;
   font-size: 50px;
 }
+
+.playlist_add_show {
+  width: 150px;
+  height: 150px;
+  background-color: blue;
+  color: white;
+  display: inline-block;
+  border: 1px solid white;
+}
+
+.playlist_add_show:hover {
+  cursor: pointer;
+}

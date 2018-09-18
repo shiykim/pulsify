@@ -3,7 +3,9 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import { deletePlaylist } from '../../actions/playlist_actions';
 import { withRouter } from 'react-router';
-import { userPlaylists } from '../../reducers/selectors'
+import { userPlaylists } from '../../reducers/selectors';
+import AddSongModal from './add_song_modal';
+
 class AddPlaylistSong extends React.Component {
 
   handle(){
@@ -20,10 +22,12 @@ class AddPlaylistSong extends React.Component {
     let user_playlist;
     if(this.props.playlists) {
       user_playlist = this.props.playlists.map( (playlist,i) => {
-        return(<li className='test' key={`playlist-${i}`}>{playlist.title}</li>);
-      })
+        return (
+          <AddSongModal key={`playlist-${i}`} playlist={playlist} />
+        );
+      });
     } else {
-      user_playlist = null
+      user_playlist = null;
     }
 
     return (
@@ -31,7 +35,9 @@ class AddPlaylistSong extends React.Component {
         <div className="modal-child" onClick={e => e.stopPropagation()}>
           <div onClick={() => this.props.closeModal()} className="close-x" id='modal-close'>X</div>
           <h1 id="modal-header">Add to Playlist</h1>
-          {user_playlist}
+          <ul className='playlist_add_show'>
+            {user_playlist}
+          </ul>
         </div>
       </div>
     );

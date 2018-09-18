@@ -28,12 +28,14 @@ class PlaylistShow extends React.Component {
   componentDidMount() {
     this.props.fetchPlaylist(this.props.match.params.id);
     this.props.fetchSongs();
+    this.props.fetchPlaylists();
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.id !== nextProps.match.params.id) {
       this.props.fetchPlaylist(nextProps.match.params.id);
       this.props.fetchSongs();
+      this.props.fetchPlaylists();
     }
   }
 
