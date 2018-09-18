@@ -2899,9 +2899,11 @@ function (_React$Component) {
       if (this.props.songs) {
         songs = this.props.songs.map(function (song, i) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "song-index"
+            className: "song-whole"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "song"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-            className: "song-individual"
+            className: "song-single"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
             id: "song-image"
           }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -2924,7 +2926,7 @@ function (_React$Component) {
             className: "song-separator"
           }, "\xB7"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
             className: "song-album"
-          }, song.album.title)));
+          }, song.album.title))));
         });
       } else {
         songs = null;

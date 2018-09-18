@@ -1,6 +1,15 @@
 .songs-index {
   color: white;
-  left: 350px;
+  align-items: center;
   position: relative;
-  width: 55%;
+  width: 80%;
+  left: 250px;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 200;
+  padding-top: 10px;
+}
+
+.songs-index > ul {
+  display: flex;
+  justify-content: space-between;
 }

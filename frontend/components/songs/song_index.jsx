@@ -26,21 +26,23 @@ class SongIndex extends React.Component {
     if (this.props.songs){
       songs = this.props.songs.map( (song,i) => {
         return(
-          <div className='song-index'>
-            <ul className='song-individual'>
-              <li id='song-image'></li>
-              <li className='song-title'>{song.title}</li>
-              <li id='song-option' onClick={() => this.toggleList()}></li>
-              {this.state.listOpen ? <MoreDropDown show="open" song={song} /> : null }
-              <li className='song-length'>{song.length}</li>
-            </ul>
-            <ul className='artist-album-list'>
-              <li className='song-artist'>{song.artist.name}</li>
-              <li className='song-separator'>·</li>
-              <li className='song-album'>{song.album.title}</li>
-            </ul>
-        </div>)
-
+          <div className='song-whole'>
+            <div className='song'>
+              <ul className='song-single'>
+                <li id='song-image'></li>
+                <li className='song-title'>{song.title}</li>
+                <li id='song-option' onClick={() => this.toggleList()}></li>
+                {this.state.listOpen ? <MoreDropDown show="open" song={song} /> : null }
+                <li className='song-length'>{song.length}</li>
+              </ul>
+              <ul className='artist-album-list'>
+                <li className='song-artist'>{song.artist.name}</li>
+                <li className='song-separator'>·</li>
+                <li className='song-album'>{song.album.title}</li>
+              </ul>
+            </div>
+          </div>
+      )
       });
     } else {
       songs = null;
