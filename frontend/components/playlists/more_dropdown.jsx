@@ -8,7 +8,7 @@ class MoreDropDown extends React.Component {
 
   handleDelete(){
     this.props.removePlaylistSong(this.props.playlist.id, this.props.song.id).then(() => {
-      this.props.closeModal();
+      this.props.fetchSong(this.props.song);
     });
   }
 

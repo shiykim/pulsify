@@ -2000,7 +2000,7 @@ function (_React$Component) {
       var _this = this;
 
       this.props.removePlaylistSong(this.props.playlist.id, this.props.song.id).then(function () {
-        _this.props.closeModal();
+        _this.props.fetchSong(_this.props.song);
       });
     }
   }, {
@@ -3259,16 +3259,12 @@ function (_React$Component) {
   _createClass(AddPlaylistSong, [{
     key: "handle",
     value: function handle() {
-      var _this = this;
-
-      this.props.addPlaylistSong(this.props.playlist.id, this.props.song.id).then(function () {
-        _this.props.closeModal();
-      });
+      this.props.addPlaylistSong(this.props.playlist.id, this.props.song.id);
     }
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this = this;
 
       if (!this.props.modal) {
         return null;
@@ -3297,7 +3293,7 @@ function (_React$Component) {
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         onClick: function onClick() {
-          return _this2.props.closeModal();
+          return _this.props.closeModal();
         },
         className: "close-x",
         id: "modal-close"
@@ -4041,7 +4037,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
 /* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/playlist_actions */ "./frontend/actions/playlist_actions.js");
+/* harmony import */ var _actions_song_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/song_actions */ "./frontend/actions/song_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -4050,6 +4048,7 @@ var playlistReducer = function playlistReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
+  var newState;
 
   switch (action.type) {
     case _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_ALL_PLAYLISTS"]:
@@ -4058,9 +4057,15 @@ var playlistReducer = function playlistReducer() {
     case _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_PLAYLIST"]:
       return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, _defineProperty({}, action.playlist.id, action.playlist));
 
-    case _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_1__["REMOVE_PLAYLIST"]:
-      var newState = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state);
-      delete newState[action.playlistId];
+    case _actions_song_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_PLAYLIST_SONG"]:
+      newState = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state);
+      newState[action.payload.playlist_id].song_ids.push(action.payload.song_id);
+      return newState;
+
+    case _actions_song_actions__WEBPACK_IMPORTED_MODULE_2__["REMOVE_PLAYLIST_SONG"]:
+      newState = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state);
+      var songs = newState[action.payload.playlist_id].song_ids;
+      delete songs[songs.indexOf(action.payload.song_id)];
       return newState;
 
     default:

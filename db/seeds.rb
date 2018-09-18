@@ -35,10 +35,12 @@ k = Song.create(artist_id: b.id, title:'Do I Wanna Know?', album_id: f.id, lengt
 l = Song.create(artist_id: b.id, title:'R U Mine?', album_id: f.id, length: "3:20")
 m = Song.create(artist_id: c.id, title:'Will He', album_id: g.id, length: "3:22")
 
-#
-#
-#
-# add_seed(Album,e.id,"https://s3.us-east-2.amazonaws.com/pulsify-dev-aa/album-covers/bethecowboy.jpg", 'bethecowboy.jpg');
-# add_seed(Album,f.id,"https://s3.us-east-2.amazonaws.com/pulsify-dev-aa/album-covers/artic.jpg", 'artic.jpg');
-# add_seed(Album,g.id,"https://s3.us-east-2.amazonaws.com/pulsify-dev-aa/album-covers/in-tongues.png", 'in-tongues.png');
-# add_seed(Album,h.id,"https://s3.us-east-2.amazonaws.com/pulsify-dev-aa/album-covers/scorpion.jpg", 'scorpion.jpg');
+add_seed(Album,e.id,"https://s3.us-east-2.amazonaws.com/pulsify-dev-aa/album-covers/bethecowboy.jpg", 'bethecowboy.jpg');
+add_seed(Album,f.id,"https://s3.us-east-2.amazonaws.com/pulsify-dev-aa/album-covers/artic.jpg", 'artic.jpg');
+add_seed(Album,g.id,"https://s3.us-east-2.amazonaws.com/pulsify-dev-aa/album-covers/in-tongues.png", 'in-tongues.png');
+add_seed(Album,h.id,"https://s3.us-east-2.amazonaws.com/pulsify-dev-aa/album-covers/scorpion.jpg", 'scorpion.jpg');
+
+add_seed(Artist,a.id,"https://s3.us-east-2.amazonaws.com/pulsify-dev-aa/artist_images/mitski.jpg", 'mitski.jpg');
+add_seed(Artist,b.id,"https://s3.us-east-2.amazonaws.com/pulsify-dev-aa/artist_images/articmonkeys.jpg", 'articmonkeys.jpg');
+add_seed(Artist,c.id,"https://s3.us-east-2.amazonaws.com/pulsify-dev-aa/artist_images/joji.png", 'joji.png');
+add_seed(Artist,d.id,"https://s3.us-east-2.amazonaws.com/pulsify-dev-aa/artist_images/drake.jpg", 'drake.png');

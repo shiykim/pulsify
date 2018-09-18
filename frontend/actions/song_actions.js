@@ -15,10 +15,12 @@ const receiveSong = song => ({
   song
 });
 
-const receivePlaylistSong = payload => ({
-  type: RECEIVE_PLAYLIST_SONG,
-  payload
-});
+const receivePlaylistSong = payload => {
+  return {
+    type: RECEIVE_PLAYLIST_SONG,
+    payload
+  };
+};
 
 const deletePlaylistSong = payload => ({
   type: REMOVE_PLAYLIST_SONG,
