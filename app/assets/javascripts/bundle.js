@@ -2595,39 +2595,47 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
+      var songs;
+
+      if (this.props.song) {
+        songs = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "song"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+          className: "song-single"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          id: "song-image"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "song-title"
+        }, this.props.song.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          id: "song-option",
+          onClick: function onClick() {
+            return _this2.toggleList();
+          }
+        }), this.state.listOpen ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_more_dropdown__WEBPACK_IMPORTED_MODULE_5__["default"], {
+          show: "open",
+          song: this.props.song
+        }) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "song-length"
+        }, this.props.song.length)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+          className: "artist-album-list"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "song-artist"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Link"], {
+          to: "/artists/".concat(this.props.song.artist.id)
+        }, this.props.song.artist.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "song-separator"
+        }, "\xB7"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "song-album"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Link"], {
+          to: "/albums/".concat(this.props.song.album.id)
+        }, this.props.song.album.title))));
+      } else {
+        songs = null;
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "song-whole"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "song"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "song-single"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        id: "song-image"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "song-title"
-      }, this.props.song.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        id: "song-option",
-        onClick: function onClick() {
-          return _this2.toggleList();
-        }
-      }), this.state.listOpen ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_more_dropdown__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        show: "open",
-        song: this.props.song
-      }) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "song-length"
-      }, this.props.song.length)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "artist-album-list"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "song-artist"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Link"], {
-        to: "/artists/".concat(this.props.song.artist.id)
-      }, this.props.song.artist.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "song-separator"
-      }, "\xB7"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "song-album"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Link"], {
-        to: "/albums/".concat(this.props.song.album.id)
-      }, this.props.song.album.title)))));
+      }, songs);
     }
   }]);
 
@@ -3350,6 +3358,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_song_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/song_actions */ "./frontend/actions/song_actions.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -3372,6 +3381,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var AddSongModal =
 /*#__PURE__*/
 function (_React$Component) {
@@ -3386,16 +3396,20 @@ function (_React$Component) {
   _createClass(AddSongModal, [{
     key: "handleClick",
     value: function handleClick() {
-      this.props.addPlaylistSong(this.props.playlist.id, this.props.currentSong.id);
+      var _this = this;
+
+      this.props.addPlaylistSong(this.props.playlist.id, this.props.currentSong.id).then(function () {
+        _this.props.closeModal();
+      });
     }
   }, {
     key: "render",
     value: function render() {
-      var _this = this;
+      var _this2 = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         onClick: function onClick() {
-          return _this.handleClick();
+          return _this2.handleClick();
         },
         className: "playlist_add_show"
       }, this.props.playlist.title);
@@ -3415,6 +3429,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     addPlaylistSong: function addPlaylistSong(playlistId, songId) {
       return dispatch(Object(_actions_song_actions__WEBPACK_IMPORTED_MODULE_2__["addPlaylistSong"])(playlistId, songId));
+    },
+    closeModal: function closeModal() {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["closeModal"])());
     }
   };
 };

@@ -23,9 +23,9 @@ class SongItemShow extends React.Component {
   }
 
   render () {
-
-    return (
-      <div className='song-whole'>
+    let songs;
+    if(this.props.song){
+      songs = (
         <div className='song'>
           <ul className='song-single'>
             <li id='song-image'></li>
@@ -40,6 +40,14 @@ class SongItemShow extends React.Component {
             <li className='song-album'><Link to={`/albums/${this.props.song.album.id}`}>{this.props.song.album.title}</Link></li>
           </ul>
         </div>
+      );
+    } else {
+      songs = null;
+    }
+
+    return (
+      <div className='song-whole'>
+        {songs}
       </div>
     );
   }
