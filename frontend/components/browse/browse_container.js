@@ -4,7 +4,6 @@ import { logout } from '../../actions/session_actions';
 import Browse from './browse_index';
 import { fetchSongs }  from '../../actions/song_actions';
 import { fetchAlbums } from '../../actions/album_actions';
-import { fetchArtists } from '../../actions/artist_actions';
 import { fetchPlaylists } from '../../actions/playlist_actions';
 
 const mapStateToProps = ({ session, entities: { users } }) => {
@@ -16,7 +15,7 @@ const mapStateToProps = ({ session, entities: { users } }) => {
 const mapDispatchToProps = dispatch => {
   return {
     logout: () => dispatch(logout()),
-    fetchPlaylists: () => dispatch(fetchPlaylists())
+    fetchPlaylists: () => dispatch(fetchPlaylists()),
   };
 };
 

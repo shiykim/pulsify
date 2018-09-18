@@ -4,6 +4,7 @@ import { ProtectedRoute } from '../../util/route_util';
 import SongIndexContainer from '../songs/song_index_container';
 import AlbumIndexContainer from '../albums/album_index_container';
 import ArtistIndexContainer from '../artists/artist_index_container';
+import ArtistShow from '../artists/artist_show';
 
 class HomeIndex extends React.Component {
 

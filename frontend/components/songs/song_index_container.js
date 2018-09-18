@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import SongIndex from './song_index';
-import { fetchSongs } from '../../actions/song_actions'
+import { fetchSongs } from '../../actions/song_actions';
+import { fetchArtists } from '../../actions/artist_actions';
 
 const mapStateToProps = ({ entities: { songs }}) => {
   return {
@@ -12,6 +13,7 @@ const mapStateToProps = ({ entities: { songs }}) => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchSongs: () => dispatch(fetchSongs()),
+    fetchArtists: () => dispatch(fetchArtists()),
   };
 };
 

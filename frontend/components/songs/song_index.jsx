@@ -19,6 +19,7 @@ class SongIndex extends React.Component {
 
   componentDidMount(){
     this.props.fetchSongs();
+    this.props.fetchArtists();
   }
 
   render () {
@@ -36,7 +37,7 @@ class SongIndex extends React.Component {
                 <li className='song-length'>{song.length}</li>
               </ul>
               <ul className='artist-album-list'>
-                <li className='song-artist'>{song.artist.name}</li>
+                <li className='song-artist'><Link to={`/artists/${song.artist.id}`}>{song.artist.name}</Link></li>
                 <li className='song-separator'>·</li>
                 <li className='song-album'>{song.album.title}</li>
               </ul>

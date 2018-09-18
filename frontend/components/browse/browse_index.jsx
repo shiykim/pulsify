@@ -5,15 +5,17 @@ import BrowseContent from './browse_content';
 import PlaylistShowContainer from '../playlists/playlist_show_container';
 import HomeIndex from '../home/home_index';
 import SearchIndex from '../search/search_index';
+import ArtistShow from '../artists/artist_show';
+import AlbumShow from '../albums/album_show';
 
 class Browse extends React.Component {
 
   // componentDidMount() {
-  //   this.props.fetchPlaylists();
+  //   this.props.fetchArtists();
   // }
   //
   // componentWillReceiveProps(nextProps) {
-  //   this.props.fetchPlaylists();
+  //   this.props.fetchArtists();
   // }
 
   render () {
@@ -50,6 +52,8 @@ class Browse extends React.Component {
         </div>
         <Switch>
           <ProtectedRoute path="/collection/playlists/:id" component={PlaylistShowContainer}/>
+          <ProtectedRoute path="/artists/:id" component={ArtistShow}/>
+          <ProtectedRoute path="/albums/:id" component={AlbumShow}/>
           <ProtectedRoute path="/collection" component={BrowseContent} />
           <ProtectedRoute path="/search" component={SearchIndex} />
           <ProtectedRoute path="/browse" component={HomeIndex} />

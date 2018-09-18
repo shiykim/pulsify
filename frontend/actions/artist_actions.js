@@ -23,7 +23,7 @@ export const fetchArtists = () => {
 
 export const fetchArtist = id => {
   return dispatch => {
-    return ArtistApiUtil.fetchArtist().then( artist => {
+    return ArtistApiUtil.fetchArtist(id).then( artist => {
       return dispatch(receiveArtist(artist));
     });
   };

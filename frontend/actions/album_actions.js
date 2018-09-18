@@ -23,7 +23,7 @@ export const fetchAlbums = () => {
 
 export const fetchAlbum = id => {
   return dispatch => {
-    return AlbumApiUtil.fetchAlbum().then( album => {
+    return AlbumApiUtil.fetchAlbum(id).then( album => {
       return dispatch(receiveAlbum(album));
     });
   };
