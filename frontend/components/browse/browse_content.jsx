@@ -6,9 +6,6 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 
 import PlaylistIndexContainer from '../playlists/playlist_index_container';
 import PlaylistShowContainer from '../playlists/playlist_show_container';
-import SongIndexContainer from '../songs/song_index_container';
-import AlbumIndexContainer from '../albums/album_index_container';
-import ArtistIndexContainer from '../artists/artist_index_container';
 
 class BrowseContent extends React.Component {
 
@@ -24,9 +21,6 @@ class BrowseContent extends React.Component {
           </ul>
           {this.props.openModal}
           <ProtectedRoute path="/collection/playlists" component={PlaylistIndexContainer}/>
-          <ProtectedRoute path="/collection/songs" component={SongIndexContainer}/>
-          <ProtectedRoute path="/collection/albums" component={AlbumIndexContainer}/>
-          <ProtectedRoute path="/collection/artist" component={ArtistIndexContainer}/>
         </div>
       </div>
     );

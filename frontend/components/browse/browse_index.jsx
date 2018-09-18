@@ -8,13 +8,13 @@ import SearchIndex from '../search/search_index';
 
 class Browse extends React.Component {
 
-  componentDidMount() {
-    this.props.fetchPlaylists();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.props.fetchPlaylists();
-  }
+  // componentDidMount() {
+  //   this.props.fetchPlaylists();
+  // }
+  //
+  // componentWillReceiveProps(nextProps) {
+  //   this.props.fetchPlaylists();
+  // }
 
   render () {
     return (

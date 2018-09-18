@@ -17,13 +17,21 @@ class AddPlaylistSong extends React.Component {
       return null;
     }
 
+    let user_playlist;
+    if(this.props.playlists) {
+      user_playlist = this.props.playlists.map( (playlist,i) => {
+        return(<li className='test' key={`playlist-${i}`}>{playlist.title}</li>);
+      })
+    } else {
+      user_playlist = null
+    }
+
     return (
       <div className="modal-background" onClick={closeModal}>
         <div className="modal-child" onClick={e => e.stopPropagation()}>
           <div onClick={() => this.props.closeModal()} className="close-x" id='modal-close'>X</div>
           <h1 id="modal-header">Add to Playlist</h1>
-          <button onClick={() => this.props.closeModal()} className="close-x btn-modal-cancel">CANCEL</button>
-          <button onClick={() => this.handleDelete()} className="btn-modal-submit">DELETE</button>
+          {user_playlist}
         </div>
       </div>
     );

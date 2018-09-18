@@ -9,8 +9,8 @@ class ArtistIndex extends React.Component {
   render () {
     let artists;
     if (this.props.artists){
-      artists = this.props.artists.map( artist => {
-        return (<li className='song-li'> { artist.name }</li>);
+      artists = this.props.artists.map( (artist,i) => {
+        return (<li className='song-li' key={`artist-${i}`}> { artist.name }</li>);
       });
     } else {
       artists = null;

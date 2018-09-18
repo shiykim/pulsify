@@ -9,8 +9,8 @@ class AlbumIndex extends React.Component {
   render () {
     let albums;
     if (this.props.albums){
-      albums = this.props.albums.map( album => {
-        return (<li className='album-li'> <img src={album.photoUrl} /></li>);
+      albums = this.props.albums.map( (album,i) => {
+        return (<li className='album-li' key={`album-${i}`}> <img src={album.photoUrl} /></li>);
       });
     } else {
       albums = null;
