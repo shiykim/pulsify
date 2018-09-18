@@ -6,7 +6,6 @@ import { fetchArtist, fetchArtists } from '../../actions/artist_actions';
 class ArtistShow extends React.Component {
 
   componentDidMount() {
-    debugger
     this.props.fetchArtist(this.props.match.params.id);
   }
 
@@ -36,7 +35,7 @@ class ArtistShow extends React.Component {
       albums = null;
       songs = null;
     }
-    debugger
+    
     return (
       <div>
         <ul>

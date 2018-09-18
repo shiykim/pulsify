@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { selectSongAlbum, selectSongArtist } from '../../reducers/selectors.js';
 import { fetchAlbums } from '../../actions/album_actions';
 import { fetchArtists } from '../../actions/artist_actions';
-import MoreDropDown from './more_dropdown';
+import MoreDropDown from '../playlists/more_dropdown';
 import { Link } from 'react-router-dom';
 
-class SongItemShow extends React.Component {
+class AlbumSongItem extends React.Component {
 
   constructor(props){
     super(props);
@@ -34,11 +34,6 @@ class SongItemShow extends React.Component {
             {this.state.listOpen ? <MoreDropDown show="open" song={this.props.song} /> : null }
             <li className='song-length'>{this.props.song.length}</li>
           </ul>
-          <ul className='artist-album-list'>
-            <li className='song-artist'><Link to={`/artists/${this.props.song.artist.id}`}>{this.props.song.artist.name}</Link></li>
-            <li className='song-separator'>·</li>
-            <li className='song-album'><Link to={`/albums/${this.props.song.album.id}`}>{this.props.song.album.title}</Link></li>
-          </ul>
         </div>
       </div>
     );
@@ -47,12 +42,5 @@ class SongItemShow extends React.Component {
 }
 
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchPlaylist: (id) => dispatch(fetchPlaylist(id)),
-    fetchSongs: () => dispatch(fetchSongs()),
-  };
-};
 
-
-export default connect(null, mapDispatchToProps)(SongItemShow);
+export default AlbumSongItem;

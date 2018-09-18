@@ -1,6 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchAlbum } from '../../actions/album_actions';
+import AlbumSongItem from './album_song_item';
+
 class AlbumShow extends React.Component {
 
   constructor(props){
@@ -23,24 +26,22 @@ class AlbumShow extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchPlaylist(this.props.match.params.id);
-    this.props.fetchSongs();
+    this.props.fetchAlbum(this.props.match.params.id);
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.id !== nextProps.match.params.id) {
-      this.props.fetchPlaylist(nextProps.match.params.id);
-      this.props.fetchSongs();
+      this.props.fetchAlbum(nextProps.match.params.id);
     }
   }
 
-  playlistSongs(){
+  albumSongs(){
     let songs;
-    if (this.props.songs[0]){
+    if (this.props.album.songs){
       songs = (
-        this.props.songs.map( song => {
+        this.props.album.songs.map( song => {
           return (
-            <SongItemShow song={song} />
+            <AlbumSongItem song={song} />
           );
         })
       );
@@ -51,43 +52,41 @@ class AlbumShow extends React.Component {
   }
 
   render() {
-    let songs;
-    let album_songs;
     let album_info;
+    let album_songs;
 
-    if(this.props.artist){
-      album_songs = this.props.artist.songs;
+    if(this.props.album){
+      album_songs = this.props.album.songs;
     }
 
-    if (album_songs){
-      songs = (
+    if(album_songs){
+
+      album_songs = (
         <div className='pshow-songlist'>
-          { this.playlistSongs() }
+          { this.albumSongs() }
         </div>
       );
-      album_info =  (
-        <ul className='pshow-info'>
-          <li id='pshow-title'>{this.props.album.title}</li>
-          <li id='pshow-username'>{this.props.album.artist}</li>
-          <li id='pshow-length'>{this.props.playlist.songs.length} songs</li>
+
+      album_info = (
+        <ul>
+          <li className='test'>{this.props.album.title}</li>
+          <li className='test'>{this.props.album.artist.name}</li>
+          <li className='test'>{this.props.album.release_year}</li>
           <button id='btn-pshow-play'>PLAY</button>
-          <button className='navbar-images pshow-more' onClick={() => this.toggleList()} style={{backgroundImage: `url(${window.more})`}} />
-          {this.state.listOpen ? <DropDownList show="open" /> : null }
         </ul>
-      );
+      )
+
     } else {
-      songs = null;
       album_info = null;
+      album_songs = null;
     }
 
     return (
       <div className='pshow-whole'>
         <div className='pshow-main'>
-          <section className='pshow-img'>
-            {songs}
-          </section>
           {album_info}
         </div>
+        {album_songs}
       </div>
     );
   }
