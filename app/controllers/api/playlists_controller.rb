@@ -1,12 +1,12 @@
 class Api::PlaylistsController < ApplicationController
 
   def index
-    @playlists = Playlist.all
-    @songs = Song.all
+    @playlists = Playlist.all.includes(:songs)
+    # @songs = Song.all
   end
 
   def show
-    @playlist = Playlist.find(params[:id])
+    @playlist = Playlist.find(params[:id]).includes(:songs)
     @username = User.find(@playlist.author_id)
     @songs = Song.all
   end

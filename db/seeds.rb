@@ -43,8 +43,8 @@ jack1 = Song.create(artist_id: hans.id, title:'Jack Sparrow', album_id: pirates.
 n = Playlist.create(title: 'Morning Songs', author_id: user.id)
 o = Playlist.create(title: 'Work Out Tunes', author_id: user.id)
 #
-# q = PlaylistSong.create(playlist_id: n.id, song_id: m.id)
-# r = PlaylistSong.create(playlist_id: n.id, song_id: i.id)
+q = PlaylistSong.create(playlist_id: n.id, song_id: jack.id)
+r = PlaylistSong.create(playlist_id: n.id, song_id: jack1.id)
 
 add_seed(Album,e.id,"https://s3.us-east-2.amazonaws.com/pulsify-dev-aa/album-covers/bethecowboy.jpg", 'bethecowboy.jpg');
 add_seed(Album,f.id,"https://s3.us-east-2.amazonaws.com/pulsify-dev-aa/album-covers/artic.jpg", 'artic.jpg');

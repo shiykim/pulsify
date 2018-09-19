@@ -1,5 +1,5 @@
 class Song < ApplicationRecord
-  validates :artist_id, :album_id, :title, :song_url, presence: true
+  validates :title, :song_url, presence: true
 
   after_initialize :ensure_song_url
 

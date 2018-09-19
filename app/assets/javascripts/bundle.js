@@ -2246,6 +2246,7 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           to: "/collection/playlists/".concat(playlist.id)
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          id: "p-images",
           src: window.playlist_default
         }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "playlist-title"
@@ -3091,6 +3092,7 @@ function (_React$Component) {
       this.props.fetchArtists();
       this.props.fetchPlaylists();
       this.props.fetchSongs();
+      this.props.fetchAlbums();
     } //
     // selectResponse(event) {
     //   const response = event.currentTarget.innerText;
@@ -3142,6 +3144,11 @@ function (_React$Component) {
       var _this3 = this;
 
       var matches = [];
+
+      if (this.state.inputVal.length === 0) {
+        return this.props.names;
+      }
+
       slice.forEach(function (name) {
         var chars = name.title.toLowerCase().replace(/ /g, '').split('');
         var sub = name.title.slice(0, _this3.state.inputVal.length).toLowerCase();
@@ -3277,7 +3284,23 @@ function (_React$Component) {
         onChange: this.handleInput,
         value: this.state.inputVal,
         placeholder: "Start typing..."
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.songMatches()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.albumMatches()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.artistMatches()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.playlistMatches())));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "song-matches"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "headers-artists"
+      }, " Songs"), this.songMatches()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "album-matches"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "headers-artists"
+      }, " Albums"), this.albumMatches()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "artist-matches"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "headers-artists"
+      }, " Artists"), this.artistMatches()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "playlist-matches"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "headers-artists"
+      }, " Playlist"), this.playlistMatches())));
     }
   }]);
 

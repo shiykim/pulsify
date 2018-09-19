@@ -1,5 +1,5 @@
 class Album < ApplicationRecord
-  validates :artist_id, :release_year, :title, :img_url, presence: true
+  validates :release_year, :title, :img_url, presence: true
 
   after_initialize :ensure_img_url
 

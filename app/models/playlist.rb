@@ -1,5 +1,5 @@
 class Playlist < ApplicationRecord
-  validates :author_id, :title, presence: true
+  validates :title, presence: true
 
   belongs_to :author,
     class_name: 'User',

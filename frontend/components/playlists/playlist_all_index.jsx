@@ -32,7 +32,7 @@ class PlaylistAllIndex extends React.Component {
       return (
         <div>
           <li className='playlist-li'>
-            <Link to={`/collection/playlists/${playlist.id}`}><img src={window.playlist_default}/></Link>
+            <Link to={`/collection/playlists/${playlist.id}`}><img id='p-images' src={window.playlist_default}/></Link>
           </li>
           <div className='playlist-title'>{playlist.title}</div>
           <div className='playlist-username'>{playlist.username}</div>

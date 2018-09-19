@@ -17,6 +17,7 @@ class SearchIndex extends React.Component {
     this.props.fetchArtists();
     this.props.fetchPlaylists();
     this.props.fetchSongs();
+    this.props.fetchAlbums();
   }
   //
   // selectResponse(event) {
@@ -56,7 +57,9 @@ class SearchIndex extends React.Component {
 
   matches(slice) {
     const matches = [];
-
+    if (this.state.inputVal.length === 0) {
+      return this.props.names;
+    }
     slice.forEach(name => {
       const chars = name.title.toLowerCase().replace(/ /g, '').split('');
       const sub = name.title.slice(0, this.state.inputVal.length).toLowerCase();
@@ -172,19 +175,23 @@ class SearchIndex extends React.Component {
                 value={this.state.inputVal}
                 placeholder="Start typing..."/>
           </section>
-          <ul>
+          <ul className='song-matches'>
+            <h2 className='headers-artists'> Songs</h2>
             {this.songMatches()}
           </ul>
 
-          <ul>
+          <ul className='album-matches'>
+            <h2 className='headers-artists'> Albums</h2>
             {this.albumMatches()}
           </ul>
 
-          <ul>
+          <ul className='artist-matches'>
+            <h2 className='headers-artists'> Artists</h2>
             {this.artistMatches()}
           </ul>
 
-          <ul>
+          <ul className='playlist-matches'>
+            <h2 className='headers-artists'> Playlist</h2>
             {this.playlistMatches()}
           </ul>
 
