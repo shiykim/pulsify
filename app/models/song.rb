@@ -3,7 +3,7 @@ class Song < ApplicationRecord
 
   after_initialize :ensure_song_url
 
-  has_one_attached :mp3
+  has_one_attached :photo
 
   belongs_to :artist,
     class_name: 'Artist',

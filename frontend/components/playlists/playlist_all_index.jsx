@@ -16,11 +16,11 @@ class PlaylistAllIndex extends React.Component {
     this.props.fetchPlaylists();
   }
 
-  playlistImage(playlist){
+  playlistImage(playlist, i){
     let cover = playlist.photoUrl;
     if (cover) {
       return (
-        <div>
+        <div key={i}>
           <Link to={`/collection/playlists/${playlist.id}`}>
           <li className='playlist-li' style={{backgroundImage: `url(${playlist.photoUrl})`}} />
         </Link>
@@ -44,8 +44,8 @@ class PlaylistAllIndex extends React.Component {
   render () {
     let playlists;
     if (this.props.playlists){
-      playlists = this.props.playlists.map( playlist => {
-        return (this.playlistImage(playlist));
+      playlists = this.props.playlists.map( (playlist,i) => {
+        return (this.playlistImage(playlist, i));
       });
     } else {
       playlists = null;

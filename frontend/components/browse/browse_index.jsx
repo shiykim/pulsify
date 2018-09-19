@@ -4,7 +4,7 @@ import { ProtectedRoute } from '../../util/route_util';
 import BrowseContent from './browse_content';
 import PlaylistShowContainer from '../playlists/playlist_show_container';
 import HomeIndex from '../home/home_index';
-import SearchIndex from '../search/search_index';
+import SearchIndexContainer from '../search/search_index_container';
 import ArtistShow from '../artists/artist_show';
 import AlbumShow from '../albums/album_show';
 
@@ -19,6 +19,7 @@ class Browse extends React.Component {
   // }
 
   render () {
+
     return (
 
       <div>
@@ -55,12 +56,14 @@ class Browse extends React.Component {
           <ProtectedRoute path="/artists/:id" component={ArtistShow}/>
           <ProtectedRoute path="/albums/:id" component={AlbumShow}/>
           <ProtectedRoute path="/collection" component={BrowseContent} />
-          <ProtectedRoute path="/search" component={SearchIndex} />
+          <ProtectedRoute path="/search" component={SearchIndexContainer} />
           <ProtectedRoute path="/browse" component={HomeIndex} />
         </Switch>
     </div>
     );
   }
 }
+
+
 
 export default Browse;

@@ -11,14 +11,14 @@ class AlbumIndex extends React.Component {
     if (this.props.albums){
       albums = this.props.albums.map( (album,i) => {
         return (
-          <div>
+          <div key={i}>
             <li className='playlist-li'>
               <Link to={`/albums/${album.id}`}><img src={album.photoUrl}  /></Link>
             </li>
             <div className='playlist-title'>{album.title}</div>
             <div className='playlist-username'>{album.artist.name}</div>
           </div>
-        )
+        );
       });
     } else {
       albums = null;

@@ -27,7 +27,7 @@ class AddPlaylistSong extends React.Component {
     } else {
       user_playlist = null;
     }
-
+    
     return (
       <div className="modal-background" onClick={closeModal}>
         <div className="modal-child" onClick={e => e.stopPropagation()}>
