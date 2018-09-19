@@ -109,14 +109,19 @@
   color: red;
   font-size: 50px;
 }
-
 .playlist_add_show {
+  display: flex;
+}
+
+.playlist_add_show > li {
   width: 150px;
   height: 150px;
-  background-color: blue;
   color: white;
   display: inline-block;
   border: 1px solid white;
+  margin: 15px;
+  position: relative;
+  box-shadow:-1px 2px 18px #000000;
 }
 
 .playlist_add_show:hover {

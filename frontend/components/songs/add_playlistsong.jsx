@@ -8,9 +8,9 @@ import AddSongModal from './add_song_modal';
 
 class AddPlaylistSong extends React.Component {
 
-  handle(){
-    this.props.addPlaylistSong((this.props.playlist.id), (this.props.song.id));
-  }
+  // handle(){
+  //   this.props.addPlaylistSong((this.props.playlist.id), (this.props.song.id));
+  // }
 
   render () {
     if (!this.props.modal) {

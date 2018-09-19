@@ -24,6 +24,9 @@ class SongItemShow extends React.Component {
 
   render () {
     let songs;
+    if (this.setState.listOpen){
+      this.toggleList();
+    }
     if(this.props.song){
       songs = (
         <div className='song'>

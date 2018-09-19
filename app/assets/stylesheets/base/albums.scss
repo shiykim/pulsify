@@ -25,7 +25,7 @@
 }
 
 .first-half > h1 {
-  padding-left: 100px;
+  padding-left: 180px;
   color: white;
   font-size: 70px;
   padding-top: 15%;
@@ -42,7 +42,7 @@
 
 .headers-artists {
   color: white;
-  padding: 20px;
+  padding-top: 20px;
   font-size: 35px;
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
@@ -100,4 +100,20 @@
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   font-weight: 200px;
+}
+
+.artist-songs {
+  color: white;
+  align-items: center;
+  position: relative;
+  width: 80%;
+  left: 130px;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 200;
+  padding-top: 20px;
+}
+
+.artist-songs > ul {
+  display: flex;
+  justify-content: space-between;
 }

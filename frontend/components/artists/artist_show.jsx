@@ -2,8 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchArtist, fetchArtists } from '../../actions/artist_actions';
+import { fetchPlaylists} from '../../actions/playlist_actions';
+import MoreDropDown from '../playlists/more_dropdown';
 
 class ArtistShow extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      listOpen: false
+    };
+  }
 
   componentDidMount() {
     this.props.fetchArtist(this.props.match.params.id);
@@ -48,7 +57,6 @@ class ArtistShow extends React.Component {
               <ul className='song-single'>
                 <li id='song-image'></li>
                 <li className='song-title'>{song.title}</li>
-                <li className='song-length'>{song.length}</li>
               </ul>
             </div>
           </div>
@@ -72,9 +80,9 @@ class ArtistShow extends React.Component {
         </div>
         <div className='third-half'>
           <h2 className='headers-artists'>Songs</h2>
-          <ul className='artist-songs'>
-            {songs}
-          </ul>
+            <div className='artist-songs'>
+                {songs}
+            </div>
         </div>
       </div>
     );
@@ -90,6 +98,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchArtist: (id) => dispatch(fetchArtist(id)),
+    fetchPlaylists: (id) => dispatch(fetchPlaylists()),
   };
 };
 

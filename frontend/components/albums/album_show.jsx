@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchAlbum } from '../../actions/album_actions';
+import { fetchPlaylists } from '../../actions/playlist_actions';
 import AlbumSongItem from './album_song_item';
 
 class AlbumShow extends React.Component {
@@ -27,11 +28,13 @@ class AlbumShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchAlbum(this.props.match.params.id);
+    this.props.fetchPlaylists();
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.id !== nextProps.match.params.id) {
       this.props.fetchAlbum(nextProps.match.params.id);
+      this.props.fetchPlaylists();
     }
   }
 
@@ -106,6 +109,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchAlbum: (id) => dispatch(fetchAlbum(id)),
+    fetchPlaylists: () => dispatch(fetchPlaylists()),
   };
 };
 

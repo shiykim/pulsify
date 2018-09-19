@@ -31,7 +31,7 @@ class AlbumSongItem extends React.Component {
             <li id='song-image'></li>
             <li className='song-title'>{this.props.song.title}</li>
             <li id='song-option' onClick={() => this.toggleList()}></li>
-            {this.state.listOpen ? <MoreDropDown show="open" song={this.props.song} /> : null }
+            {this.state.listOpen ? <MoreDropDown show="open" song={this.props.song} onlyAdd='add' /> : null }
             <li className='song-length'>{this.props.song.length}</li>
           </ul>
         </div>

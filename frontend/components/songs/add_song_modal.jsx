@@ -13,7 +13,10 @@ class AddSongModal extends React.Component {
 
   render() {
     return (
-      <li onClick={() => this.handleClick()} className='playlist_add_show'>{this.props.playlist.title}</li>
+      <li onClick={() => this.handleClick()} className='playlist_add'>
+        <img src={this.props.playlist.photoUrl} />
+        <div className='artist-album-title'> {this.props.playlist.title} </div>
+      </li>
     );
   }
 }
