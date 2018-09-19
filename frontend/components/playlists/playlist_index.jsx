@@ -17,21 +17,23 @@ class PlaylistIndex extends React.Component {
     let cover = playlist.photoUrl;
     if (cover) {
       return (
-        <li className='playlist-li'>
-          <Link to={`/collection/playlists/${playlist.id}`}><img src={playlist.photoUrl} />
+        <div>
+          <li className='playlist-li'>
+            <Link to={`/collection/playlists/${playlist.id}`}><img src={playlist.photoUrl} /></Link>
+          </li>
           <div className='playlist-title'>{playlist.title}</div>
-          <div className='playlist-title'>{playlist.username}</div>
-        </Link>
-      </li>
-      );
+          <div className='playlist-username'>{playlist.username}</div>
+        </div>
+    );
     } else {
       return (
-        <li className='playlist-li'>
-          <Link to={`/collection/playlists/${playlist.id}`}><img src={window.playlist_default}/>
+        <div>
+          <li className='playlist-li'>
+            <Link to={`/collection/playlists/${playlist.id}`}><img src={window.playlist_default}/></Link>
+          </li>
           <div className='playlist-title'>{playlist.title}</div>
-          <div className='playlist-title'>{playlist.username}</div>
-        </Link>
-        </li>
+          <div className='playlist-username'>{playlist.username}</div>
+        </div>
       );
     }
   }

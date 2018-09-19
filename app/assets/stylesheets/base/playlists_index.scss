@@ -18,6 +18,7 @@
   margin-right: 20px;
   opacity: 0.8;
 }
+
 .playlist-nav > li:hover {
   opacity: 1;
 }
@@ -33,13 +34,37 @@
 .playlist-li {
   width: 150px;
   height: 150px;
-  border: 5px solid black;
   cursor: pointer;
   color: white;
   background-size: cover;
   background-repeat: no-repeat;
   margin: 10px;
-  margin-top: 10px;
+  margin-top: 30px;
+  position: relative;
+  box-shadow:-1px 2px 18px #000000;
+}
+
+.playlist-li:hover{
+  z-index: 100;
+  opacity: .6;
+  background: url('play-button.svg') no-repeat;
+  cursor: pointer;
+}
+
+.playlist-title {
+  letter-spacing: 1px;
+  font-size: 13px;
+  color: white;
+  padding-top: 5px;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.playlist-username {
+  letter-spacing: 1px;
+  font-size: 13px;
+  color: grey;
+  padding: 3px;
 }
 
 #btn-playlist-new {
@@ -63,4 +88,26 @@
   transition: background-color 0.2s ease-in-out;
   min-width: 145px;
   min-height: 35px;
+}
+
+.album-ul {
+  padding-left: 22%;
+  font-family: 'Rubik', sans-serif;
+  text-align: center;
+}
+
+
+.artist-li {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: white;
+  background-size: cover;
+  background-position: center; 
+  background-repeat: no-repeat;
+  margin: 10px;
+  margin-top: 30px;
+  position: relative;
+  box-shadow:-1px 2px 18px #000000;
 }

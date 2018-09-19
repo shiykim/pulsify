@@ -10,14 +10,16 @@ class ArtistIndex extends React.Component {
     let cover = artist.photoUrl;
     if (cover) {
       return (
-        <li className='playlist-li'>
-          <Link to={`/artists/${artist.id}`}><img src={artist.photoUrl} />
+        <div>
+          <Link to={`/artists/${artist.id}`}>
+            <li className='artist-li' style={{backgroundImage: `url(${artist.photoUrl})`}} ></li>
+          </Link>
           <div className='playlist-title'>{artist.name}</div>
-        </Link>
-      </li>
+        </div>
       );
     }
   }
+
 
   render () {
     let artists;
@@ -30,7 +32,7 @@ class ArtistIndex extends React.Component {
     }
     return (
       <div className='browse-main'>
-        <ul>
+        <ul className='playlist-ul album-ul'>
           {artists}
         </ul>
       </div>

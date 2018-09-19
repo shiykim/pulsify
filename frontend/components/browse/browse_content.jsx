@@ -13,14 +13,14 @@ class BrowseContent extends React.Component {
     return (
         <div className='main'>
           <div className='content-main'>
-          <ul className='playlist-nav'>
-            <li><Link to="/collection/playlists">PLAYLISTS</Link></li>
-            <li><Link to="/collection/songs">SONGS</Link></li>
-            <li><Link to="/collection/albums">ALBUMS</Link></li>
-            <li><Link to="/collection/artist">ARTISTS</Link></li>
-          </ul>
-          {this.props.openModal}
-          <ProtectedRoute path="/collection/playlists" component={PlaylistIndexContainer}/>
+            <ul className='playlist-nav'>
+              <li><Link to="/collection/playlists">PLAYLISTS</Link></li>
+              <li><Link to="/collection/songs">SONGS</Link></li>
+              <li><Link to="/collection/albums">ALBUMS</Link></li>
+              <li><Link to="/collection/artist">ARTISTS</Link></li>
+            </ul>
+            {this.props.openModal}
+            <ProtectedRoute path="/collection/playlists" component={PlaylistIndexContainer}/>
         </div>
       </div>
     );

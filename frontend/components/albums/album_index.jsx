@@ -10,14 +10,22 @@ class AlbumIndex extends React.Component {
     let albums;
     if (this.props.albums){
       albums = this.props.albums.map( (album,i) => {
-        return (<li className='album-li' key={`album-${i}`}> <img src={album.photoUrl} /></li>);
+        return (
+          <div>
+            <li className='playlist-li'>
+              <Link to={`/albums/${album.id}`}><img src={album.photoUrl}  /></Link>
+            </li>
+            <div className='playlist-title'>{album.title}</div>
+            <div className='playlist-username'>{album.artist.name}</div>
+          </div>
+        )
       });
     } else {
       albums = null;
     }
     return (
       <div className='browse-main'>
-        <ul>
+        <ul className='playlist-ul album-ul'>
           {albums}
         </ul>
       </div>
