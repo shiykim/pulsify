@@ -68,13 +68,20 @@ class AlbumShow extends React.Component {
       );
 
       album_info = (
-        <ul>
-          <li className='test'>{this.props.album.title}</li>
-          <li className='test'>{this.props.album.artist.name}</li>
-          <li className='test'>{this.props.album.release_year}</li>
-          <button id='btn-pshow-play'>PLAY</button>
-        </ul>
-      )
+        <div className='pshow-main'>
+          <section className='pshow-img' style={{backgroundImage: `url(${this.props.album.photoUrl})`}} >
+            <ul className='pshow-info'>
+              <li id='pshow-title'>{this.props.album.title}</li>
+              <Link to={`/artists/${this.props.album.artist.id}`}>
+                <li id='pshow-username'>{this.props.album.artist.name}</li>
+              </Link>
+              <li id='pshow-length'>{this.props.album.release_year}</li>
+              <button id='btn-pshow-play'>PLAY</button>
+            </ul>
+          </section>
+          {album_songs}
+        </div>
+      );
 
     } else {
       album_info = null;
@@ -82,11 +89,8 @@ class AlbumShow extends React.Component {
     }
 
     return (
-      <div className='pshow-whole'>
-        <div className='pshow-main'>
-          {album_info}
-        </div>
-        {album_songs}
+      <div className='pshow-whole album-whole'>
+        {album_info}
       </div>
     );
   }

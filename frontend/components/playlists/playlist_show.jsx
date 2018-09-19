@@ -55,26 +55,45 @@ class PlaylistShow extends React.Component {
     return songs;
   }
 
+  playlistImage(playlist){
+    let cover = playlist.photoUrl;
+    if (cover) {
+      return (playlist.photoUrl);
+    } else {
+      return (window.playlist_default);
+    }
+  }
+
+
   render() {
     let playlist;
     let playlistsongs;
+    let playlistCover;
 
     if (this.props.playlist){
+
       playlistsongs = (
         <div className='pshow-songlist'>
           { this.playlistSongs() }
         </div>
       );
+      playlistCover = this.playlistImage(this.props.playlist);
       playlist =  (
-        <ul className='pshow-info'>
-          <li id='pshow-title'>{this.props.playlist.title}</li>
-          <li id='pshow-username'>{this.props.playlist.username}</li>
-          <li id='pshow-length'>{this.props.playlist.song_ids.length} songs</li>
-          <button id='btn-pshow-play'>PLAY</button>
-          <button className='navbar-images pshow-more' onClick={() => this.toggleList()} style={{backgroundImage: `url(${window.more})`}} />
-          {this.state.listOpen ? <DropDownList show="open" /> : null }
-        </ul>
+        <div className='pshow-main'>
+          <section className='pshow-img' style={{backgroundImage: `url(${playlistCover})`}} >
+            <ul className='pshow-info'>
+              <li id='pshow-title'>{this.props.playlist.title}</li>
+              <li id='pshow-username'>{this.props.playlist.username}</li>
+              <li id='pshow-length'>{this.props.playlist.song_ids.length} songs</li>
+              <button id='btn-pshow-play'>PLAY</button>
+              <button className='navbar-images pshow-more' onClick={() => this.toggleList()} style={{backgroundImage: `url(${window.more})`}} />
+              {this.state.listOpen ? <DropDownList show="open" /> : null }
+            </ul>
+        </section>
+        {playlistsongs}
+      </div>
       );
+
     } else {
       playlist = null;
       playlistsongs = null;
@@ -82,12 +101,7 @@ class PlaylistShow extends React.Component {
 
     return (
       <div className='pshow-whole'>
-        <div className='pshow-main'>
-          <section className='pshow-img'>
-            {playlist}
-          </section>
-          {playlistsongs}
-        </div>
+        {playlist}
       </div>
     );
   }

@@ -39,15 +39,12 @@
   background-size: cover;
   background-repeat: no-repeat;
   margin: 10px;
-  margin-top: 30px;
   position: relative;
   box-shadow:-1px 2px 18px #000000;
 }
 
 .playlist-li:hover{
-  z-index: 100;
   opacity: .6;
-  background: url('play-button.svg') no-repeat;
   cursor: pointer;
 }
 
@@ -92,10 +89,10 @@
 
 .album-ul {
   padding-left: 22%;
+  padding-top: 50px;
   font-family: 'Rubik', sans-serif;
   text-align: center;
 }
-
 
 .artist-li {
   width: 150px;
@@ -104,10 +101,18 @@
   cursor: pointer;
   color: white;
   background-size: cover;
-  background-position: center; 
+  background-position: center;
   background-repeat: no-repeat;
   margin: 10px;
-  margin-top: 30px;
+  margin-top: 50px;
   position: relative;
   box-shadow:-1px 2px 18px #000000;
+}
+
+.artist-ul {
+  padding-top: 20px;
+}
+
+.playlist-all {
+  padding-top: 50px;
 }

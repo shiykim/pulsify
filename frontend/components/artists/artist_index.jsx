@@ -32,7 +32,7 @@ class ArtistIndex extends React.Component {
     }
     return (
       <div className='browse-main'>
-        <ul className='playlist-ul album-ul'>
+        <ul className='playlist-ul album-ul artist-ul'>
           {artists}
         </ul>
       </div>

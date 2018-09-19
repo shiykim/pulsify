@@ -36,7 +36,7 @@ l = Song.create(artist_id: b.id, title:'R U Mine?', album_id: f.id, length: "3:2
 m = Song.create(artist_id: c.id, title:'Will He', album_id: g.id, length: "3:22")
 
 n = Playlist.create(title: 'Morning Songs', author_id: user.id)
-o = Playlist.create(title: 'Work Out Tunes', author_id: user.id) 
+o = Playlist.create(title: 'Work Out Tunes', author_id: user.id)
 
 q = PlaylistSong.create(playlist_id: n.id, song_id: m.id)
 r = PlaylistSong.create(playlist_id: n.id, song_id: i.id)
@@ -48,5 +48,5 @@ add_seed(Album,h.id,"https://s3.us-east-2.amazonaws.com/pulsify-dev-aa/album-cov
 
 add_seed(Artist,a.id,"https://s3.us-east-2.amazonaws.com/pulsify-dev-aa/artist_images/mitski.jpg", 'mitski.jpg');
 add_seed(Artist,b.id,"https://s3.us-east-2.amazonaws.com/pulsify-dev-aa/artist_images/articmonkeys.jpg", 'articmonkeys.jpg');
-add_seed(Artist,c.id,"https://s3.us-east-2.amazonaws.com/pulsify-dev-aa/artist_images/joji.png", 'joji.png');
+add_seed(Artist,c.id,"https://s3.us-east-2.amazonaws.com/pulsify-dev-aa/artist_images/joji2.jpg", 'joji.png');
 add_seed(Artist,d.id,"https://s3.us-east-2.amazonaws.com/pulsify-dev-aa/artist_images/drake.jpg", 'drake.png');

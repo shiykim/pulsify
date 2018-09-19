@@ -9,3 +9,95 @@
   margin: 10px;
   margin-top: 10px;
 }
+
+.album-whole {
+  overflow-x: auto;
+  text-align: center;
+}
+
+.first-half {
+  opacity: 0.8;
+  background-size: inherit;
+  background-position: unset;
+  background-size: auto;
+  min-height: 430px;
+  width: auto;
+}
+
+.first-half > h1 {
+  padding-left: 100px;
+  color: white;
+  font-size: 70px;
+  padding-top: 15%;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 800;
+}
+
+.second-half {
+  background-color: #101010;
+  min-height: 300px;
+  opacity: 0.8;
+  padding-left: 100px;
+}
+
+.headers-artists {
+  color: white;
+  padding: 20px;
+  font-size: 35px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+}
+
+.second-half > ul {
+  color: white;
+  display: flex;
+  padding-left: 140px;
+}
+
+.second-half > ul > li {
+  width: 150px;
+  height: 150px;
+  cursor: pointer;
+  color: white;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 10px;
+  position: relative;
+  box-shadow:-1px 2px 18px #000000;
+}
+
+.artist-album {
+  max-height: 150px;
+  max-width: 150px;
+}
+.artist-album:hover {
+  opacity: 0.6;
+}
+
+.third-half {
+  background-color: #202020;
+  min-height: 200px;
+  opacity: 0.8;
+  padding-left: 100px;
+}
+
+.third-half > ul {
+  color: white;
+  display: flex;
+  padding-left: 140px;
+}
+
+.artist-album-title {
+  padding-top: 5px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 200px;
+}
+
+.artist-name {
+  padding-top: 5px;
+  color: grey;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 200px;
+}

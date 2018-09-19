@@ -21,9 +21,9 @@ class PlaylistAllIndex extends React.Component {
     if (cover) {
       return (
         <div>
-          <li className='playlist-li'>
-            <Link to={`/collection/playlists/${playlist.id}`}><img src={playlist.photoUrl} /></Link>
-          </li>
+          <Link to={`/collection/playlists/${playlist.id}`}>
+          <li className='playlist-li' style={{backgroundImage: `url(${playlist.photoUrl})`}} />
+        </Link>
           <div className='playlist-title'>{playlist.title}</div>
           <div className='playlist-username'>{playlist.username}</div>
         </div>
@@ -52,7 +52,7 @@ class PlaylistAllIndex extends React.Component {
     }
     return (
       <div className='browse-main'>
-        <ul className='playlist-ul'>
+        <ul className='playlist-ul playlist-all'>
         {playlists}
         </ul>
       </div>
