@@ -49,11 +49,27 @@ class Webplayer extends React.Component {
       let total = document.getElementById('total');
       let seconds = (Math.floor(this.playerRef.current.currentTime % 60) < 10 ? '0' : '') + Math.floor(this.playerRef.current.currentTime % 60);
       let minutes = Math.floor(this.playerRef.current.currentTime / 60);
-      let totalSeconds = (Math.floor(this.playerRef.current.duration % 60) < 10 ? '0' : '') + Math.floor(this.playerRef.current.duration % 60);
-      let totalMinutes = Math.floor(this.playerRef.current.duration / 60);
       time.innerHTML = minutes + ":" + seconds;
-      total.innerHTML = totalMinutes + ":" + totalSeconds ;
+      total.innerHTML = this.props.song.length ;
     }
+  }
+
+  songInfo(){
+    let songinfo;
+    if (this.props.song){
+      songinfo = (
+          <div className='current-song-info'>
+            <img className='song-info-album' src={this.props.song.photoUrl}  />
+            <ul>
+              <li className='playbar-title'> {this.props.song.title}</li>
+              <li className='playbar-username'> {this.props.song.artist.name}</li>
+            </ul>
+          </div>
+        );
+    } else {
+      songinfo = null;
+    }
+    return songinfo;
   }
 
   render(){
@@ -64,35 +80,26 @@ class Webplayer extends React.Component {
       current = <img src={window.mainplay}/>;
     }
 
-    // let songinfo;
-    // if (this.props.song){
-    //   songinfo = (
-    //     <div className='current-song-info'>
-    //       <ul>
-    //         <li> {this.props.song.title}</li>
-    //         <li> {this.props.song.artist}</li>
-    //       </ul>
-    //     </div>
-    //     );
-    //   } else {}
-
     return (
-      <div className="player">
-        <div className="controls">
-          <div id='time'> </div>
-          <button onClick={() => this.props.previous()}><img src={window.previous}/></button>
-          <button onClick={() => this.togglePlay()}>{current}</button>
-          <button onClick={() => this.props.fastForward()}><img src={window.forward}/></button>
-          <div id='total'> </div>
-        </div>
-          <div>
+      <div>
+      {this.songInfo()}
+        <div className="player">
+          <div className="controls">
+            <button onClick={() => this.props.previous()}><img src={window.previous}/></button>
+            <button onClick={() => this.togglePlay()}>{current}</button>
+            <button onClick={() => this.props.fastForward()}><img src={window.forward}/></button>
           </div>
-          <div onClick={this.progressBarUpdate.bind(this)} className='progress'>
-            <div ref={this.progressBar} className="bar">
-              <div style={{ width: (this.state.progress) + '%' }}></div>
+            <div>
             </div>
-          </div>
-        <audio ref={this.playerRef} onupdatetime={() => this.progressBarUpdate()} autoPlay="true" src={this.props.song.mp3}/>
+            <div id='time'> </div>
+            <div onClick={this.progressBarUpdate.bind(this)} className='progress'>
+              <div ref={this.progressBar} className="bar">
+                <div style={{ width: (this.state.progress) + '%' }}></div>
+              </div>
+            </div>
+            <div id='total'> </div>
+          <audio ref={this.playerRef} autoPlay="true" src={this.props.song.mp3}/>
+        </div>
       </div>
     );
   }

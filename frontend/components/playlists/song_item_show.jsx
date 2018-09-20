@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { selectSongAlbum, selectSongArtist } from '../../reducers/selectors.js';
 import { fetchAlbums } from '../../actions/album_actions';
 import { fetchArtists } from '../../actions/artist_actions';
+import { fetchPlayingSong } from '../../actions/mediaplayer_actions';
 import MoreDropDown from './more_dropdown';
-import { Link } from 'react-router-dom';
 
 class SongItemShow extends React.Component {
 
@@ -13,6 +14,10 @@ class SongItemShow extends React.Component {
     this.state = {
       listOpen: false
     };
+  }
+
+  handlePlay(){
+    this.props.fetchPlayingSong(this.props.song);
   }
 
 
@@ -31,7 +36,7 @@ class SongItemShow extends React.Component {
       songs = (
         <div className='song'>
           <ul className='song-single'>
-            <li id='song-image'></li>
+            <li onClick={() => this.handlePlay()} id='song-image'></li>
             <li className='song-title'>{this.props.song.title}</li>
             <li id='song-option' onClick={() => this.toggleList()}></li>
             {this.state.listOpen ? <MoreDropDown show="open" song={this.props.song} /> : null }
@@ -62,6 +67,7 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchPlaylist: (id) => dispatch(fetchPlaylist(id)),
     fetchSongs: () => dispatch(fetchSongs()),
+    fetchPlayingSong: (id) => dispatch(fetchPlayingSong(id)),
   };
 };
 

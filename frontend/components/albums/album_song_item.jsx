@@ -15,6 +15,9 @@ class AlbumSongItem extends React.Component {
     };
   }
 
+  handlePlay(){
+    this.props.fetchPlayingSong(this.props.song);
+  }
 
   toggleList(){
     this.setState(prevState => ({
@@ -23,15 +26,25 @@ class AlbumSongItem extends React.Component {
   }
 
   render () {
+    let option;
+    if(this.props.dropdown === 'false'){
+      option = null;
+    } else {
+      option = (
+        <div>
+          <li id='song-option' onClick={() => this.toggleList()}></li>
+          {this.state.listOpen ? <MoreDropDown show="open" song={this.props.song} onlyAdd='add' /> : null}
+        </div>
+      );
+    }
 
     return (
       <div className='song-whole'>
         <div className='song'>
           <ul className='song-single'>
-            <li id='song-image'></li>
+            <li onClick={() => this.handlePlay()} id='song-image'></li>
             <li className='song-title'>{this.props.song.title}</li>
-            <li id='song-option' onClick={() => this.toggleList()}></li>
-            {this.state.listOpen ? <MoreDropDown show="open" song={this.props.song} onlyAdd='add' /> : null }
+            {option}
             <li className='song-length'>{this.props.song.length}</li>
           </ul>
         </div>

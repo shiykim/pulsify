@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchAlbum } from '../../actions/album_actions';
 import { fetchPlaylists } from '../../actions/playlist_actions';
+import { fetchPlayingSong } from '../../actions/mediaplayer_actions';
 import AlbumSongItem from './album_song_item';
 
 class AlbumShow extends React.Component {
@@ -42,9 +43,9 @@ class AlbumShow extends React.Component {
     let songs;
     if (this.props.album.songs){
       songs = (
-        this.props.album.songs.map( song => {
+        this.props.album.songs.map( (song,i) => {
           return (
-            <AlbumSongItem song={song} />
+            <AlbumSongItem key={i} song={song} fetchPlayingSong={this.props.fetchPlayingSong} />
           );
         })
       );
@@ -110,6 +111,7 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchAlbum: (id) => dispatch(fetchAlbum(id)),
     fetchPlaylists: () => dispatch(fetchPlaylists()),
+    fetchPlayingSong: (id) => dispatch(fetchPlayingSong(id)),
   };
 };
 
