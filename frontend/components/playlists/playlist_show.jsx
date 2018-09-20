@@ -1,5 +1,4 @@
 import React from 'react';
-import onClickOutside from "react-onclickoutside";
 import { Link } from 'react-router-dom';
 import SongItemShow from './song_item_show';
 import DropDownList from './drop_down_list';
@@ -13,16 +12,10 @@ class PlaylistShow extends React.Component {
     };
   }
 
-  handleClickOutside(){
-    this.setState({
-      listOpen: false
-    });
-  }
-
-  toggleList(){
-    this.setState(prevState => ({
-      listOpen: !prevState.listOpen
-    }));
+  handlePlay(){
+    if (this.props.songs){
+      this.props.fetchPlayingSong(this.props.songs[0]);
+    }
   }
 
   componentDidMount() {
@@ -43,9 +36,9 @@ class PlaylistShow extends React.Component {
     let songs;
     if (this.props.songs[0]){
       songs = (
-        this.props.songs.map( song => {
+        this.props.songs.map( (song,i) => {
           return (
-            <SongItemShow song={song} />
+            <SongItemShow key={i} index={i} song={song} />
           );
         })
       );
@@ -63,7 +56,6 @@ class PlaylistShow extends React.Component {
       return (window.playlist_default);
     }
   }
-
 
   render() {
     let playlist;
@@ -85,8 +77,8 @@ class PlaylistShow extends React.Component {
               <li id='pshow-title'>{this.props.playlist.title}</li>
               <li id='pshow-username'>{this.props.playlist.username}</li>
               <li id='pshow-length'>{this.props.playlist.song_ids.length} songs</li>
-              <button id='btn-pshow-play'>PLAY</button>
-              <button className='navbar-images pshow-more' onClick={() => this.toggleList()} style={{backgroundImage: `url(${window.more})`}} />
+              <button onClick={() => this.handlePlay()} id='btn-pshow-play'>PLAY</button>
+              <button className='navbar-images pshow-more' onFocus={() => this.setState({listOpen:true})} onBlur={() => this.setState({listOpen:false})} style={{backgroundImage: `url(${window.more})`}} />
               {this.state.listOpen ? <DropDownList show="open" /> : null }
             </ul>
         </section>
@@ -108,4 +100,4 @@ class PlaylistShow extends React.Component {
 }
 
 
-export default onClickOutside(PlaylistShow);
+export default PlaylistShow;

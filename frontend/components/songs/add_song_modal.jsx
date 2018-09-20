@@ -11,12 +11,31 @@ class AddSongModal extends React.Component {
     });
   }
 
+  playlistImage(){
+    let cover = this.props.playlist.photoUrl;
+    if (cover) {
+      return (
+        <li onClick={() => this.handleClick()} className='playlist_add'>
+          <img src={this.props.playlist.photoUrl} />
+          <div className='add-playlist-title'> {this.props.playlist.title} </div>
+        </li>
+    );
+    } else {
+      return (
+        <li onClick={() => this.handleClick()} className='playlist_add'>
+          <img src={window.playlist_default}/>
+          <div className='add-playlist-title'> {this.props.playlist.title} </div>
+        </li>
+      );
+    }
+    return cover;
+  }
+
   render() {
     return (
-      <li onClick={() => this.handleClick()} className='playlist_add'>
-        <img src={this.props.playlist.photoUrl} />
-        <div className='artist-album-title'> {this.props.playlist.title} </div>
-      </li>
+      <ul>
+        {this.playlistImage()}
+      </ul>
     );
   }
 }

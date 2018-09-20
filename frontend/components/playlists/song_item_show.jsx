@@ -20,26 +20,30 @@ class SongItemShow extends React.Component {
     this.props.fetchPlayingSong(this.props.song);
   }
 
-
   toggleList(){
-    this.setState(prevState => ({
-      listOpen: !prevState.listOpen
-    }));
+    const {index} = this.props;
+    let drop = document.getElementById(`actual-more-dropdown-${index}`);
+      if (drop.style.display === "none") {
+          drop.style.display = "block";
+      } else {
+          drop.style.display = "none";
+      }
   }
 
   render () {
     let songs;
-    if (this.setState.listOpen){
-      this.toggleList();
-    }
+
     if(this.props.song){
       songs = (
         <div className='song'>
           <ul className='song-single'>
             <li onClick={() => this.handlePlay()} id='song-image'></li>
             <li className='song-title'>{this.props.song.title}</li>
-            <li id='song-option' onClick={() => this.toggleList()}></li>
-            {this.state.listOpen ? <MoreDropDown show="open" song={this.props.song} /> : null }
+            <li id='song-option' onClick={() => this.toggleList()}>
+              <div style={{display:"none"}} id={`actual-more-dropdown-${this.props.index}`}>
+                <MoreDropDown show="open" song={this.props.song} />
+              </div>
+            </li>
             <li className='song-length'>{this.props.song.length}</li>
           </ul>
           <ul className='artist-album-list'>

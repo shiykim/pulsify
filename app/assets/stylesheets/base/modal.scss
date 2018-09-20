@@ -113,12 +113,11 @@
   display: flex;
 }
 
-.playlist_add_show > li {
+.playlist_add_show > ul {
   width: 150px;
   height: 150px;
   color: white;
   display: inline-block;
-  border: 1px solid white;
   margin: 15px;
   position: relative;
   box-shadow:-1px 2px 18px #000000;
@@ -126,4 +125,8 @@
 
 .playlist_add_show:hover {
   cursor: pointer;
+}
+
+.add-playlist-title {
+  color: white;
 }

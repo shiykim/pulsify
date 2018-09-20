@@ -15,16 +15,10 @@ class AlbumShow extends React.Component {
     };
   }
 
-  handleClickOutside(){
-    this.setState({
-      listOpen: false
-    });
-  }
-
-  toggleList(){
-    this.setState(prevState => ({
-      listOpen: !prevState.listOpen
-    }));
+  handlePlay(){
+    if (this.props.album.songs){
+      this.props.fetchPlayingSong(this.props.album.songs[0]);
+    }
   }
 
   componentDidMount() {
@@ -80,7 +74,7 @@ class AlbumShow extends React.Component {
                 <li id='pshow-username'>{this.props.album.artist.name}</li>
               </Link>
               <li id='pshow-length'>{this.props.album.release_year}</li>
-              <button id='btn-pshow-play'>PLAY</button>
+              <button onClick={() => this.handlePlay()} id='btn-pshow-play'>PLAY</button>
             </ul>
           </section>
           {album_songs}

@@ -32,7 +32,7 @@ class AlbumSongItem extends React.Component {
     } else {
       option = (
         <div>
-          <li id='song-option' onClick={() => this.toggleList()}></li>
+          <li id='song-option' onFocus={() => this.setState({listOpen:true})} onBlur={() => this.setState({listOpen:false})}/>
           {this.state.listOpen ? <MoreDropDown show="open" song={this.props.song} onlyAdd='add' /> : null}
         </div>
       );

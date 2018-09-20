@@ -13,15 +13,20 @@
 .album-whole {
   overflow-x: auto;
   text-align: center;
+  background-color: black;
+  height: 100vh;
 }
 
 .first-half {
-  opacity: 0.8;
+  opacity: 0.7;
   background-size: inherit;
-  background-position: unset;
   background-size: auto;
-  min-height: 430px;
+  min-height: 441px;
+  background-repeat: round;
   width: auto;
+  background-repeat: unset;
+  background-position: top;
+  background-size: cover;
 }
 
 .first-half > h1 {
@@ -35,9 +40,9 @@
 
 .second-half {
   background-color: #101010;
-  min-height: 300px;
   opacity: 0.8;
   padding-left: 100px;
+  background-color: black;
 }
 
 .headers-artists {
@@ -75,9 +80,6 @@
 }
 
 .third-half {
-  background-color: #202020;
-  min-height: 200px;
-  opacity: 0.8;
   padding-left: 100px;
 }
 

@@ -29,7 +29,7 @@
   width: 120px;
   background-color: #282828;
   position: absolute;
-  left: 90%;
+  left: 95%;
   border: 1px solid black;
   border-radius: 3px;
   font-weight: 100px;
@@ -38,9 +38,8 @@
 }
 
 .more-dropdown > ul > li {
-  margin: 4px;
   color: grey;
-  padding: 3px;
+  padding: 9px;
 }
 
 .more-dropdown:hover > ul > li:hover {
@@ -48,7 +47,6 @@
   color: white;
   cursor: pointer;
 }
-
 
 .song-whole:target #song-option {
   display: block;

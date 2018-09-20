@@ -36,8 +36,6 @@
 }
 
 .controls > button > img:hover {
-  // background-color: #084380;
-  // color: #b3b3b3;
   height: 16px;
   width: 16px;
   z-index: 1;
@@ -91,6 +89,8 @@
 #time, #total {
   display: inline-block;
   justify-content: space-between;
+  font-family: 'Rubik', sans-serif;
+  font-size: 14px;
 }
 
 .current-song-info {

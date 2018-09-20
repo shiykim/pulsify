@@ -188,21 +188,30 @@ var fetchArtist = function fetchArtist(id) {
 /*!*************************************************!*\
   !*** ./frontend/actions/mediaplayer_actions.js ***!
   \*************************************************/
-/*! exports provided: PLAY_SONG, playSong, fetchPlayingSong */
+/*! exports provided: PLAY_SONG, RECEIVE_SONG_INDEX, playSong, receiveSongIndex, fetchPlayingSong */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PLAY_SONG", function() { return PLAY_SONG; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_SONG_INDEX", function() { return RECEIVE_SONG_INDEX; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "playSong", function() { return playSong; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveSongIndex", function() { return receiveSongIndex; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPlayingSong", function() { return fetchPlayingSong; });
 /* harmony import */ var _util_song_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/song_api_util */ "./frontend/util/song_api_util.js");
 
 var PLAY_SONG = 'PLAY_SONG';
+var RECEIVE_SONG_INDEX = 'RECEIVE_SONG_INDEX';
 var playSong = function playSong(song) {
   return {
     type: PLAY_SONG,
     song: song
+  };
+};
+var receiveSongIndex = function receiveSongIndex(queue) {
+  return {
+    type: RECEIVE_SONG_INDEX,
+    queue: queue
   };
 };
 var fetchPlayingSong = function fetchPlayingSong(song) {
@@ -731,20 +740,11 @@ function (_React$Component) {
   }
 
   _createClass(AlbumShow, [{
-    key: "handleClickOutside",
-    value: function handleClickOutside() {
-      this.setState({
-        listOpen: false
-      });
-    }
-  }, {
-    key: "toggleList",
-    value: function toggleList() {
-      this.setState(function (prevState) {
-        return {
-          listOpen: !prevState.listOpen
-        };
-      });
+    key: "handlePlay",
+    value: function handlePlay() {
+      if (this.props.album.songs) {
+        this.props.fetchPlayingSong(this.props.album.songs[0]);
+      }
     }
   }, {
     key: "componentDidMount",
@@ -784,6 +784,8 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       var album_info;
       var album_songs;
 
@@ -813,6 +815,9 @@ function (_React$Component) {
         }, this.props.album.artist.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           id: "pshow-length"
         }, this.props.album.release_year), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          onClick: function onClick() {
+            return _this3.handlePlay();
+          },
           id: "btn-pshow-play"
         }, "PLAY"))), album_songs);
       } else {
@@ -939,8 +944,15 @@ function (_React$Component) {
       } else {
         option = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           id: "song-option",
-          onClick: function onClick() {
-            return _this2.toggleList();
+          onFocus: function onFocus() {
+            return _this2.setState({
+              listOpen: true
+            });
+          },
+          onBlur: function onBlur() {
+            return _this2.setState({
+              listOpen: false
+            });
           }
         }), this.state.listOpen ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_playlists_more_dropdown__WEBPACK_IMPORTED_MODULE_5__["default"], {
           show: "open",
@@ -1704,7 +1716,7 @@ function (_React$Component) {
 
       var current;
 
-      if (this.state.playing || this.props.song !== "") {
+      if (this.state.playing && this.props.song !== '') {
         current = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "play-icon",
           src: window.pause
@@ -1751,7 +1763,7 @@ function (_React$Component) {
         id: "total"
       }, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("audio", {
         ref: this.playerRef,
-        autoPlay: "true",
+        autoPlay: true,
         src: this.props.song.mp3
       })));
     }
@@ -2750,10 +2762,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_onclickoutside__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-onclickoutside */ "./node_modules/react-onclickoutside/dist/react-onclickoutside.es.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
-/* harmony import */ var _song_item_show__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./song_item_show */ "./frontend/components/playlists/song_item_show.jsx");
-/* harmony import */ var _drop_down_list__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./drop_down_list */ "./frontend/components/playlists/drop_down_list.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var _song_item_show__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./song_item_show */ "./frontend/components/playlists/song_item_show.jsx");
+/* harmony import */ var _drop_down_list__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./drop_down_list */ "./frontend/components/playlists/drop_down_list.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2771,7 +2782,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 
 
 
@@ -2796,20 +2806,11 @@ function (_React$Component) {
   }
 
   _createClass(PlaylistShow, [{
-    key: "handleClickOutside",
-    value: function handleClickOutside() {
-      this.setState({
-        listOpen: false
-      });
-    }
-  }, {
-    key: "toggleList",
-    value: function toggleList() {
-      this.setState(function (prevState) {
-        return {
-          listOpen: !prevState.listOpen
-        };
-      });
+    key: "handlePlay",
+    value: function handlePlay() {
+      if (this.props.songs) {
+        this.props.fetchPlayingSong(this.props.songs[0]);
+      }
     }
   }, {
     key: "componentDidMount",
@@ -2833,8 +2834,10 @@ function (_React$Component) {
       var songs;
 
       if (this.props.songs[0]) {
-        songs = this.props.songs.map(function (song) {
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_song_item_show__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        songs = this.props.songs.map(function (song, i) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_song_item_show__WEBPACK_IMPORTED_MODULE_2__["default"], {
+            key: i,
+            index: i,
             song: song
           });
         });
@@ -2885,16 +2888,26 @@ function (_React$Component) {
         }, this.props.playlist.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           id: "pshow-length"
         }, this.props.playlist.song_ids.length, " songs"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          onClick: function onClick() {
+            return _this2.handlePlay();
+          },
           id: "btn-pshow-play"
         }, "PLAY"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "navbar-images pshow-more",
-          onClick: function onClick() {
-            return _this2.toggleList();
+          onFocus: function onFocus() {
+            return _this2.setState({
+              listOpen: true
+            });
+          },
+          onBlur: function onBlur() {
+            return _this2.setState({
+              listOpen: false
+            });
           },
           style: {
             backgroundImage: "url(".concat(window.more, ")")
           }
-        }), this.state.listOpen ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_drop_down_list__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        }), this.state.listOpen ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_drop_down_list__WEBPACK_IMPORTED_MODULE_3__["default"], {
           show: "open"
         }) : null)), playlistsongs);
       } else {
@@ -2911,7 +2924,7 @@ function (_React$Component) {
   return PlaylistShow;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_onclickoutside__WEBPACK_IMPORTED_MODULE_1__["default"])(PlaylistShow));
+/* harmony default export */ __webpack_exports__["default"] = (PlaylistShow);
 
 /***/ }),
 
@@ -2932,6 +2945,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_song_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/song_actions */ "./frontend/actions/song_actions.js");
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
 /* harmony import */ var _reducers_selectors_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../reducers/selectors.js */ "./frontend/reducers/selectors.js");
+/* harmony import */ var _actions_mediaplayer_actions_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../actions/mediaplayer_actions.js */ "./frontend/actions/mediaplayer_actions.js");
+
 
 
 
@@ -2964,6 +2979,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     fetchPlaylists: function fetchPlaylists() {
       return dispatch(Object(_actions_playlist_actions__WEBPACK_IMPORTED_MODULE_3__["fetchPlaylists"])());
+    },
+    fetchPlayingSong: function fetchPlayingSong(id) {
+      return dispatch(Object(_actions_mediaplayer_actions_js__WEBPACK_IMPORTED_MODULE_7__["fetchPlayingSong"])(id));
     }
   };
 };
@@ -3042,11 +3060,14 @@ function (_React$Component) {
   }, {
     key: "toggleList",
     value: function toggleList() {
-      this.setState(function (prevState) {
-        return {
-          listOpen: !prevState.listOpen
-        };
-      });
+      var index = this.props.index;
+      var drop = document.getElementById("actual-more-dropdown-".concat(index));
+
+      if (drop.style.display === "none") {
+        drop.style.display = "block";
+      } else {
+        drop.style.display = "none";
+      }
     }
   }, {
     key: "render",
@@ -3054,10 +3075,6 @@ function (_React$Component) {
       var _this2 = this;
 
       var songs;
-
-      if (this.setState.listOpen) {
-        this.toggleList();
-      }
 
       if (this.props.song) {
         songs = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3076,10 +3093,15 @@ function (_React$Component) {
           onClick: function onClick() {
             return _this2.toggleList();
           }
-        }), this.state.listOpen ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_more_dropdown__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          style: {
+            display: "none"
+          },
+          id: "actual-more-dropdown-".concat(this.props.index)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_more_dropdown__WEBPACK_IMPORTED_MODULE_7__["default"], {
           show: "open",
           song: this.props.song
-        }) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           className: "song-length"
         }, this.props.song.length)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
           className: "artist-album-list"
@@ -4133,20 +4155,42 @@ function (_React$Component) {
       });
     }
   }, {
-    key: "render",
-    value: function render() {
+    key: "playlistImage",
+    value: function playlistImage() {
       var _this2 = this;
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        onClick: function onClick() {
-          return _this2.handleClick();
-        },
-        className: "playlist_add"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: this.props.playlist.photoUrl
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "artist-album-title"
-      }, " ", this.props.playlist.title, " "));
+      var cover = this.props.playlist.photoUrl;
+
+      if (cover) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          onClick: function onClick() {
+            return _this2.handleClick();
+          },
+          className: "playlist_add"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: this.props.playlist.photoUrl
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "add-playlist-title"
+        }, " ", this.props.playlist.title, " "));
+      } else {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          onClick: function onClick() {
+            return _this2.handleClick();
+          },
+          className: "playlist_add"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: window.playlist_default
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "add-playlist-title"
+        }, " ", this.props.playlist.title, " "));
+      }
+
+      return cover;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.playlistImage());
     }
   }]);
 
@@ -4235,9 +4279,11 @@ function (_React$Component) {
       var songs;
 
       if (this.props.songs) {
-        songs = this.props.songs.map(function (song) {
+        songs = this.props.songs.map(function (song, i) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_song_item_index__WEBPACK_IMPORTED_MODULE_2__["default"], {
             song: song,
+            key: i,
+            foo: i,
             fetchPlayingSong: _this.props.fetchPlayingSong
           });
         });
@@ -4862,7 +4908,9 @@ __webpack_require__.r(__webpack_exports__);
 var mediaPlayerReducer = function mediaPlayerReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
     playingSong: null,
-    playing: false
+    playing: false,
+    queue: [],
+    current_idx: null
   };
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
@@ -4873,6 +4921,11 @@ var mediaPlayerReducer = function mediaPlayerReducer() {
       newState.playingSong = action.song;
       newState.playing = true;
       return newState;
+    // case RECEIVE_SONG_INDEX:
+    //   let newState = merge({}, state);
+    //   newState.playingSong = action.song;
+    //   newState.playing = true;
+    //   return newState;
 
     default:
       return state;
@@ -30147,371 +30200,6 @@ function checkDCE() {
 if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/react-dom.development.js */ "./node_modules/react-dom/cjs/react-dom.development.js");
 }
-
-
-/***/ }),
-
-/***/ "./node_modules/react-onclickoutside/dist/react-onclickoutside.es.js":
-/*!***************************************************************************!*\
-  !*** ./node_modules/react-onclickoutside/dist/react-onclickoutside.es.js ***!
-  \***************************************************************************/
-/*! exports provided: IGNORE_CLASS_NAME, default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IGNORE_CLASS_NAME", function() { return IGNORE_CLASS_NAME; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-
-
-
-function _inheritsLoose(subClass, superClass) {
-  subClass.prototype = Object.create(superClass.prototype);
-  subClass.prototype.constructor = subClass;
-  subClass.__proto__ = superClass;
-}
-
-function _objectWithoutProperties(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-
-  if (Object.getOwnPropertySymbols) {
-    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-
-    for (i = 0; i < sourceSymbolKeys.length; i++) {
-      key = sourceSymbolKeys[i];
-      if (excluded.indexOf(key) >= 0) continue;
-      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-      target[key] = source[key];
-    }
-  }
-
-  return target;
-}
-
-/**
- * Check whether some DOM node is our Component's node.
- */
-function isNodeFound(current, componentNode, ignoreClass) {
-  if (current === componentNode) {
-    return true;
-  } // SVG <use/> elements do not technically reside in the rendered DOM, so
-  // they do not have classList directly, but they offer a link to their
-  // corresponding element, which can have classList. This extra check is for
-  // that case.
-  // See: http://www.w3.org/TR/SVG11/struct.html#InterfaceSVGUseElement
-  // Discussion: https://github.com/Pomax/react-onclickoutside/pull/17
-
-
-  if (current.correspondingElement) {
-    return current.correspondingElement.classList.contains(ignoreClass);
-  }
-
-  return current.classList.contains(ignoreClass);
-}
-/**
- * Try to find our node in a hierarchy of nodes, returning the document
- * node as highest node if our node is not found in the path up.
- */
-
-function findHighest(current, componentNode, ignoreClass) {
-  if (current === componentNode) {
-    return true;
-  } // If source=local then this event came from 'somewhere'
-  // inside and should be ignored. We could handle this with
-  // a layered approach, too, but that requires going back to
-  // thinking in terms of Dom node nesting, running counter
-  // to React's 'you shouldn't care about the DOM' philosophy.
-
-
-  while (current.parentNode) {
-    if (isNodeFound(current, componentNode, ignoreClass)) {
-      return true;
-    }
-
-    current = current.parentNode;
-  }
-
-  return current;
-}
-/**
- * Check if the browser scrollbar was clicked
- */
-
-function clickedScrollbar(evt) {
-  return document.documentElement.clientWidth <= evt.clientX || document.documentElement.clientHeight <= evt.clientY;
-}
-
-// ideally will get replaced with external dep
-// when rafrex/detect-passive-events#4 and rafrex/detect-passive-events#5 get merged in
-var testPassiveEventSupport = function testPassiveEventSupport() {
-  if (typeof window === 'undefined' || typeof window.addEventListener !== 'function') {
-    return;
-  }
-
-  var passive = false;
-  var options = Object.defineProperty({}, 'passive', {
-    get: function get() {
-      passive = true;
-    }
-  });
-
-  var noop = function noop() {};
-
-  window.addEventListener('testPassiveEventSupport', noop, options);
-  window.removeEventListener('testPassiveEventSupport', noop, options);
-  return passive;
-};
-
-function autoInc(seed) {
-  if (seed === void 0) {
-    seed = 0;
-  }
-
-  return function () {
-    return ++seed;
-  };
-}
-
-var uid = autoInc();
-
-var passiveEventSupport;
-var handlersMap = {};
-var enabledInstances = {};
-var touchEvents = ['touchstart', 'touchmove'];
-var IGNORE_CLASS_NAME = 'ignore-react-onclickoutside';
-/**
- * Options for addEventHandler and removeEventHandler
- */
-
-function getEventHandlerOptions(instance, eventName) {
-  var handlerOptions = null;
-  var isTouchEvent = touchEvents.indexOf(eventName) !== -1;
-
-  if (isTouchEvent && passiveEventSupport) {
-    handlerOptions = {
-      passive: !instance.props.preventDefault
-    };
-  }
-
-  return handlerOptions;
-}
-/**
- * This function generates the HOC function that you'll use
- * in order to impart onOutsideClick listening to an
- * arbitrary component. It gets called at the end of the
- * bootstrapping code to yield an instance of the
- * onClickOutsideHOC function defined inside setupHOC().
- */
-
-
-function onClickOutsideHOC(WrappedComponent, config) {
-  var _class, _temp;
-
-  return _temp = _class =
-  /*#__PURE__*/
-  function (_Component) {
-    _inheritsLoose(onClickOutside, _Component);
-
-    function onClickOutside(props) {
-      var _this;
-
-      _this = _Component.call(this, props) || this;
-
-      _this.__outsideClickHandler = function (event) {
-        if (typeof _this.__clickOutsideHandlerProp === 'function') {
-          _this.__clickOutsideHandlerProp(event);
-
-          return;
-        }
-
-        var instance = _this.getInstance();
-
-        if (typeof instance.props.handleClickOutside === 'function') {
-          instance.props.handleClickOutside(event);
-          return;
-        }
-
-        if (typeof instance.handleClickOutside === 'function') {
-          instance.handleClickOutside(event);
-          return;
-        }
-
-        throw new Error('WrappedComponent lacks a handleClickOutside(event) function for processing outside click events.');
-      };
-
-      _this.enableOnClickOutside = function () {
-        if (typeof document === 'undefined' || enabledInstances[_this._uid]) {
-          return;
-        }
-
-        if (typeof passiveEventSupport === 'undefined') {
-          passiveEventSupport = testPassiveEventSupport();
-        }
-
-        enabledInstances[_this._uid] = true;
-        var events = _this.props.eventTypes;
-
-        if (!events.forEach) {
-          events = [events];
-        }
-
-        handlersMap[_this._uid] = function (event) {
-          if (_this.props.disableOnClickOutside) return;
-          if (_this.componentNode === null) return;
-
-          if (_this.props.preventDefault) {
-            event.preventDefault();
-          }
-
-          if (_this.props.stopPropagation) {
-            event.stopPropagation();
-          }
-
-          if (_this.props.excludeScrollbar && clickedScrollbar(event)) return;
-          var current = event.target;
-
-          if (findHighest(current, _this.componentNode, _this.props.outsideClickIgnoreClass) !== document) {
-            return;
-          }
-
-          _this.__outsideClickHandler(event);
-        };
-
-        events.forEach(function (eventName) {
-          document.addEventListener(eventName, handlersMap[_this._uid], getEventHandlerOptions(_this, eventName));
-        });
-      };
-
-      _this.disableOnClickOutside = function () {
-        delete enabledInstances[_this._uid];
-        var fn = handlersMap[_this._uid];
-
-        if (fn && typeof document !== 'undefined') {
-          var events = _this.props.eventTypes;
-
-          if (!events.forEach) {
-            events = [events];
-          }
-
-          events.forEach(function (eventName) {
-            return document.removeEventListener(eventName, fn, getEventHandlerOptions(_this, eventName));
-          });
-          delete handlersMap[_this._uid];
-        }
-      };
-
-      _this.getRef = function (ref) {
-        return _this.instanceRef = ref;
-      };
-
-      _this._uid = uid();
-      return _this;
-    }
-    /**
-     * Access the WrappedComponent's instance.
-     */
-
-
-    var _proto = onClickOutside.prototype;
-
-    _proto.getInstance = function getInstance() {
-      if (!WrappedComponent.prototype.isReactComponent) {
-        return this;
-      }
-
-      var ref = this.instanceRef;
-      return ref.getInstance ? ref.getInstance() : ref;
-    };
-
-    /**
-     * Add click listeners to the current document,
-     * linked to this component's state.
-     */
-    _proto.componentDidMount = function componentDidMount() {
-      // If we are in an environment without a DOM such
-      // as shallow rendering or snapshots then we exit
-      // early to prevent any unhandled errors being thrown.
-      if (typeof document === 'undefined' || !document.createElement) {
-        return;
-      }
-
-      var instance = this.getInstance();
-
-      if (config && typeof config.handleClickOutside === 'function') {
-        this.__clickOutsideHandlerProp = config.handleClickOutside(instance);
-
-        if (typeof this.__clickOutsideHandlerProp !== 'function') {
-          throw new Error('WrappedComponent lacks a function for processing outside click events specified by the handleClickOutside config option.');
-        }
-      }
-
-      this.componentNode = Object(react_dom__WEBPACK_IMPORTED_MODULE_1__["findDOMNode"])(this.getInstance());
-      this.enableOnClickOutside();
-    };
-
-    _proto.componentDidUpdate = function componentDidUpdate() {
-      this.componentNode = Object(react_dom__WEBPACK_IMPORTED_MODULE_1__["findDOMNode"])(this.getInstance());
-    };
-    /**
-     * Remove all document's event listeners for this component
-     */
-
-
-    _proto.componentWillUnmount = function componentWillUnmount() {
-      this.disableOnClickOutside();
-    };
-    /**
-     * Can be called to explicitly enable event listening
-     * for clicks and touches outside of this element.
-     */
-
-
-    /**
-     * Pass-through render
-     */
-    _proto.render = function render() {
-      // eslint-disable-next-line no-unused-vars
-      var _props = this.props,
-          excludeScrollbar = _props.excludeScrollbar,
-          props = _objectWithoutProperties(_props, ["excludeScrollbar"]);
-
-      if (WrappedComponent.prototype.isReactComponent) {
-        props.ref = this.getRef;
-      } else {
-        props.wrappedRef = this.getRef;
-      }
-
-      props.disableOnClickOutside = this.disableOnClickOutside;
-      props.enableOnClickOutside = this.enableOnClickOutside;
-      return Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(WrappedComponent, props);
-    };
-
-    return onClickOutside;
-  }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]), _class.displayName = "OnClickOutside(" + (WrappedComponent.displayName || WrappedComponent.name || 'Component') + ")", _class.defaultProps = {
-    eventTypes: ['mousedown', 'touchstart'],
-    excludeScrollbar: config && config.excludeScrollbar || false,
-    outsideClickIgnoreClass: IGNORE_CLASS_NAME,
-    preventDefault: false,
-    stopPropagation: false
-  }, _class.getClass = function () {
-    return WrappedComponent.getClass ? WrappedComponent.getClass() : WrappedComponent;
-  }, _temp;
-}
-
-
-/* harmony default export */ __webpack_exports__["default"] = (onClickOutsideHOC);
 
 
 /***/ }),
