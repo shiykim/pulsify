@@ -32,6 +32,12 @@ class PlaylistShow extends React.Component {
     }
   }
 
+  toggleList(){
+    this.setState(prevState => ({
+      listOpen: !prevState.listOpen
+    }));
+  }
+
   playlistSongs(){
     let songs;
     if (this.props.songs[0]){
@@ -78,7 +84,7 @@ class PlaylistShow extends React.Component {
               <li id='pshow-username'>{this.props.playlist.username}</li>
               <li id='pshow-length'>{this.props.playlist.song_ids.length} songs</li>
               <button onClick={() => this.handlePlay()} id='btn-pshow-play'>PLAY</button>
-              <button className='navbar-images pshow-more' onFocus={() => this.setState({listOpen:true})} onBlur={() => this.setState({listOpen:false})} style={{backgroundImage: `url(${window.more})`}} />
+              <button className='navbar-images pshow-more' onClick={() => this.toggleList()} style={{backgroundImage: `url(${window.more})`}} />
               {this.state.listOpen ? <DropDownList show="open" /> : null }
             </ul>
         </section>

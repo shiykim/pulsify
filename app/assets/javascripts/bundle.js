@@ -2829,6 +2829,15 @@ function (_React$Component) {
       }
     }
   }, {
+    key: "toggleList",
+    value: function toggleList() {
+      this.setState(function (prevState) {
+        return {
+          listOpen: !prevState.listOpen
+        };
+      });
+    }
+  }, {
     key: "playlistSongs",
     value: function playlistSongs() {
       var songs;
@@ -2894,15 +2903,8 @@ function (_React$Component) {
           id: "btn-pshow-play"
         }, "PLAY"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "navbar-images pshow-more",
-          onFocus: function onFocus() {
-            return _this2.setState({
-              listOpen: true
-            });
-          },
-          onBlur: function onBlur() {
-            return _this2.setState({
-              listOpen: false
-            });
+          onClick: function onClick() {
+            return _this2.toggleList();
           },
           style: {
             backgroundImage: "url(".concat(window.more, ")")
