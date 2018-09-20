@@ -1,0 +1,88 @@
+.playbar-main{
+  width: 100vw;
+  background: #282828;
+  height: 100px;
+  position: absolute;
+  bottom: 0;
+  margin: 0 auto;
+  z-index: 1;
+
+}
+
+.player {
+  margin: 15px 0;
+  width: 30%;
+  height: 50px;
+  position: relative;
+  z-index: 1;
+  padding-left: 50%;
+}
+
+.controls {
+  float: none;
+  z-index: 1;
+  padding-bottom: 15px;
+}
+
+.controls > button {
+  text-decoration: none;
+  height: 50px;
+  width: 34px;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 17px 10px;
+  float: left;
+  color: white;
+  cursor: pointer;
+}
+
+.controls > button:hover {
+  background-color: #084380;
+  color: #b3b3b3;
+}
+
+.progress {
+  width: 40%;
+  position: absolute;
+  left: 46%;
+  top: 44px;
+  right: 100px;
+  bottom: -7px;
+  border-radius: 9px;
+  background: grey;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.progress > .bar {
+  position: absolute;
+  left: 5px;
+  right: 5px;
+  top: 5px;
+  bottom: 5px;
+  z-index: 1;
+}
+
+.progress > .bar > div {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: white;
+  border-radius: 10px;
+}
+//
+// .time {
+//   position: absolute;
+//   right: 0;
+//   width: 100px;
+//   color: white;
+//   font-size: 12px;
+//   padding-top: 17px;
+//   text-align: center;
+// }
+
+#time, #total {
+  display: inline-block;
+  justify-content: space-between;
+}

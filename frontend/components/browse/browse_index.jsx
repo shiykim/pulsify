@@ -7,16 +7,9 @@ import HomeIndex from '../home/home_index';
 import SearchIndexContainer from '../search/search_index_container';
 import ArtistShow from '../artists/artist_show';
 import AlbumShow from '../albums/album_show';
+import Webplayer from './webplayer_index';
 
 class Browse extends React.Component {
-
-  // componentDidMount() {
-  //   this.props.fetchArtists();
-  // }
-  //
-  // componentWillReceiveProps(nextProps) {
-  //   this.props.fetchArtists();
-  // }
 
   render () {
 
@@ -51,6 +44,9 @@ class Browse extends React.Component {
             </section>
           </section>
         </div>
+        <footer className='playbar-main'>
+          <Webplayer />
+        </footer>
         <Switch>
           <ProtectedRoute path="/collection/playlists/:id" component={PlaylistShowContainer}/>
           <ProtectedRoute path="/artists/:id" component={ArtistShow}/>

@@ -15,6 +15,10 @@ class SongItemIndex extends React.Component {
     };
   }
 
+  handlePlay(){
+    this.props.fetchPlayingSong(this.props.song);
+  }
+
   toggleList(){
     this.setState(prevState => ({
       listOpen: !prevState.listOpen
@@ -32,7 +36,7 @@ class SongItemIndex extends React.Component {
         <div className='song-whole'>
           <div className='song'>
             <ul className='song-single'>
-              <li id='song-image'></li>
+              <li onClick={() => this.handlePlay()} id='songs-image'></li>
               <li className='song-title'>{this.props.song.title}</li>
               <li id='song-option' onClick={() => this.toggleList()}></li>
               {this.state.listOpen ? <MoreDropDown show="open" song={this.props.song} onlyAdd='add' /> : null }

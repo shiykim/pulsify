@@ -4,6 +4,7 @@ import SongIndex from './song_index';
 import { fetchSongs } from '../../actions/song_actions';
 import { fetchArtists } from '../../actions/artist_actions';
 import { fetchPlaylists } from '../../actions/playlist_actions';
+import { fetchPlayingSong } from '../../actions/mediaplayer_actions';
 
 const mapStateToProps = ({ entities: { songs }}) => {
   return {
@@ -16,6 +17,7 @@ const mapDispatchToProps = dispatch => {
     fetchSongs: () => dispatch(fetchSongs()),
     fetchArtists: () => dispatch(fetchArtists()),
     fetchPlaylists: () => dispatch(fetchPlaylists()),
+    fetchPlayingSong: (id) => dispatch(fetchPlayingSong(id)),
   };
 };
 

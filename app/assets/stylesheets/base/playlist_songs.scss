@@ -1,14 +1,9 @@
 .pshow-songlist {
   color: white;
-  left: 350px;
+  left: 20%;
   position: relative;
   width: 55%;
 }
-
-.song-whole {
-
-}
-
 
 .song-whole:hover {
   background-color: rgba(0, 0, 0, 0.4);
@@ -52,7 +47,7 @@
   cursor: pointer;
 }
 
-#song-image, #song-option {
+#song-image, #songs-image, #song-option {
   height: 15px;
   width: 15px;
   background-size: cover;
@@ -63,13 +58,20 @@
   background-image: image-url("eighth-note.png");
   display: inline-block;
   position: absolute;
-  left: 4px;
+  left: 0%;
+}
+
+#songs-image {
+  background-image: image-url("eighth-note.png");
+  display: inline-block;
+  position: absolute;
+  left: 30%;
 }
 
 #song-option {
   background-image: image-url("more.png");
   display: none;
-  right: 12%;
+  right: 6%;
   position: absolute;
 }
 
@@ -79,12 +81,14 @@
   cursor: pointer;
 }
 
+.song-whole:hover #songs-image {
+  background-image: image-url("play-button.png");
+  transition: background-image 0.2s ease-in-out;
+  cursor: pointer;
+}
+
 .song-whole:hover #song-option{
   display: block;
   transition: display 0.2s ease-in-out;
   cursor: pointer;
-}
-
-.song-index {
-
 }

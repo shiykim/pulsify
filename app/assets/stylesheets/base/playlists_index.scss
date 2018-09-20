@@ -28,7 +28,7 @@
   flex-wrap: wrap;
   justify-content: center;
   padding-left: 60px;
-  padding-right: 60px;
+  padding-right: 100px;
 }
 
 .playlist-li {
@@ -92,10 +92,12 @@
 }
 
 .album-ul {
-  padding-left: 22%;
   padding-top: 50px;
   font-family: 'Rubik', sans-serif;
   text-align: center;
+  position: inherit;
+  justify-content: safe;
+  padding-left: 230px;
 }
 
 .artist-li {

@@ -15,14 +15,14 @@ class SongIndex extends React.Component {
       songs = (
         this.props.songs.map( song => {
           return (
-            <SongItemIndex song={song} />
+            <SongItemIndex song={song} fetchPlayingSong={this.props.fetchPlayingSong} />
           );
         })
       );
     } else {
       songs = null;
     }
-    
+
     return (
       <div className='songs-index'>
         {songs}
