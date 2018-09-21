@@ -17,24 +17,36 @@ class AddPlaylistSong extends React.Component {
       return null;
     }
 
-    let user_playlist;
-    if(this.props.playlists) {
-      user_playlist = this.props.playlists.map( (playlist,i) => {
-        return (
-          <AddSongModal key={`playlist-${i}`} playlist={playlist} />
-        );
+    let playlists;
+    if (this.props.playlists){
+      playlists = this.props.playlists.map( (playlist,i) => {
+        if (playlist.author_id === this.props.currentUser.id){
+          return (
+            <AddSongModal key={`playlist-${i}`} playlist={playlist} />
+          );
+        }
       });
     } else {
-      user_playlist = null;
+      playlists = null;
     }
-    
+
+    // if(this.props.playlists) {
+    //   user_playlist = this.props.playlists.map( (playlist,i) => {
+    //     return (
+    //       <AddSongModal key={`playlist-${i}`} playlist={playlist} />
+    //     );
+    //   });
+    // } else {
+    //   user_playlist = null;
+    // }
+
     return (
       <div className="modal-background" onClick={closeModal}>
         <div className="modal-child" onClick={e => e.stopPropagation()}>
           <div onClick={() => this.props.closeModal()} className="close-x" id='modal-close'>X</div>
           <h1 id="modal-header">Add to Playlist</h1>
           <ul className='playlist_add_show'>
-            {user_playlist}
+            {playlists}
           </ul>
         </div>
       </div>
@@ -46,7 +58,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     modal: state.ui.modal,
     song: state.ui.currentSong,
-    playlists: userPlaylists(state)
+    playlists: Object.values(state.entities.playlists),
+    currentUser: state.entities.users[state.session.id],
   };
 };
 

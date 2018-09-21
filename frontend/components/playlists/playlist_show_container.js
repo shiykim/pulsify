@@ -7,11 +7,12 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 import { selectPlaylistSongs } from '../../reducers/selectors.js';
 import { fetchPlayingSong } from '../../actions/mediaplayer_actions.js';
 
-const mapStateToProps = ({ entities: { playlists, songs }}, ownProps) => {
+const mapStateToProps = ({ session, entities: { playlists, songs, users }}, ownProps) => {
   const playlist = playlists[ownProps.match.params.id];
   return {
     playlist: playlist,
-    songs: selectPlaylistSongs(songs,playlist)
+    songs: selectPlaylistSongs(songs,playlist),
+    currentUser: users[session.id],
   };
 };
 

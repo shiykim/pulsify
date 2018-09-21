@@ -55,39 +55,39 @@ class SearchIndex extends React.Component {
   }
 
 
-  matches(slice) {
-    const matches = [];
-    if (this.state.inputVal.length === 0) {
-      return this.props.names;
-    }
-    slice.forEach(name => {
-      const chars = name.title.toLowerCase().replace(/ /g, '').split('');
-      const sub = name.title.slice(0, this.state.inputVal.length).toLowerCase();
-      const input = this.state.inputVal.toLowerCase().replace(/ /g, '').split('');
-
-      if (input.length === 1){
-        if (chars.includes(input.pop())){
-          matches.push(name);
-        }
-      } else {
-        if (sub.toLowerCase() === input.join("")) {
-          matches.push(name);
-        }
-      }
-    });
-
-    if (matches.length === 0) {
-      matches.push('No matches');
-    }
-
-    const results = matches.map((result, i) => {
-     return (
-       <li key={i}>{result.title}</li>
-      );
-    });
-
-    return results;
-  }
+  // matches(slice) {
+  //   const matches = [];
+  //   if (this.state.inputVal.length === 0) {
+  //     return this.props.names;
+  //   }
+  //   slice.forEach(name => {
+  //     const chars = name.title.toLowerCase().replace(/ /g, '').split('');
+  //     const sub = name.title.slice(0, this.state.inputVal.length).toLowerCase();
+  //     const input = this.state.inputVal.toLowerCase().replace(/ /g, '').split('');
+  //
+  //     if (input.length === 1){
+  //       if (chars.includes(input.pop())){
+  //         matches.push(name);
+  //       }
+  //     } else {
+  //       if (sub.toLowerCase() === input.join("")) {
+  //         matches.push(name);
+  //       }
+  //     }
+  //   });
+  //
+  //   if (matches.length === 0) {
+  //     matches.push('No matches');
+  //   }
+  //
+  //   const results = matches.map((result, i) => {
+  //    return (
+  //      <li key={i}>{result.title}</li>
+  //     );
+  //   });
+  //
+  //   return results;
+  // }
 
   nameMatches(slice) {
     const matches = [];
@@ -127,26 +127,50 @@ class SearchIndex extends React.Component {
     let songs;
     if(this.props.songs){
       songs = this.matches(this.props.songs);
+      if (songs){
+        songs = (
+        <ul className='song-matches'>
+          <h2 className='headers-artists'> Songs</h2>
+          {songs}
+        </ul>
+      );
     } else {
       songs = null;
     }
     return songs;
   }
+}
 
-  albumMatches(){
+  albumMatches() {
     let albums;
     if(this.props.albums){
       albums = this.matches(this.props.albums);
+      if (albums){
+        albums = (
+          <ul className='album-matches'>
+            <h2 className='headers-artists'> Albums</h2>
+            {albums}
+          </ul>
+      );
     } else {
       albums = null;
     }
     return albums;
   }
+}
 
   artistMatches(){
     let artists;
     if(this.props.artists){
       artists = this.nameMatches(this.props.artists);
+      if (artists){
+        artists = (
+        <ul className='artist-matches'>
+          <h2 className='headers-artists'> Artists</h2>
+          {artists}
+        </ul>
+        );
+      }
     } else {
       artists = null;
     }
@@ -157,6 +181,14 @@ class SearchIndex extends React.Component {
     let playlists;
     if(this.props.playlists){
       playlists = this.matches(this.props.playlists);
+      if(playlists){
+        playlists = (
+          <ul className='playlist-matches'>
+            <h2 className='headers-artists'> Playlist</h2>
+            {playlists}
+          </ul>
+        );
+      }
     } else {
       playlists = null;
     }
@@ -175,25 +207,11 @@ class SearchIndex extends React.Component {
                 value={this.state.inputVal}
                 placeholder="Start typing..."/>
           </section>
-          <ul className='song-matches'>
-            <h2 className='headers-artists'> Songs</h2>
-            {this.songMatches()}
-          </ul>
 
-          <ul className='album-matches'>
-            <h2 className='headers-artists'> Albums</h2>
-            {this.albumMatches()}
-          </ul>
-
-          <ul className='artist-matches'>
-            <h2 className='headers-artists'> Artists</h2>
-            {this.artistMatches()}
-          </ul>
-
-          <ul className='playlist-matches'>
-            <h2 className='headers-artists'> Playlist</h2>
-            {this.playlistMatches()}
-          </ul>
+          {this.songMatches()}
+          {this.albumMatches()}
+          {this.artistMatches()}
+          {this.playlistMatches()}
 
         </div>
       </div>

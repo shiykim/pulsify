@@ -28,7 +28,7 @@ class Webplayer extends React.Component {
   }
 
   startProgressBar(){
-    if (this.props.song){
+    if (this.props.song && this.playerRef.current){
       const songposition = (this.playerRef.current.currentTime * 100) /this.playerRef.current.duration;
       this.setState({progress: songposition});
     }

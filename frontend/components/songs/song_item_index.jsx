@@ -19,10 +19,19 @@ class SongItemIndex extends React.Component {
     this.props.fetchPlayingSong(this.props.song);
   }
 
+  // toggleList(){
+  //   this.setState(prevState => ({
+  //     listOpen: !prevState.listOpen
+  //   }));
+  // }
   toggleList(){
-    this.setState(prevState => ({
-      listOpen: !prevState.listOpen
-    }));
+    const {index} = this.props;
+    let drop = document.getElementById(`actual-song-dropdown-${index}`);
+      if (drop.style.display === "none") {
+          drop.style.display = "block";
+      } else {
+          drop.style.display = "none";
+      }
   }
 
   render () {
@@ -38,10 +47,13 @@ class SongItemIndex extends React.Component {
             <ul className='song-single'>
               <li onClick={() => this.handlePlay()} id='songs-image'></li>
               <li className='song-title'>{this.props.song.title}</li>
-              <li id='song-option' onClick={() => this.toggleList()}></li>
-              {this.state.listOpen ? <MoreDropDown show="open" song={this.props.song} onlyAdd='add' /> : null }
-              <li className='song-length'>{this.props.song.length}</li>
+              <li id='song-option' onClick={() => this.toggleList()}>
+                <div style={{display:"none"}} id={`actual-song-dropdown-${this.props.index}`}>
+                  <MoreDropDown show="open" song={this.props.song} onlyAdd='add' />
+                </div>
+              </li>
             </ul>
+
             <ul className='artist-album-list'>
               <li className='song-artist'><Link to={`/artists/${this.props.song.artist.id}`}>{this.props.song.artist.name}</Link></li>
               <li className='song-separator'>·</li>

@@ -15,7 +15,7 @@ class SongIndex extends React.Component {
       songs = (
         this.props.songs.map( (song,i) => {
           return (
-            <SongItemIndex song={song} key={i} index={i} fetchPlayingSong={this.props.fetchPlayingSong} />
+            <SongItemIndex song={song} key={i} foo={i} fetchPlayingSong={this.props.fetchPlayingSong} />
           );
         })
       );

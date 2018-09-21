@@ -19,22 +19,31 @@ class AlbumSongItem extends React.Component {
     this.props.fetchPlayingSong(this.props.song);
   }
 
+  // toggleList(){
+  //   this.setState(prevState => ({
+  //     listOpen: !prevState.listOpen
+  //   }));
+  // }
   toggleList(){
-    this.setState(prevState => ({
-      listOpen: !prevState.listOpen
-    }));
+    const {index} = this.props;
+    let drop = document.getElementById(`actual-album-dropdown-${index}`);
+      if (drop.style.display === "none") {
+          drop.style.display = "block";
+      } else {
+          drop.style.display = "none";
+      }
   }
-
   render () {
     let option;
     if(this.props.dropdown === 'false'){
       option = null;
     } else {
       option = (
-        <div>
-          <li id='song-option' onFocus={() => this.setState({listOpen:true})} onBlur={() => this.setState({listOpen:false})}/>
-          {this.state.listOpen ? <MoreDropDown show="open" song={this.props.song} onlyAdd='add' /> : null}
-        </div>
+        <li id='song-option' onClick={() => this.toggleList()}>
+          <div style={{display:"none"}} id={`actual-album-dropdown-${this.props.index}`}>
+            <MoreDropDown show="open" song={this.props.song} onlyAdd='add' />
+          </div>
+        </li>
       );
     }
 

@@ -8,9 +8,8 @@ import { fetchPlayingSong } from '../../actions/mediaplayer_actions';
 import { userSongs, userPlaylists } from '../../reducers/selectors';
 
 const mapStateToProps = (state) => {
-  let playlists = userPlaylists(state);
   return {
-    songs: userSongs(state, playlists),
+    songs: userSongs(state),
   };
 };
 

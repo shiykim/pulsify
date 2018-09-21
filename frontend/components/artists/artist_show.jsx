@@ -63,7 +63,7 @@ class ArtistShow extends React.Component {
     }
 
     return (
-      <div className='album-whole'>
+      <div className='artist-whole'>
         <div className='first-half' style={{backgroundImage: `url(${artist_img})`}} >
           <h1>{artist_name}</h1>
         </div>

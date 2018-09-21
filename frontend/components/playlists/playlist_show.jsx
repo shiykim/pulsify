@@ -67,8 +67,21 @@ class PlaylistShow extends React.Component {
     let playlist;
     let playlistsongs;
     let playlistCover;
+    let updateDelete;
 
     if (this.props.playlist){
+
+      if(this.props.playlist.author_id === this.props.currentUser.id){
+        updateDelete = (
+          <div>
+            <button className='navbar-images pshow-more' onClick={() => this.toggleList()} style={{backgroundImage: `url(${window.more})`}} />
+            {this.state.listOpen ? <DropDownList show="open" /> : null }
+          </div>
+        );
+      } else {
+        updateDelete = null;
+      }
+
 
       playlistsongs = (
         <div className='pshow-songlist'>
@@ -83,8 +96,7 @@ class PlaylistShow extends React.Component {
               <li id='pshow-title'>{this.props.playlist.title}</li>
               <li id='pshow-username'>{this.props.playlist.username}</li>
               <li id='pshow-length'>{this.props.playlist.song_ids.length} songs</li>
-              <button onClick={() => this.handlePlay()} id='btn-pshow-play'>PLAY</button>
-              <button className='navbar-images pshow-more' onClick={() => this.toggleList()} style={{backgroundImage: `url(${window.more})`}} />
+              {updateDelete}
               {this.state.listOpen ? <DropDownList show="open" /> : null }
             </ul>
         </section>

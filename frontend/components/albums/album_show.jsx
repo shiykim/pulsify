@@ -39,7 +39,7 @@ class AlbumShow extends React.Component {
       songs = (
         this.props.album.songs.map( (song,i) => {
           return (
-            <AlbumSongItem key={i} song={song} fetchPlayingSong={this.props.fetchPlayingSong} />
+            <AlbumSongItem key={i} index={i} song={song} fetchPlayingSong={this.props.fetchPlayingSong} />
           );
         })
       );
@@ -87,7 +87,7 @@ class AlbumShow extends React.Component {
     }
 
     return (
-      <div className='pshow-whole album-whole'>
+      <div className='album-whole'>
         {album_info}
       </div>
     );

@@ -21,6 +21,7 @@ class BrowseContent extends React.Component {
             </ul>
             {this.props.openModal}
             <ProtectedRoute path="/collection/playlists" component={PlaylistIndexContainer}/>
+            <ProtectedRoute path="/collection/songs" component={UserSongsContainer}/>
         </div>
       </div>
     );

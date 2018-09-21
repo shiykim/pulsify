@@ -72,6 +72,9 @@
   border-radius: 10px;
 }
 
+.progress > .bar > div:hover {
+  background: green;
+}
 #time {
   position: absolute;
   bottom: -9px;
