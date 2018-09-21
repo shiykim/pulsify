@@ -14,14 +14,10 @@ class BrowseContent extends React.Component {
         <div className='main'>
           <div className='content-main'>
             <ul className='playlist-nav'>
-              <li><Link to="/collection/playlists">PLAYLISTS</Link></li>
-              <li><Link to="/collection/songs">SONGS</Link></li>
-              <li><Link to="/collection/albums">ALBUMS</Link></li>
-              <li><Link to="/collection/artist">ARTISTS</Link></li>
+              <li><Link to="/collection/playlists">YOUR PLAYLISTS</Link></li>
             </ul>
             {this.props.openModal}
             <ProtectedRoute path="/collection/playlists" component={PlaylistIndexContainer}/>
-            <ProtectedRoute path="/collection/songs" component={UserSongsContainer}/>
         </div>
       </div>
     );
@@ -42,3 +38,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(null, mapDispatchToProps)(BrowseContent);
+
+
+
+// <ProtectedRoute path="/collection/songs" component={UserSongsContainer}/>
