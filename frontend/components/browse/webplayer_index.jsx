@@ -17,6 +17,32 @@ class Webplayer extends React.Component {
     this.interval = setInterval(this.startProgressBar.bind(this), 250);
   }
 
+  // static getDerivedStateFromProps(props, state){
+  //   if (Boolean(props.playingSong) !== state.playing){
+  //     return Object.assign({}, state, {playing: Boolean(props.playingSong)});
+  //   }
+  // }
+
+  // componentDidUpdate(previousProps){
+  //   if (previousProps.playingSong !== this.props.playingSong){
+  //     this.setState({
+  //       playing: Boolean(this.props.playingSong),
+  //       paused: false
+  //     });
+  //   }
+  // }
+
+  // togglePlay(){
+  //   if (this.state.paused && this.state.playing){
+  //     this.playerRef.current.play();
+  //     this.setState({playing: true, paused: false});
+  //   } else if (!this.state.paused){
+  //     this.playerRef.current.pause();
+  //     this.setState({paused: true});
+  //   }
+  // }
+
+
   togglePlay(){
     if (this.playerRef.current.paused){
       this.playerRef.current.play();
@@ -95,9 +121,9 @@ class Webplayer extends React.Component {
       {this.songInfo()}
         <div className="player">
           <div className="controls">
-            <button onClick={() => this.props.previous()}><img src={window.previous}/></button>
+            <button><img src={window.previous}/></button>
             <button onClick={() => this.togglePlay()}>{current}</button>
-            <button onClick={() => this.props.fastForward()}><img src={window.forward}/></button>
+            <button><img src={window.forward}/></button>
           </div>
             <div>
             </div>
@@ -120,10 +146,5 @@ const mapStateToProps = (state) => {
     song: state.ui.mediaplayer.playingSong,
   };
 };
-// const mapDispatchToProps = dispatch => ({
-//   seek: (time) => dispatch(seek(time)),
-//   nextTrack: () => dispatch(nextTrack()),
-//   prevTrack: () => dispatch(prevTrack())
-// });
 
 export default connect(mapStateToProps, null)(Webplayer);

@@ -1652,7 +1652,29 @@ function (_React$Component) {
     _this.interval = setInterval(_this.time.bind(_assertThisInitialized(_assertThisInitialized(_this))), 250);
     _this.interval = setInterval(_this.startProgressBar.bind(_assertThisInitialized(_assertThisInitialized(_this))), 250);
     return _this;
-  }
+  } // static getDerivedStateFromProps(props, state){
+  //   if (Boolean(props.playingSong) !== state.playing){
+  //     return Object.assign({}, state, {playing: Boolean(props.playingSong)});
+  //   }
+  // }
+  // componentDidUpdate(previousProps){
+  //   if (previousProps.playingSong !== this.props.playingSong){
+  //     this.setState({
+  //       playing: Boolean(this.props.playingSong),
+  //       paused: false
+  //     });
+  //   }
+  // }
+  // togglePlay(){
+  //   if (this.state.paused && this.state.playing){
+  //     this.playerRef.current.play();
+  //     this.setState({playing: true, paused: false});
+  //   } else if (!this.state.paused){
+  //     this.playerRef.current.pause();
+  //     this.setState({paused: true});
+  //   }
+  // }
+
 
   _createClass(Webplayer, [{
     key: "togglePlay",
@@ -1760,21 +1782,13 @@ function (_React$Component) {
         className: "player"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "controls"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this2.props.previous();
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.previous
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
           return _this2.togglePlay();
         }
-      }, current), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this2.props.fastForward();
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      }, current), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.forward
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "time"
@@ -1801,12 +1815,7 @@ var mapStateToProps = function mapStateToProps(state) {
   return {
     song: state.ui.mediaplayer.playingSong
   };
-}; // const mapDispatchToProps = dispatch => ({
-//   seek: (time) => dispatch(seek(time)),
-//   nextTrack: () => dispatch(nextTrack()),
-//   prevTrack: () => dispatch(prevTrack())
-// });
-
+};
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, null)(Webplayer));
 
