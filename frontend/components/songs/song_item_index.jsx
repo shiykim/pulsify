@@ -25,6 +25,7 @@ class SongItemIndex extends React.Component {
   //   }));
   // }
   toggleList(){
+    this.props.fetchSong(this.props.song);
     const {index} = this.props;
     let drop = document.getElementById(`actual-song-dropdown-${index}`);
       if (drop.style.display === "none") {

@@ -2397,12 +2397,11 @@ function (_React$Component) {
       this.props.removePlaylistSong(this.props.playlist.id, this.props.song.id).then(function () {
         _this.props.fetchSong(_this.props.song);
       });
-    }
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.props.fetchSong(this.props.song);
-    }
+    } //
+    // componentDidMount(){
+    //   this.props.fetchSong(this.props.song);
+    // }
+
   }, {
     key: "render",
     value: function render() {
@@ -2445,11 +2444,11 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
         return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__["openModal"])('addplaylistsong'));
       }
     }, "Add To Playlist"),
-    fetchSong: function fetchSong(id) {
-      return dispatch(Object(_actions_song_actions__WEBPACK_IMPORTED_MODULE_3__["fetchSong"])(id));
-    },
     removePlaylistSong: function removePlaylistSong(playlistId, songId) {
       return dispatch(Object(_actions_song_actions__WEBPACK_IMPORTED_MODULE_3__["removePlaylistSong"])(playlistId, songId));
+    },
+    fetchSong: function fetchSong(id) {
+      return dispatch(Object(_actions_song_actions__WEBPACK_IMPORTED_MODULE_3__["fetchSong"])(id));
     }
   };
 };
@@ -4197,6 +4196,7 @@ function (_React$Component) {
     value: function handleClick() {
       var _this = this;
 
+      debugger;
       this.props.addPlaylistSong(this.props.playlist.id, this.props.currentSong.id).then(function () {
         _this.props.closeModal();
       });
@@ -4333,7 +4333,8 @@ function (_React$Component) {
             song: song,
             key: i,
             index: i,
-            fetchPlayingSong: _this.props.fetchPlayingSong
+            fetchPlayingSong: _this.props.fetchPlayingSong,
+            fetchSong: _this.props.fetchSong
           });
         });
       } else {
@@ -4398,6 +4399,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     fetchPlayingSong: function fetchPlayingSong(id) {
       return dispatch(Object(_actions_mediaplayer_actions__WEBPACK_IMPORTED_MODULE_6__["fetchPlayingSong"])(id));
+    },
+    fetchSong: function fetchSong(id) {
+      return dispatch(Object(_actions_song_actions__WEBPACK_IMPORTED_MODULE_3__["fetchSong"])(id));
     }
   };
 };
@@ -4479,6 +4483,7 @@ function (_React$Component) {
   }, {
     key: "toggleList",
     value: function toggleList() {
+      this.props.fetchSong(this.props.song);
       var index = this.props.index;
       var drop = document.getElementById("actual-song-dropdown-".concat(index));
 

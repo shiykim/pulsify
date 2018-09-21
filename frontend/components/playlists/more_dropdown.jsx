@@ -11,10 +11,10 @@ class MoreDropDown extends React.Component {
       this.props.fetchSong(this.props.song);
     });
   }
-
-  componentDidMount(){
-    this.props.fetchSong(this.props.song);
-  }
+  //
+  // componentDidMount(){
+  //   this.props.fetchSong(this.props.song);
+  // }
 
   render() {
     let remove;
@@ -48,8 +48,8 @@ const mapDispatchToProps = dispatch => {
        Add To Playlist
      </li>
    ),
+    removePlaylistSong: (playlistId, songId) => dispatch(removePlaylistSong(playlistId, songId)),
     fetchSong: id => dispatch(fetchSong(id)),
-    removePlaylistSong: (playlistId, songId) => dispatch(removePlaylistSong(playlistId, songId))
   };
 };
 
