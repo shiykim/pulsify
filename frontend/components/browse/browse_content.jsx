@@ -5,8 +5,8 @@ import { ProtectedRoute } from '../../util/route_util';
 import { openModal, closeModal } from '../../actions/modal_actions';
 
 import PlaylistIndexContainer from '../playlists/playlist_index_container';
-import PlaylistShowContainer from '../playlists/playlist_show_container';
-
+// import PlaylistShowContainer from '../playlists/playlist_show_container';
+import UserSongsContainer from '../songs/user_songs_container';
 class BrowseContent extends React.Component {
 
   render () {
@@ -31,9 +31,11 @@ const mapDispatchToProps = dispatch => {
   return {
     closeModal: () => dispatch(closeModal()),
     openModal: (
-     <button id="btn-playlist-new" onClick={() => dispatch(openModal('createplaylist'))}>
-       NEW PLAYLIST
-     </button>
+      <div className='playlist-new'>
+       <button id="btn-playlist-new" onClick={() => dispatch(openModal('createplaylist'))}>
+         NEW PLAYLIST
+       </button>
+     </div>
    )
   };
 };

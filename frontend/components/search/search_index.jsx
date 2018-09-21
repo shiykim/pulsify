@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Switch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ProtectedRoute } from '../../util/route_util';
 
 class SearchIndex extends React.Component {

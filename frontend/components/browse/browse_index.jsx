@@ -39,8 +39,12 @@ class Browse extends React.Component {
               </li>
             </ul>
             <section className='navbar-user'>
-              <h1 className='na'>hello! {this.props.currentUser.username}</h1>
-              <button onClick={this.props.logout}>Log Out</button>
+              <li>
+                <img className='logout-images' src={window.user}/>
+                <h1 className='welcome-name'>Welcome Back</h1>
+                <h1 className='welcome-name'>{this.props.currentUser.username}</h1>
+                <button className="btn-logout" onClick={this.props.logout}>Log Out</button>
+              </li>
             </section>
           </section>
         </div>

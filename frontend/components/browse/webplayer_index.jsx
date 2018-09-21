@@ -74,10 +74,20 @@ class Webplayer extends React.Component {
 
   render(){
     let current;
-    if (this.state.playing && this.props.song !== ''){
+    if (this.state.playing ^ this.props.song){
       current = <img className='play-icon' src={window.pause}/>;
     } else {
       current = <img src={window.mainplay}/>;
+    }
+
+    let audio;
+
+    if(this.props.song){
+      audio = (
+        <audio ref={this.playerRef} autoPlay={true} src={this.props.song.mp3}/>
+      );
+    } else {
+        audio = null;
     }
 
     return (
@@ -98,7 +108,7 @@ class Webplayer extends React.Component {
               </div>
             </div>
             <div id='total'> </div>
-          <audio ref={this.playerRef} autoPlay={true} src={this.props.song.mp3}/>
+          {audio}
         </div>
       </div>
     );
@@ -107,7 +117,7 @@ class Webplayer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    song: state.ui.mediaplayer.playingSong || '',
+    song: state.ui.mediaplayer.playingSong,
   };
 };
 // const mapDispatchToProps = dispatch => ({

@@ -1,12 +1,12 @@
 class Api::PlaylistsController < ApplicationController
 
   def index
-    @playlists = Playlist.all.includes(:songs)
-    # @songs = Song.all
+    @playlists = Playlist.all.includes(:playlist_songs, :author, songs: [:artist, :album])
+    # @songs = Song.with_attached_photo
   end
 
   def show
-    @playlist = Playlist.find(params[:id])
+    @playlist = Playlist.includes(:playlist_songs, :author, songs: [:artist, :album]).find(params[:id])
     @username = User.find(@playlist.author_id)
     @songs = Song.all
   end

@@ -21,7 +21,6 @@ class HomeIndex extends React.Component {
             <li><Link to="/browse/songs">SONGS</Link></li>
             <li><Link to="/browse/albums">ALBUMS</Link></li>
             <li><Link to="/browse/artist">ARTISTS</Link></li>
-            <li><Link to="/browse/users">USERS</Link></li>
           </ul>
           <ProtectedRoute exact path="/browse" component={PlaylistAllIndex}/>
         </div>

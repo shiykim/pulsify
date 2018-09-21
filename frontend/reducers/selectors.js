@@ -24,3 +24,27 @@ export const userPlaylists = (state) => {
   }
   return playlists;
 };
+
+// export const userSongs = (state, playlists) => {
+//   let songs;
+//   songs = state.entities.playlists.map (playlist => {
+//     return( state.entities.songs[songId]);
+//   });
+//   return songs;
+// };
+// //
+// // export const userSongsArtists = (state, songs) => {
+// //   let songs;
+// //     songs = playlistIds.map (songId => {
+// //       return( state.entities.songs[songId]);
+// //     });
+// //   return songs;
+// // };
+//
+// export const userArtists = (state, artistIds) => {
+//   let artists;
+//   artists = artistIds.map ( id => {
+//     return( state.entities.artists[id]);
+//   });
+//   return artists;
+// };

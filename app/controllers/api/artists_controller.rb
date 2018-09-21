@@ -1,11 +1,11 @@
 class Api::ArtistsController < ApplicationController
 
   def index
-    @artists = Artist.all
+    @artists = Artist.with_attached_photo.includes(:songs, :albums)
   end
 
   def show
-    @artist = Artist.find(params[:id])
+    @artist = Artist.with_attached_photo.includes(:songs, :albums).find(params[:id])
   end
 
 end

@@ -1,11 +1,11 @@
 class Api::AlbumsController < ApplicationController
 
   def index
-    @albums = Album.all
+    @albums = Album.with_attached_photo.includes(:songs, :artist)
   end
 
   def show
-    @album = Album.find(params[:id])
+    @album = Album.with_attached_photo.includes(:songs, :artist).find(params[:id])
   end
 
 end

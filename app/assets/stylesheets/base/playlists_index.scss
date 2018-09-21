@@ -9,6 +9,8 @@
   justify-content: center;
   letter-spacing: 1.4px;
   font-size: 13px;
+  padding-left: 9%;
+  padding-bottom: 30px;
 }
 
 .playlist-nav > li {
@@ -27,7 +29,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding-left: 60px;
+  padding-left: 15%;
   padding-right: 100px;
 }
 
@@ -41,6 +43,10 @@
   margin: 10px;
   position: relative;
   box-shadow:-1px 2px 18px #000000;
+}
+
+.playlist-li > a > img {
+  height: 100%;
 }
 
 #p-images {
@@ -92,7 +98,6 @@
 }
 
 .album-ul {
-  padding-top: 50px;
   font-family: 'Rubik', sans-serif;
   text-align: center;
   position: inherit;
@@ -110,15 +115,17 @@
   background-position: center;
   background-repeat: no-repeat;
   margin: 10px;
-  margin-top: 50px;
   position: relative;
   box-shadow:-1px 2px 18px #000000;
 }
 
-.artist-ul {
-  padding-top: 20px;
-}
+// .artist-ul {
+//   padding-top: 20px;
+// }
 
-.playlist-all {
-  padding-top: 50px;
+
+.playlist-new {
+  position: absolute;
+  right: 3%;
+  top: 1%;
 }
