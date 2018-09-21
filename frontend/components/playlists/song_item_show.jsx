@@ -5,6 +5,7 @@ import { selectSongAlbum, selectSongArtist } from '../../reducers/selectors.js';
 import { fetchAlbums } from '../../actions/album_actions';
 import { fetchArtists } from '../../actions/artist_actions';
 import { fetchPlayingSong } from '../../actions/mediaplayer_actions';
+import { fetchSong } from '../../actions/song_actions';
 import MoreDropDown from './more_dropdown';
 
 class SongItemShow extends React.Component {
@@ -21,6 +22,7 @@ class SongItemShow extends React.Component {
   }
 
   toggleList(){
+      this.props.fetchSong(this.props.song);
     const {index} = this.props;
     let drop = document.getElementById(`actual-more-dropdown-${index}`);
       if (drop.style.display === "none") {
@@ -71,6 +73,7 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchPlaylist: (id) => dispatch(fetchPlaylist(id)),
     fetchSongs: () => dispatch(fetchSongs()),
+    fetchSong: (id) => dispatch(fetchSong(id)),
     fetchPlayingSong: (id) => dispatch(fetchPlayingSong(id)),
   };
 };

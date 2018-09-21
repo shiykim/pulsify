@@ -32,14 +32,14 @@ export const userSongs = (state) => {
   if (playlists.length !== 0 && songlength !== 0){
     songs = playlists.map (playlist => {
       state.entities.playlists[playlist.id].song_ids.map( id => {
-        debugger
+        // debugger
         songs[id] = (state.entities.songs[id]);
       });
     });
   } else {
     songs = null;
   }
-  debugger
+  // debugger
   return songs;
 };
 //
