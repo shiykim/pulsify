@@ -1743,12 +1743,15 @@ function (_React$Component) {
   }, {
     key: "progressBarUpdate",
     value: function progressBarUpdate(e) {
+      var progressBar = this.progressBar.current;
+      var player = this.playerRef.current;
+
       if (this.props.song) {
-        var progress = (e.clientX - this.progressBar.current.offsetParent.offsetLeft) / this.progressBar.current.clientWidth * 100;
+        var progress = (e.clientX - progressBar.offsetParent.offsetLeft) / progressBar.clientWidth * 100;
         this.setState({
           progress: progress
         });
-        this.playerRef.current.currentTime = this.playerRef.current.duration * (progress / 100);
+        player.currentTime = player.duration * (progress / 100);
       }
     }
   }, {

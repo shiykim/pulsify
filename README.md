@@ -15,16 +15,34 @@
 ![frontpage](app/assets/images/demo.gif)
 
 #### Continuous Play
-Continuous play is an integral part of
+Continuous play is an integral part of the streaming experience. Pulsify provides continuous play, allowing users to navigate to other pages in the application without disturbing their listening experience. Continuous play was implemented through the use of 
 
 #### Progress Bar
+The dyanmic progress bar allows the user to play, pause, and skip a song. To more easily sync the progress bar with the audio player itself, I had to create a reference to both using React createRef.
+
+I had to account for the case when a user would want to move ahead or backwards in the song via the progress bar. In order to do that, I calculated the percent change of the progress bar as a whole taking into account the click location of the user.
+
+```
+progressBarUpdate(e){
+  let progressBar = this.progressBar.current;
+  let player = this.playerRef.current;
+  if (this.props.song){
+    let progress =
+      ((e.clientX - progressBar.offsetParent.offsetLeft) / progressBar.clientWidth) * 100;
+    this.setState({progress: progress});
+    player.currentTime = player.duration * (progress / 100);
+  }
+}
+```
 
 #### Queue
+
 
 ### `Playlist CRUD`
 
 #### Playlist Creation/Update/Delete
 ![playlist create](app/assets/images/playlist_create.gif)
+
 Signed in users are given the ability to create and customize playlists. Once created, the name of the playlist can be updated on the show page. Also on the show page, is the ability to delete a playlist as well as the play button which will play the first song on the playlist.
 
 All playlists are displayed on the Home/Landing page of the website, which you can use to explore what your friends and other Pulsify users have been listening to.
@@ -32,6 +50,8 @@ All playlists are displayed on the Home/Landing page of the website, which you c
 #### Playlist Songs
 ![playlist add](app/assets/images/add_playlist.png)
 What good is a playlist without any songs? Users have the ability to add a song to any of their playlists on almost any page. In order to facilitate the addition of songs, custom routes were added.
+
+The playlist cover is also set to be the album cover of the first song of the playlist.
 
 ```
 delete '/playlist_songs/:playlist_id/:song_id', to: 'playlists#destroy_playlist_song'

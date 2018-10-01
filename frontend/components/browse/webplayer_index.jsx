@@ -69,10 +69,12 @@ class Webplayer extends React.Component {
   }
 
   progressBarUpdate(e){
+    let progressBar = this.progressBar.current;
+    let player = this.playerRef.current;
     if (this.props.song){
-      let progress = ((e.clientX - this.progressBar.current.offsetParent.offsetLeft) / this.progressBar.current.clientWidth) * 100;
+      let progress = ((e.clientX - progressBar.offsetParent.offsetLeft) / progressBar.clientWidth) * 100;
       this.setState({progress: progress});
-      this.playerRef.current.currentTime = this.playerRef.current.duration * (progress / 100);
+      player.currentTime = player.duration * (progress / 100);
     }
   }
 
