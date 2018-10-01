@@ -5,13 +5,39 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token, :ensure_img_url
   has_one_attached :photo
-  
+
   attr_reader :password
 
   has_many :playlists,
     class_name: 'Playlist',
     foreign_key: :author_id,
     primary_key: :id
+
+  has_many :follows,
+    class_name: 'Follow',
+    foreign_key: :user_id,
+    primary_key: :id
+
+  has_many :followed_playlists,
+    through: :follows,
+    source: :followable,
+    source_type: 'Playlist'
+
+  has_many :followed_artists,
+    through: :follows,
+    source: :followable,
+    source_type: 'Artist'
+
+  has_many :followed_albums,
+    through: :follows,
+    source: :followable,
+    source_type: 'Album'
+
+  has_many :followed_songs,
+    through: :follows,
+    source: :followable,
+    source_type: 'Song'
+
 
   def self.find_by_credentials(username,password)
     user = User.find_by(username: username)

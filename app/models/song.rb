@@ -22,6 +22,14 @@ class Song < ApplicationRecord
 
   has_many :playlists, through: :playlist_songs
 
+  has_many :followers,
+    as: :followable,
+    dependent: :destroy
+
+  has_many :followed_users,
+    through: :followers
+
+
   def ensure_song_url
     self.song_url = 'placeholder.mp3'
   end
