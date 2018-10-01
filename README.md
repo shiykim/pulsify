@@ -1,24 +1,9 @@
-# README
+# Pulsify README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[Pulsify](https://pulsify-app.herokuapp.com/) was inspired by Spotify, a music streaming service with over 180 million users. Similarly to Spotify, Pulsify features continuous playback, artist profiles, and playlist creation, all culminating in a seamless user experience.
 
-Things you may want to cover:
+[!front page!](app/assets/images/front_page.png)
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Technologies Used
+Pulsify was created with Rails on the backend using a Postgresql database and React/Redux on the frontend.
+Images and MP3s were stored using AWS S3, lightening the local storage load increasing scalability. The loading time of the app was also optimized through jBuilder and Rails' Active Storage which made for a more cohesive experience for the user.
