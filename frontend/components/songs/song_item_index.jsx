@@ -16,6 +16,7 @@ class SongItemIndex extends React.Component {
   }
 
   handlePlay(){
+    this.props.receiveQueue(this.props.queue);
     this.props.fetchPlayingSong(this.props.song);
   }
 

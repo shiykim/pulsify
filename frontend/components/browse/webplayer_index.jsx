@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { fetchPlayingSong } from '../../actions/mediaplayer_actions'
 
 class Webplayer extends React.Component {
 
@@ -10,6 +11,7 @@ class Webplayer extends React.Component {
     this.progressBar = React.createRef();
     this.state = {
       playing: false,
+      pause: false,
       progess: 0,
       time: 0,
     };
@@ -23,33 +25,39 @@ class Webplayer extends React.Component {
   //   }
   // }
 
-  // componentDidUpdate(previousProps){
-  //   if (previousProps.playingSong !== this.props.playingSong){
-  //     this.setState({
-  //       playing: Boolean(this.props.playingSong),
-  //       paused: false
-  //     });
-  //   }
-  // }
-
-  // togglePlay(){
-  //   if (this.state.paused && this.state.playing){
-  //     this.playerRef.current.play();
-  //     this.setState({playing: true, paused: false});
-  //   } else if (!this.state.paused){
-  //     this.playerRef.current.pause();
-  //     this.setState({paused: true});
-  //   }
-  // }
-
+  componentDidUpdate(previousProps){
+    if (previousProps.song !== this.props.song){
+      this.setState({
+        playing: Boolean(this.props.song)
+      });
+    }
+  }
 
   togglePlay(){
-    if (this.playerRef.current.paused){
+    if (this.state.pause){
       this.playerRef.current.play();
-      this.setState({playing: true});
+      this.setState({pause: false});
     } else {
+      this.setState({pause: true});
       this.playerRef.current.pause();
-      this.setState({playing: false});
+    }
+  }
+
+  previousSong(){
+    if (this.props.queue_idx || this.props.queue_idx === 0){
+      if (this.props.queue_idx !== 0){
+        let prev = this.props.queue[this.props.queue_idx - 1];
+        this.props.fetchPlayingSong(prev);
+      }
+    }
+  }
+
+  nextSong(){
+    if (typeof this.props.queue_idx || this.props.queue_idx === 0){
+      if (this.props.queue_idx !== (this.props.queue.length - 1)){
+        let next = this.props.queue[this.props.queue_idx + 1];
+        this.props.fetchPlayingSong(next);
+      }
     }
   }
 
@@ -73,16 +81,19 @@ class Webplayer extends React.Component {
     if (audio && this.props.song){
       let time = document.getElementById('time');
       let total = document.getElementById('total');
-      let seconds = (Math.floor(this.playerRef.current.currentTime % 60) < 10 ? '0' : '') + Math.floor(this.playerRef.current.currentTime % 60);
-      let minutes = Math.floor(this.playerRef.current.currentTime / 60);
+      let seconds = (Math.floor(audio.currentTime % 60) < 10 ? '0' : '') + Math.floor(audio.currentTime % 60);
+      let minutes = Math.floor(audio.currentTime / 60);
       time.innerHTML = minutes + ":" + seconds;
       total.innerHTML = this.props.song.length ;
+      if (audio.currentTime === audio.duration){
+        this.nextSong();
+      }
     }
   }
 
   songInfo(){
     let songinfo;
-    if (this.props.song){
+    if (this.state.playing){
       songinfo = (
           <div className='current-song-info'>
             <img className='song-info-album' src={this.props.song.photoUrl}  />
@@ -100,20 +111,23 @@ class Webplayer extends React.Component {
 
   render(){
     let current;
-    if (this.state.playing ^ this.props.song){
-      current = <img className='play-icon' src={window.pause}/>;
-    } else {
-      current = <img src={window.mainplay}/>;
-    }
-
     let audio;
-
-    if(this.props.song){
+    if (this.state.playing){
       audio = (
         <audio ref={this.playerRef} autoPlay={true} src={this.props.song.mp3}/>
       );
     } else {
-        audio = null;
+      audio = null;
+    }
+
+    if(this.state.pause){
+      // debugger
+      current = <img src={window.mainplay}/>;
+    } else if (!this.state.paused && !this.state.playing){
+      current = <img src={window.mainplay}/>;
+    } else {
+      current = <img className='play-icon' src={window.pause}/>;
+
     }
 
     return (
@@ -121,9 +135,9 @@ class Webplayer extends React.Component {
       {this.songInfo()}
         <div className="player">
           <div className="controls">
-            <button><img src={window.previous}/></button>
+            <button onClick={() => this.previousSong()}><img src={window.previous}/></button>
             <button onClick={() => this.togglePlay()}>{current}</button>
-            <button><img src={window.forward}/></button>
+            <button onClick={() => this.nextSong()}><img src={window.forward}/></button>
           </div>
             <div>
             </div>
@@ -144,7 +158,16 @@ class Webplayer extends React.Component {
 const mapStateToProps = (state) => {
   return {
     song: state.ui.mediaplayer.playingSong,
+    queue: state.ui.mediaplayer.queue,
+    queue_idx: state.ui.mediaplayer.queue_idx,
   };
 };
 
-export default connect(mapStateToProps, null)(Webplayer);
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchPlayingSong: id => dispatch(fetchPlayingSong(id)),
+  };
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Webplayer);

@@ -44,7 +44,7 @@ class PlaylistShow extends React.Component {
       songs = (
         this.props.songs.map( (song,i) => {
           return (
-            <SongItemShow key={i} index={i} song={song} />
+            <SongItemShow key={i} index={i} song={song}  />
           );
         })
       );
@@ -97,7 +97,7 @@ class PlaylistShow extends React.Component {
               <li id='pshow-username'>{this.props.playlist.username}</li>
               <li id='pshow-length'>{this.props.playlist.song_ids.length} songs</li>
               {updateDelete}
-              {this.state.listOpen ? <DropDownList show="open" /> : null }
+              {this.state.listOpen ? <DropDownList show="open" onlyAdd='add' /> : null }
             </ul>
         </section>
         {playlistsongs}

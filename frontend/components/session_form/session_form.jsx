@@ -58,7 +58,7 @@ class SessionForm extends React.Component {
         <div>
           <h2 id="session-signup-text">Sign up with your email address</h2>
           <label>
-            <input type="text"
+            <input type="email"
               value={this.state.email}
               onChange={this.update('email')}
               className="login-input"

@@ -13,11 +13,11 @@ class PlaylistIndex extends React.Component {
     this.props.fetchPlaylists();
   }
 
-  playlistImage(playlist){
+  playlistImage(playlist, i){
     let cover = playlist.photoUrl;
     if (cover) {
       return (
-        <div>
+        <div key={i}>
           <li className='playlist-li'>
             <Link to={`/collection/playlists/${playlist.id}`}><img src={playlist.photoUrl} /></Link>
           </li>
@@ -27,7 +27,7 @@ class PlaylistIndex extends React.Component {
     );
     } else {
       return (
-        <div>
+        <div key={i}>
           <li className='playlist-li'>
             <Link to={`/collection/playlists/${playlist.id}`}><img src={window.playlist_default}/></Link>
           </li>
@@ -41,9 +41,9 @@ class PlaylistIndex extends React.Component {
   render () {
     let playlists;
     if (this.props.playlists){
-      playlists = this.props.playlists.map( playlist => {
+      playlists = this.props.playlists.map( (playlist, i) => {
         if (playlist.author_id === this.currentUser.id){
-          return (this.playlistImage(playlist));
+          return (this.playlistImage(playlist, i));
         }
       });
     } else {

@@ -43,7 +43,7 @@ class ArtistShow extends React.Component {
     if (artist_albums){
       albums = artist.albums.map( (album,i) => {
         return(
-          <section>
+          <section key={i}>
             <Link to={`/albums/${album.id}`}>
               <img className='artist-album' src={album.photoUrl} />
               <div className='artist-album-title'>{album.title}</div>

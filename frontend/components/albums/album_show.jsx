@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { fetchAlbum } from '../../actions/album_actions';
 import { fetchSong } from '../../actions/song_actions';
 import { fetchPlaylists } from '../../actions/playlist_actions';
-import { fetchPlayingSong } from '../../actions/mediaplayer_actions';
+import { fetchPlayingSong, receiveQueue } from '../../actions/mediaplayer_actions';
 import AlbumSongItem from './album_song_item';
 
 class AlbumShow extends React.Component {
@@ -18,6 +18,8 @@ class AlbumShow extends React.Component {
 
   handlePlay(){
     if (this.props.album.songs){
+      debugger
+      this.props.receiveQueue(this.props.album.songs);
       this.props.fetchPlayingSong(this.props.album.songs[0]);
     }
   }
@@ -40,7 +42,13 @@ class AlbumShow extends React.Component {
       songs = (
         this.props.album.songs.map( (song,i) => {
           return (
-            <AlbumSongItem key={i} index={i} song={song} fetchPlayingSong={this.props.fetchPlayingSong} fetchSong={this.props.fetchSong} />
+            <AlbumSongItem key={i}
+              index={i}
+              song={song}
+              fetchPlayingSong={this.props.fetchPlayingSong}
+              fetchSong={this.props.fetchSong}
+              queue={this.props.album.songs}
+              receiveQueue={this.props.receiveQueue} />
           );
         })
       );
@@ -99,6 +107,7 @@ class AlbumShow extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     album: state.entities.albums[ownProps.match.params.id],
+    queue: Object.values(state.entities.songs),
   };
 };
 
@@ -108,6 +117,7 @@ const mapDispatchToProps = dispatch => {
     fetchPlaylists: () => dispatch(fetchPlaylists()),
     fetchPlayingSong: (id) => dispatch(fetchPlayingSong(id)),
     fetchSong: (id) => dispatch(fetchSong(id)),
+    receiveQueue: (queue) => dispatch(receiveQueue(queue)),
   };
 };
 
