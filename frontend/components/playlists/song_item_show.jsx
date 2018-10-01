@@ -18,11 +18,12 @@ class SongItemShow extends React.Component {
   }
 
   handlePlay(){
+    this.props.receiveQueue(this.props.queue);
     this.props.fetchPlayingSong(this.props.song);
   }
 
   toggleList(){
-      this.props.fetchSong(this.props.song);
+    this.props.fetchSong(this.props.song);
     const {index} = this.props;
     let drop = document.getElementById(`actual-more-dropdown-${index}`);
       if (drop.style.display === "none") {

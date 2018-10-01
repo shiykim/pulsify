@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchArtist, fetchArtists } from '../../actions/artist_actions';
 import { fetchPlaylists} from '../../actions/playlist_actions';
-import { fetchPlayingSong } from '../../actions/mediaplayer_actions';
+import { fetchPlayingSong, receiveQueue } from '../../actions/mediaplayer_actions';
 import MoreDropDown from '../playlists/more_dropdown';
 import AlbumSongItem from '../albums/album_song_item';
 
@@ -54,7 +54,11 @@ class ArtistShow extends React.Component {
       });
       songs = artist.songs.map( (song,i) => {
         return (
-          <AlbumSongItem key={i} song={song} fetchPlayingSong={this.props.fetchPlayingSong} dropdown="false" />
+          <AlbumSongItem key={i} song={song}
+            fetchPlayingSong={this.props.fetchPlayingSong}
+            dropdown="false"
+            queue={this.props.artist.songs}
+            receiveQueue={this.props.receiveQueue} />
         );
       });
     } else {
@@ -95,6 +99,7 @@ const mapDispatchToProps = dispatch => {
     fetchArtist: (id) => dispatch(fetchArtist(id)),
     fetchPlaylists: (id) => dispatch(fetchPlaylists()),
     fetchPlayingSong: (id) => dispatch(fetchPlayingSong(id)),
+    receiveQueue: (queue) => dispatch(receiveQueue(queue)),
   };
 };
 

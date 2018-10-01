@@ -5,7 +5,7 @@ import { fetchPlaylist, fetchPlaylists } from '../../actions/playlist_actions';
 import { fetchSongs }  from '../../actions/song_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import { selectPlaylistSongs } from '../../reducers/selectors.js';
-import { fetchPlayingSong } from '../../actions/mediaplayer_actions.js';
+import { fetchPlayingSong, receiveQueue } from '../../actions/mediaplayer_actions.js';
 
 const mapStateToProps = ({ session, entities: { playlists, songs, users }}, ownProps) => {
   const playlist = playlists[ownProps.match.params.id];
@@ -23,6 +23,7 @@ const mapDispatchToProps = dispatch => {
     closeModal: () => dispatch(closeModal()),
     fetchPlaylists: () => dispatch(fetchPlaylists()),
     fetchPlayingSong: (id) => dispatch(fetchPlayingSong(id)),
+    receiveQueue: (queue) => dispatch(receiveQueue(queue)),
   };
 };
 

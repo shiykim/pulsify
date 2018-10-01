@@ -754,7 +754,6 @@ function (_React$Component) {
     key: "handlePlay",
     value: function handlePlay() {
       if (this.props.album.songs) {
-        debugger;
         this.props.receiveQueue(this.props.album.songs);
         this.props.fetchPlayingSong(this.props.album.songs[0]);
       }
@@ -1266,7 +1265,9 @@ function (_React$Component) {
             key: i,
             song: song,
             fetchPlayingSong: _this2.props.fetchPlayingSong,
-            dropdown: "false"
+            dropdown: "false",
+            queue: _this2.props.artist.songs,
+            receiveQueue: _this2.props.receiveQueue
           });
         });
       } else {
@@ -1316,6 +1317,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     fetchPlayingSong: function fetchPlayingSong(id) {
       return dispatch(Object(_actions_mediaplayer_actions__WEBPACK_IMPORTED_MODULE_5__["fetchPlayingSong"])(id));
+    },
+    receiveQueue: function receiveQueue(queue) {
+      return dispatch(Object(_actions_mediaplayer_actions__WEBPACK_IMPORTED_MODULE_5__["receiveQueue"])(queue));
     }
   };
 };
@@ -2907,6 +2911,7 @@ function (_React$Component) {
     key: "handlePlay",
     value: function handlePlay() {
       if (this.props.songs) {
+        this.props.receiveQueue(this.props.songs);
         this.props.fetchPlayingSong(this.props.songs[0]);
       }
     }
@@ -2938,6 +2943,8 @@ function (_React$Component) {
   }, {
     key: "playlistSongs",
     value: function playlistSongs() {
+      var _this2 = this;
+
       var songs;
 
       if (this.props.songs[0]) {
@@ -2945,7 +2952,9 @@ function (_React$Component) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_song_item_show__WEBPACK_IMPORTED_MODULE_2__["default"], {
             key: i,
             index: i,
-            song: song
+            song: song,
+            queue: _this2.props.songs,
+            receiveQueue: _this2.props.receiveQueue
           });
         });
       } else {
@@ -2968,7 +2977,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       var playlist;
       var playlistsongs;
@@ -2980,7 +2989,7 @@ function (_React$Component) {
           updateDelete = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
             className: "navbar-images pshow-more",
             onClick: function onClick() {
-              return _this2.toggleList();
+              return _this3.toggleList();
             },
             style: {
               backgroundImage: "url(".concat(window.more, ")")
@@ -3011,7 +3020,12 @@ function (_React$Component) {
           id: "pshow-username"
         }, this.props.playlist.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           id: "pshow-length"
-        }, this.props.playlist.song_ids.length, " songs"), updateDelete, this.state.listOpen ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_drop_down_list__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        }, this.props.playlist.song_ids.length, " songs"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          onClick: function onClick() {
+            return _this3.handlePlay();
+          },
+          id: "btn-pshow-play"
+        }, "PLAY"), updateDelete, this.state.listOpen ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_drop_down_list__WEBPACK_IMPORTED_MODULE_3__["default"], {
           show: "open",
           onlyAdd: "add"
         }) : null)), playlistsongs);
@@ -3090,6 +3104,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     fetchPlayingSong: function fetchPlayingSong(id) {
       return dispatch(Object(_actions_mediaplayer_actions_js__WEBPACK_IMPORTED_MODULE_7__["fetchPlayingSong"])(id));
+    },
+    receiveQueue: function receiveQueue(queue) {
+      return dispatch(Object(_actions_mediaplayer_actions_js__WEBPACK_IMPORTED_MODULE_7__["receiveQueue"])(queue));
     }
   };
 };
@@ -3165,6 +3182,7 @@ function (_React$Component) {
   _createClass(SongItemShow, [{
     key: "handlePlay",
     value: function handlePlay() {
+      this.props.receiveQueue(this.props.queue);
       this.props.fetchPlayingSong(this.props.song);
     }
   }, {

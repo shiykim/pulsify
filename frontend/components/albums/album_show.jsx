@@ -18,7 +18,6 @@ class AlbumShow extends React.Component {
 
   handlePlay(){
     if (this.props.album.songs){
-      debugger
       this.props.receiveQueue(this.props.album.songs);
       this.props.fetchPlayingSong(this.props.album.songs[0]);
     }

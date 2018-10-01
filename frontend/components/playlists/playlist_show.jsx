@@ -14,6 +14,7 @@ class PlaylistShow extends React.Component {
 
   handlePlay(){
     if (this.props.songs){
+      this.props.receiveQueue(this.props.songs);
       this.props.fetchPlayingSong(this.props.songs[0]);
     }
   }
@@ -44,7 +45,11 @@ class PlaylistShow extends React.Component {
       songs = (
         this.props.songs.map( (song,i) => {
           return (
-            <SongItemShow key={i} index={i} song={song}  />
+            <SongItemShow key={i}
+              index={i}
+              song={song}
+              queue={this.props.songs}
+              receiveQueue={this.props.receiveQueue}  />
           );
         })
       );
@@ -96,6 +101,7 @@ class PlaylistShow extends React.Component {
               <li id='pshow-title'>{this.props.playlist.title}</li>
               <li id='pshow-username'>{this.props.playlist.username}</li>
               <li id='pshow-length'>{this.props.playlist.song_ids.length} songs</li>
+              <button onClick={() => this.handlePlay()} id='btn-pshow-play'>PLAY</button>
               {updateDelete}
               {this.state.listOpen ? <DropDownList show="open" onlyAdd='add' /> : null }
             </ul>
