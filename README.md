@@ -51,12 +51,12 @@ All playlists are displayed on the Home/Landing page of the website, which you c
 ![playlist add](app/assets/images/add_playlist.png)
 What good is a playlist without any songs? Users have the ability to add a song to any of their playlists on almost any page. In order to facilitate the addition of songs, custom routes were added.
 
-The playlist cover is also set to be the album cover of the first song of the playlist.
 
 ```
 delete '/playlist_songs/:playlist_id/:song_id', to: 'playlists#destroy_playlist_song'
 post '/playlist_songs', to: 'playlists#add_playlist_song'
 ```
+The playlist cover is also set to be the album cover of the first song of the playlist.
 
 ### `Search`
 
