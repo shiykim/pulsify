@@ -13,7 +13,9 @@
 
 ### `Audio Player`
 ![front page](app/assets/images/demo.gif)
+
 #### Continuous Play
+Continuous play is an integral part of
 
 #### Progress Bar
 

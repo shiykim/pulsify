@@ -15,12 +15,12 @@ class Artist < ApplicationRecord
     foreign_key: :artist_id,
     primary_key: :id
 
-  has_many :followers,
-    as: :followable,
-    dependent: :destroy
-
-  has_many :followed_users,
-    through: :followers
+  # has_many :followers,
+  #   as: :followable,
+  #   dependent: :destroy
+  #
+  # has_many :followed_users,
+  #   through: :followers
 
   def ensure_img_url
     self.img_url = 'insertdefaultartistpicture'

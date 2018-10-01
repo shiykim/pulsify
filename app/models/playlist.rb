@@ -14,11 +14,11 @@ class Playlist < ApplicationRecord
   has_many :songs,
     through: :playlist_songs
 
-  has_many :followers,
-    as: :followable,
-    dependent: :destroy
-
-  has_many :followed_users,
-    through: :followers
+  # has_many :followers,
+  #   as: :followable,
+  #   dependent: :destroy
+  #
+  # has_many :followed_users,
+  #   through: :followers
 
 end
