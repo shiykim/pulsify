@@ -15,12 +15,12 @@
 ![frontpage](app/assets/images/demo.gif)
 
 #### Continuous Play
-Continuous play is an integral part of the streaming experience. Pulsify provides continuous play, allowing users to navigate to other pages in the application without disturbing their listening experience. Continuous play was implemented through the use of 
+Continuous play is an integral part of the streaming experience. Pulsify provides continuous play, allowing users to navigate to other pages in the application without disturbing their listening experience.
 
 #### Progress Bar
-The dyanmic progress bar allows the user to play, pause, and skip a song. To more easily sync the progress bar with the audio player itself, I had to create a reference to both using React createRef.
+The dynamic progress bar allows the user to play, pause, and skip a song. To more easily sync the progress bar with the audio player itself, I had to create a reference to both using React createRef.
 
-I had to account for the case when a user would want to move ahead or backwards in the song via the progress bar. In order to do that, I calculated the percent change of the progress bar as a whole taking into account the click location of the user.
+I had to account for the case when a user would want to move ahead or backwards in the song via the progress bar. In order to do that, I calculated the percent change of the progress bar as a whole while taking into account the click location of the user.
 
 ```
 progressBarUpdate(e){
@@ -36,7 +36,7 @@ progressBarUpdate(e){
 ```
 
 #### Queue
-
+A queue was implemented so that once a song ends, the next song will play seamlessly. The contents of the queue differ based on which page the user chose to play the song. If a user began playing a song on the album show page, the queue will be populated with songs from that album. The queue also allows users to skip songs and listen to a previous song.
 
 ### `Playlist CRUD`
 
@@ -59,3 +59,8 @@ post '/playlist_songs', to: 'playlists#add_playlist_song'
 ```
 
 ### `Search`
+
+## Future Plans
+* Implement ability for users to upload profile pictures
+* Infinite scrolling on the index pages
+* Ability to interact with friends
