@@ -1679,12 +1679,7 @@ function (_React$Component) {
     _this.interval = setInterval(_this.time.bind(_assertThisInitialized(_assertThisInitialized(_this))), 250);
     _this.interval = setInterval(_this.startProgressBar.bind(_assertThisInitialized(_assertThisInitialized(_this))), 250);
     return _this;
-  } // static getDerivedStateFromProps(props, state){
-  //   if (Boolean(props.playingSong) !== state.playing){
-  //     return Object.assign({}, state, {playing: Boolean(props.playingSong)});
-  //   }
-  // }
-
+  }
 
   _createClass(Webplayer, [{
     key: "componentDidUpdate",
@@ -1728,6 +1723,24 @@ function (_React$Component) {
           var next = this.props.queue[this.props.queue_idx + 1];
           this.props.fetchPlayingSong(next);
         }
+      }
+    }
+  }, {
+    key: "shuffleSong",
+    value: function shuffleSong() {}
+  }, {
+    key: "replaySong",
+    value: function replaySong() {
+      if (this.props.queue_idx) {
+        this.props.fetchPlayingSong(this.props.song);
+      }
+    }
+  }, {
+    key: "replayPlaylist",
+    value: function replayPlaylist() {
+      if (this.props.queue_idx === this.props.queue.length - 1) {
+        var first = this.props.queue[0];
+        this.props.fetchPlayingSong(first);
       }
     }
   }, {
@@ -1795,6 +1808,12 @@ function (_React$Component) {
       return songinfo;
     }
   }, {
+    key: "queue",
+    value: function queue() {}
+  }, {
+    key: "volumeBar",
+    value: function volumeBar() {}
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -1813,7 +1832,6 @@ function (_React$Component) {
       }
 
       if (this.state.pause) {
-        // debugger
         current = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: window.mainplay
         });
@@ -1833,6 +1851,12 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "controls"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this2.shuffleSong();
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.previous
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
           return _this2.previousSong();
         }

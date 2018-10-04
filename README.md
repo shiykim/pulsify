@@ -22,7 +22,7 @@ The dynamic progress bar allows the user to play, pause, and skip a song. To mor
 
 I had to account for the case when a user would want to move ahead or backwards in the song via the progress bar. In order to do that, I calculated the percent change of the progress bar as a whole while taking into account the click location of the user.
 
-```
+``` javascript
 progressBarUpdate(e){
   let progressBar = this.progressBar.current;
   let player = this.playerRef.current;
@@ -52,7 +52,7 @@ All playlists are displayed on the Home/Landing page of the website, which you c
 What good is a playlist without any songs? Users have the ability to add a song to any of their playlists on almost any page. In order to facilitate the addition of songs, custom routes were added.
 
 
-```
+``` javascript
 delete '/playlist_songs/:playlist_id/:song_id', to: 'playlists#destroy_playlist_song'
 post '/playlist_songs', to: 'playlists#add_playlist_song'
 ```

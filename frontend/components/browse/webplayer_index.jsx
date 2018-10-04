@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchPlayingSong } from '../../actions/mediaplayer_actions'
+import { fetchPlayingSong } from '../../actions/mediaplayer_actions';
 
 class Webplayer extends React.Component {
 
@@ -18,12 +18,6 @@ class Webplayer extends React.Component {
     this.interval = setInterval(this.time.bind(this), 250);
     this.interval = setInterval(this.startProgressBar.bind(this), 250);
   }
-
-  // static getDerivedStateFromProps(props, state){
-  //   if (Boolean(props.playingSong) !== state.playing){
-  //     return Object.assign({}, state, {playing: Boolean(props.playingSong)});
-  //   }
-  // }
 
   componentDidUpdate(previousProps){
     if (previousProps.song !== this.props.song){
@@ -58,6 +52,23 @@ class Webplayer extends React.Component {
         let next = this.props.queue[this.props.queue_idx + 1];
         this.props.fetchPlayingSong(next);
       }
+    }
+  }
+
+  shuffleSong(){
+
+  }
+
+  replaySong(){
+    if (this.props.queue_idx){
+      this.props.fetchPlayingSong(this.props.song);
+    }
+  }
+
+  replayPlaylist(){
+    if (this.props.queue_idx === (this.props.queue.length - 1)){
+      let first = this.props.queue[0];
+      this.props.fetchPlayingSong(first);
     }
   }
 
@@ -111,6 +122,14 @@ class Webplayer extends React.Component {
     return songinfo;
   }
 
+  queue(){
+
+  }
+
+  volumeBar(){
+
+  }
+
   render(){
     let current;
     let audio;
@@ -123,7 +142,6 @@ class Webplayer extends React.Component {
     }
 
     if(this.state.pause){
-      // debugger
       current = <img src={window.mainplay}/>;
     } else if (!this.state.paused && !this.state.playing){
       current = <img src={window.mainplay}/>;
@@ -137,6 +155,7 @@ class Webplayer extends React.Component {
       {this.songInfo()}
         <div className="player">
           <div className="controls">
+            <button onClick={() => this.shuffleSong()}><img src={window.previous}/></button>
             <button onClick={() => this.previousSong()}><img src={window.previous}/></button>
             <button onClick={() => this.togglePlay()}>{current}</button>
             <button onClick={() => this.nextSong()}><img src={window.forward}/></button>
