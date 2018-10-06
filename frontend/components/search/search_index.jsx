@@ -19,11 +19,6 @@ class SearchIndex extends React.Component {
     this.props.fetchSongs();
     this.props.fetchAlbums();
   }
-  //
-  // selectResponse(event) {
-  //   const response = event.currentTarget.innerText;
-  //   this.setState({inputVal: response});
-  // }
 
   handleInput(event) {
     this.setState({inputVal: event.currentTarget.value});
@@ -53,41 +48,6 @@ class SearchIndex extends React.Component {
 
     return results;
   }
-
-
-  // matches(slice) {
-  //   const matches = [];
-  //   if (this.state.inputVal.length === 0) {
-  //     return this.props.names;
-  //   }
-  //   slice.forEach(name => {
-  //     const chars = name.title.toLowerCase().replace(/ /g, '').split('');
-  //     const sub = name.title.slice(0, this.state.inputVal.length).toLowerCase();
-  //     const input = this.state.inputVal.toLowerCase().replace(/ /g, '').split('');
-  //
-  //     if (input.length === 1){
-  //       if (chars.includes(input.pop())){
-  //         matches.push(name);
-  //       }
-  //     } else {
-  //       if (sub.toLowerCase() === input.join("")) {
-  //         matches.push(name);
-  //       }
-  //     }
-  //   });
-  //
-  //   if (matches.length === 0) {
-  //     matches.push('No matches');
-  //   }
-  //
-  //   const results = matches.map((result, i) => {
-  //    return (
-  //      <li key={i}>{result.title}</li>
-  //     );
-  //   });
-  //
-  //   return results;
-  // }
 
   nameMatches(slice) {
     const matches = [];

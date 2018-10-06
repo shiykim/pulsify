@@ -20,7 +20,8 @@
 .controls {
   float: none;
   z-index: 1;
-  padding-bottom: 15px;
+  position: absolute;
+  left: 58%;
 }
 
 .controls > button {
@@ -28,9 +29,7 @@
   height: 50px;
   width: 34px;
   box-sizing: border-box;
-  text-align: center;
   padding: 17px 10px;
-  float: left;
   color: white;
   cursor: pointer;
 }
@@ -52,15 +51,7 @@
   background: grey;
   cursor: pointer;
   z-index: 1;
-}
-
-.progress > .bar {
-  position: absolute;
-  left: 5px;
-  right: 5px;
-  top: 5px;
-  bottom: 5px;
-  z-index: 1;
+  height: 7px;
 }
 
 .progress > .bar > div {
@@ -72,9 +63,10 @@
   border-radius: 10px;
 }
 
-.progress > .bar > div:hover {
+.progress:hover > .bar > div {
   background: green;
 }
+
 #time {
   position: absolute;
   bottom: -9px;
@@ -117,7 +109,6 @@
   padding-right: 10px;
 }
 
-
 .playbar-title {
   letter-spacing: 1px;
   font-size: 13px;
@@ -132,4 +123,44 @@
   font-size: 13px;
   color: grey;
   padding-top: 6px;
+}
+
+.volume {
+  height: 7px;
+  width: 6%;
+  background-color: grey;
+  position: absolute;
+  bottom: 34px;
+  right: 46px;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.volume-bar > div {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: white;
+  border-radius: 10px;
+}
+
+.volume:hover > .volume-bar > div {
+  background: green;
+}
+
+.sound-svgs {
+  fill: grey;
+  bottom: -6px;
+  right: 95px;
+  position: absolute;
+}
+
+.sound-one {
+  right: 96px;
+  top: -5px;
+}
+
+.sound-svgs:hover {
+  fill: white;
 }

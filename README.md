@@ -52,7 +52,7 @@ All playlists are displayed on the Home/Landing page of the website, which you c
 What good is a playlist without any songs? Users have the ability to add a song to any of their playlists on almost any page. In order to facilitate the addition of songs, custom routes were added.
 
 
-``` javascript
+``` ruby
 delete '/playlist_songs/:playlist_id/:song_id', to: 'playlists#destroy_playlist_song'
 post '/playlist_songs', to: 'playlists#add_playlist_song'
 ```

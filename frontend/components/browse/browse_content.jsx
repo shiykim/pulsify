@@ -5,8 +5,9 @@ import { ProtectedRoute } from '../../util/route_util';
 import { openModal, closeModal } from '../../actions/modal_actions';
 
 import PlaylistIndexContainer from '../playlists/playlist_index_container';
-// import PlaylistShowContainer from '../playlists/playlist_show_container';
-import UserSongsContainer from '../songs/user_songs_container';
+import PlaylistShowContainer from '../playlists/playlist_show_container';
+// import DailyMixContainer from '../songs/mix_container.js';
+
 class BrowseContent extends React.Component {
 
   render () {
@@ -14,7 +15,10 @@ class BrowseContent extends React.Component {
         <div className='main'>
           <div className='content-main'>
             <ul className='playlist-nav'>
+              <li><Link to="/collection/playlists">DAILY MIX</Link></li>
               <li><Link to="/collection/playlists">YOUR PLAYLISTS</Link></li>
+              <li><Link to="/collection/playlists">FOLLOWED ARTISTS</Link></li>
+              <li><Link to="/collection/playlists">FOLLOWED ALBUMS</Link></li>
             </ul>
             {this.props.openModal}
             <ProtectedRoute path="/collection/playlists" component={PlaylistIndexContainer}/>
@@ -23,6 +27,7 @@ class BrowseContent extends React.Component {
     );
   }
 }
+// <ProtectedRoute path="/collection/mix" component={DailyMixContainer}/>
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -38,7 +43,3 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(null, mapDispatchToProps)(BrowseContent);
-
-
-
-// <ProtectedRoute path="/collection/songs" component={UserSongsContainer}/>
