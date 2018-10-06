@@ -1,4 +1,5 @@
 class Playlist < ApplicationRecord
+
   validates :title, presence: true
 
   belongs_to :author,
@@ -14,11 +15,12 @@ class Playlist < ApplicationRecord
   has_many :songs,
     through: :playlist_songs
 
-  # has_many :followers,
-  #   as: :followable,
-  #   dependent: :destroy
-  #
-  # has_many :followed_users,
-  #   through: :followers
+  has_many :follows,
+    as: :followable,
+    dependent: :destroy
+
+  has_many :followers,
+    through: :follows,
+    source: :user
 
 end

@@ -19,17 +19,23 @@ class PlaylistShow extends React.Component {
     }
   }
 
+  handleFollow(){
+    this.props.follow(parseInt(this.props.match.params.id), 'playlists');
+  }
+
+  handleUnfollow(){
+    this.props.unfollow(parseInt(this.props.match.params.id), 'playlists');
+  }
+
   componentDidMount() {
     this.props.fetchPlaylist(this.props.match.params.id);
     this.props.fetchSongs();
-    this.props.fetchPlaylists();
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.id !== nextProps.match.params.id) {
       this.props.fetchPlaylist(nextProps.match.params.id);
       this.props.fetchSongs();
-      this.props.fetchPlaylists();
     }
   }
 
@@ -68,11 +74,31 @@ class PlaylistShow extends React.Component {
     }
   }
 
+  followButton(){
+    const followedPlaylists = this.props.currentUser.followedPlaylist;
+    if (this.props.playlist.author_id != this.props.currentUser.id){
+      if (followedPlaylists.includes(parseInt(this.props.match.params.id))) {
+        return (
+          <button onClick={() => this.handleUnfollow()} id='btn-pshow-play'>Unfollow</button>
+        );
+      } else {
+        return (
+          <button onClick={() => this.handleFollow()} id='btn-pshow-play'>Follow</button>
+        );
+      }
+    }
+  }
+
   render() {
     let playlist;
     let playlistsongs;
     let playlistCover;
     let updateDelete;
+    let follow;
+
+    if (this.props.currentUser && this.props.playlist){
+      follow = this.followButton();
+    }
 
     if (this.props.playlist){
 
@@ -102,6 +128,7 @@ class PlaylistShow extends React.Component {
               <li id='pshow-username'>{this.props.playlist.username}</li>
               <li id='pshow-length'>{this.props.playlist.song_ids.length} songs</li>
               <button onClick={() => this.handlePlay()} id='btn-pshow-play'>PLAY</button>
+              {follow}
               {updateDelete}
               {this.state.listOpen ? <DropDownList show="open" onlyAdd='add' /> : null }
             </ul>

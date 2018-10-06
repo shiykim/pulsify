@@ -1,4 +1,5 @@
 class Song < ApplicationRecord
+
   validates :title, :song_url, presence: true
 
   after_initialize :ensure_song_url
@@ -22,13 +23,13 @@ class Song < ApplicationRecord
 
   has_many :playlists, through: :playlist_songs
 
-  # has_many :followers,
-  #   as: :followable,
-  #   dependent: :destroy
-  #
-  # has_many :followed_users,
-  #   through: :followers
+  has_many :follows,
+    as: :followable,
+    dependent: :destroy
 
+  has_many :followers,
+    through: :follows,
+    source: :user
 
   def ensure_song_url
     self.song_url = 'placeholder.mp3'

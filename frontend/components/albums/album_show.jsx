@@ -5,6 +5,7 @@ import { fetchAlbum } from '../../actions/album_actions';
 import { fetchSong } from '../../actions/song_actions';
 import { fetchPlaylists } from '../../actions/playlist_actions';
 import { fetchPlayingSong, receiveQueue } from '../../actions/mediaplayer_actions';
+import { follow, unfollow } from '../../actions/follow_actions';
 import AlbumSongItem from './album_song_item';
 
 class AlbumShow extends React.Component {
@@ -21,6 +22,14 @@ class AlbumShow extends React.Component {
       this.props.receiveQueue(this.props.album.songs);
       this.props.fetchPlayingSong(this.props.album.songs[0]);
     }
+  }
+
+  handleFollow(){
+    this.props.follow(parseInt(this.props.match.params.id), 'albums');
+  }
+
+  handleUnfollow(){
+    this.props.unfollow(parseInt(this.props.match.params.id), 'albums');
   }
 
   componentDidMount() {
@@ -60,9 +69,16 @@ class AlbumShow extends React.Component {
   render() {
     let album_info;
     let album_songs;
+    let follow;
 
     if(this.props.album){
       album_songs = this.props.album.songs;
+    }
+
+    if (this.props.user.includes(parseInt(this.props.match.params.id))){
+      follow = <button onClick={() => this.handleUnfollow()} id='btn-pshow-play'>Unfollow</button>;
+    } else {
+      follow = <button onClick={() => this.handleFollow()} id='btn-pshow-play'>Follow</button>;
     }
 
     if(album_songs){
@@ -83,6 +99,7 @@ class AlbumShow extends React.Component {
               </Link>
               <li id='pshow-length'>{this.props.album.release_year}</li>
               <button onClick={() => this.handlePlay()} id='btn-pshow-play'>PLAY</button>
+              {follow}
             </ul>
           </section>
           {album_songs}
@@ -107,6 +124,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     album: state.entities.albums[ownProps.match.params.id],
     queue: Object.values(state.entities.songs),
+    user: state.entities.users[state.session.id].followedAlbum
   };
 };
 
@@ -117,6 +135,8 @@ const mapDispatchToProps = dispatch => {
     fetchPlayingSong: (id) => dispatch(fetchPlayingSong(id)),
     fetchSong: (id) => dispatch(fetchSong(id)),
     receiveQueue: (queue) => dispatch(receiveQueue(queue)),
+    follow: (followableId, followableType) => dispatch(follow(followableId, followableType)),
+    unfollow: (followableId, followableType) => dispatch(unfollow(followableId, followableType)),
   };
 };
 

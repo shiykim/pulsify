@@ -10,7 +10,22 @@ Rails.application.routes.draw do
      resources :albums, only: [:index, :show]
      resources :artists, only: [:index, :show]
 
+     #adding songs to playlists
      delete '/playlist_songs/:playlist_id/:song_id', to: 'playlists#destroy_playlist_song'
      post '/playlist_songs', to: 'playlists#add_playlist_song'
+
+     #follows and unfollows
+     delete '/playlists/unfollow/:followable_id', to: 'playlists#unfollow'
+     post '/playlists/follow/:followable_id', to: 'playlists#follow'
+
+     delete '/albums/unfollow/:followable_id', to: 'albums#unfollow'
+     post '/albums/follow/:followable_id', to: 'albums#follow'
+
+     delete '/songs/unfollow/:followable_id', to: 'songs#unfollow'
+     post '/songs/follow/:followable_id', to: 'songs#follow'
+
+     delete '/artists/unfollow/:followable_id', to: 'artists#unfollow'
+     post '/artists/follow/:followable_id', to: 'artists#follow'
+
    end
 end

@@ -7,6 +7,8 @@ import {
 } from '../actions/song_actions';
 
 const songReducer = (state = {}, action) => {
+  let newState;
+
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_ALL_SONGS:
@@ -16,9 +18,9 @@ const songReducer = (state = {}, action) => {
     case RECEIVE_PLAYLIST_SONG:
       return merge({}, state, { [action.payload.song_id]: action.payload.songs });
     case REMOVE_PLAYLIST_SONG:
-      const newState = merge({}, state);
+      newState = merge({}, state);
       delete newState[action.payload.song_id];
-      return newState
+      return newState;
     default:
       return state;
   }

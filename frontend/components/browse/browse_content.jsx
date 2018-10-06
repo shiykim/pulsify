@@ -15,10 +15,9 @@ class BrowseContent extends React.Component {
         <div className='main'>
           <div className='content-main'>
             <ul className='playlist-nav'>
-              <li><Link to="/collection/playlists">DAILY MIX</Link></li>
               <li><Link to="/collection/playlists">YOUR PLAYLISTS</Link></li>
-              <li><Link to="/collection/playlists">FOLLOWED ARTISTS</Link></li>
-              <li><Link to="/collection/playlists">FOLLOWED ALBUMS</Link></li>
+              <li><Link to="/collection/playlists">YOUR FOLLOWS</Link></li>
+              <li><Link to="/collection/playlists">DAILY MIX</Link></li>
             </ul>
             {this.props.openModal}
             <ProtectedRoute path="/collection/playlists" component={PlaylistIndexContainer}/>

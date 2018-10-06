@@ -24,6 +24,8 @@ const mapDispatchToProps = dispatch => {
     fetchPlaylists: () => dispatch(fetchPlaylists()),
     fetchPlayingSong: (id) => dispatch(fetchPlayingSong(id)),
     receiveQueue: (queue) => dispatch(receiveQueue(queue)),
+    follow: (followableId, followableType) => dispatch(follow(followableId, followableType)),
+    unfollow: (followableId, followableType) => dispatch(unfollow(followableId, followableType)),
   };
 };
 

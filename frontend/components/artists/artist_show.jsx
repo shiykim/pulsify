@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import MoreDropDown from '../playlists/more_dropdown';
+import AlbumSongItem from '../albums/album_song_item';
 import { fetchArtist, fetchArtists } from '../../actions/artist_actions';
 import { fetchPlaylists} from '../../actions/playlist_actions';
 import { fetchPlayingSong, receiveQueue } from '../../actions/mediaplayer_actions';
-import MoreDropDown from '../playlists/more_dropdown';
-import AlbumSongItem from '../albums/album_song_item';
+import { unfollow, follow } from '../../actions/follow_actions';
 
 class ArtistShow extends React.Component {
 
@@ -26,12 +27,28 @@ class ArtistShow extends React.Component {
     }
   }
 
+  handleFollow(){
+    this.props.follow(parseInt(this.props.match.params.id), 'artists');
+  }
+
+  handleUnfollow(){
+    this.props.unfollow(parseInt(this.props.match.params.id), 'artists');
+  }
+
   render() {
     let albums;
     let songs;
     let artist_albums;
     let artist_img;
     let artist_name;
+    let follow;
+
+
+    if (this.props.user.includes(parseInt(this.props.match.params.id))){
+      follow = <button onClick={() => this.handleUnfollow()} id='btn-pshow-play'>Unfollow</button>;
+    } else {
+      follow = <button onClick={() => this.handleFollow()} id='btn-pshow-play'>Follow</button>;
+    }
 
     const artist = this.props.artist;
     if(this.props.artist){
@@ -70,6 +87,7 @@ class ArtistShow extends React.Component {
       <div className='artist-whole'>
         <div className='first-half' style={{backgroundImage: `url(${artist_img})`}} >
           <h1>{artist_name}</h1>
+          {follow}
         </div>
         <div className='second-half'>
           <h2 className='headers-artists'> Albums</h2>
@@ -91,15 +109,18 @@ class ArtistShow extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     artist: state.entities.artists[ownProps.match.params.id],
+    user: state.entities.users[state.session.id].followedArtist,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchArtist: (id) => dispatch(fetchArtist(id)),
-    fetchPlaylists: (id) => dispatch(fetchPlaylists()),
-    fetchPlayingSong: (id) => dispatch(fetchPlayingSong(id)),
-    receiveQueue: (queue) => dispatch(receiveQueue(queue)),
+    fetchArtist: id => dispatch(fetchArtist(id)),
+    fetchPlaylists: id => dispatch(fetchPlaylists()),
+    fetchPlayingSong: id => dispatch(fetchPlayingSong(id)),
+    receiveQueue: queue => dispatch(receiveQueue(queue)),
+    follow: (followableId, followableType) => dispatch(follow(followableId, followableType)),
+    unfollow: (followableId, followableType) => dispatch(unfollow(followableId, followableType)),
   };
 };
 
