@@ -6,7 +6,7 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 
 import PlaylistIndexContainer from '../playlists/playlist_index_container';
 import PlaylistShowContainer from '../playlists/playlist_show_container';
-// import DailyMixContainer from '../songs/mix_container.js';
+import DailyMixContainer from '../users/daily_mix_container.js';
 
 class BrowseContent extends React.Component {
 
@@ -16,17 +16,19 @@ class BrowseContent extends React.Component {
           <div className='content-main'>
             <ul className='playlist-nav'>
               <li><Link to="/collection/playlists">YOUR PLAYLISTS</Link></li>
-              <li><Link to="/collection/playlists">YOUR FOLLOWS</Link></li>
-              <li><Link to="/collection/playlists">DAILY MIX</Link></li>
+              <li><Link to="/collection/dailymix">DAILY MIX</Link></li>
+              <li><Link to="/collection/playlists">ARTISTS</Link></li>
+              <li><Link to="/collection/playlists">ALBUMS</Link></li>
+              <li><Link to="/collection/playlists">PLAYLISTS</Link></li>
             </ul>
             {this.props.openModal}
             <ProtectedRoute path="/collection/playlists" component={PlaylistIndexContainer}/>
         </div>
+        <ProtectedRoute path="/collection/dailymix" component={DailyMixContainer}/>
       </div>
     );
   }
 }
-// <ProtectedRoute path="/collection/mix" component={DailyMixContainer}/>
 
 const mapDispatchToProps = dispatch => {
   return {

@@ -32,29 +32,48 @@ export const userSongs = (state) => {
   if (playlists.length !== 0 && songlength !== 0){
     songs = playlists.map (playlist => {
       state.entities.playlists[playlist.id].song_ids.map( id => {
-        // debugger
         songs[id] = (state.entities.songs[id]);
       });
     });
   } else {
     songs = null;
   }
-  // debugger
   return songs;
 };
-//
-// export const userSongsArtists = (state, songs) => {
-//   let songs;
-//     songs = playlistIds.map (songId => {
-//       return( state.entities.songs[songId]);
-//     });
-//   return songs;
-// };
-//
-// export const userArtists = (state, artistIds) => {
-//   let artists;
-//   artists = artistIds.map ( id => {
-//     return( state.entities.artists[id]);
-//   });
-//   return artists;
-// };
+
+export const userFollowedArtists = (state) => {
+  let songs = {};
+  let playlists = Object.values(state.entities.playlists);
+  let songlength = Object.values(state.entities.songs).length;
+  return songs;
+};
+
+export const userDailyMix = (state) => {
+  let songIds = [];
+  let mixSongs = {};
+  let artists = state.entities.artists;
+  let songs = state.entities.songs;
+  let userArtists = state.entities.users[state.session.id]["followedArtist"];
+
+  if (Object.values(artists).length > 0 && userArtists.length > 4) {
+    userArtists.map((artist) => {
+      songIds.push( ... artists[artist].song_ids.slice(0,2));
+    });
+  }
+
+  if (Object.values(songs).length > 0 && songIds.length > 0){
+    let randSongs = [];
+    for (let i = 0; i < 10; i++) {
+      let rand = Math.floor(Math.random() * (songIds.length - 1));
+      if (!randSongs.includes(songIds[rand])){
+        randSongs.push(songIds[rand]);
+      }
+    }
+
+    randSongs.map( (id) => {
+      mixSongs[id] = songs[id];
+    });
+  }
+
+  return Object.values(mixSongs);
+};

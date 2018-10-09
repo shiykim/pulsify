@@ -118,7 +118,6 @@ class Webplayer extends React.Component {
       if (volume < 0.05) {
         volume = 0;
       }
-      console.log(volume);
       this.setState({volume: volume});
       player.volume = volume;
     }
