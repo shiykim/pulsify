@@ -6,7 +6,10 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 
 import PlaylistIndexContainer from '../playlists/playlist_index_container';
 import PlaylistShowContainer from '../playlists/playlist_show_container';
-import DailyMixContainer from '../users/daily_mix_container.js';
+import DailyMixContainer from '../users/daily_mix_container';
+import FollowedArtistsContainer from '../users/followed_artists_container';
+import FollowedAlbumsContainer from '../users/followed_albums_container';
+import FollowedPlaylistsContainer from '../users/followed_playlists_container';
 
 class BrowseContent extends React.Component {
 
@@ -17,14 +20,17 @@ class BrowseContent extends React.Component {
             <ul className='playlist-nav'>
               <li><Link to="/collection/playlists">YOUR PLAYLISTS</Link></li>
               <li><Link to="/collection/dailymix">DAILY MIX</Link></li>
-              <li><Link to="/collection/playlists">ARTISTS</Link></li>
-              <li><Link to="/collection/playlists">ALBUMS</Link></li>
-              <li><Link to="/collection/playlists">PLAYLISTS</Link></li>
+              <li><Link to="/collection/artists">ARTISTS</Link></li>
+              <li><Link to="/collection/albums">ALBUMS</Link></li>
+              <li><Link to="/collection/followed_playlists">PLAYLISTS</Link></li>
             </ul>
             {this.props.openModal}
             <ProtectedRoute path="/collection/playlists" component={PlaylistIndexContainer}/>
         </div>
         <ProtectedRoute path="/collection/dailymix" component={DailyMixContainer}/>
+        <ProtectedRoute path="/collection/artists" component={FollowedArtistsContainer}/>
+        <ProtectedRoute path="/collection/albums" component={FollowedAlbumsContainer}/>
+        <ProtectedRoute path="/collection/followed_playlists" component={FollowedPlaylistsContainer}/>
       </div>
     );
   }

@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PlaylistShowContainer from './playlist_show_container';
+// import PlaylistShowContainer from './playlist_show_container';
 import { ProtectedRoute } from '../../util/route_util';
 import { connect } from 'react-redux';
-import { fetchPlaylists } from '../../actions/playlist_actions';
 
 
 class PlaylistAllIndex extends React.Component {
@@ -60,17 +59,4 @@ class PlaylistAllIndex extends React.Component {
   }
 }
 
-const mapStateToProps = ({ session, entities: { playlists, users }}) => {
-  return {
-    playlists: Object.values(playlists),
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchPlaylists: () => dispatch(fetchPlaylists()),
-  };
-};
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(PlaylistAllIndex);
+export default PlaylistAllIndex;

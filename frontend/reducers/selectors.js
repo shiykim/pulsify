@@ -42,10 +42,15 @@ export const userSongs = (state) => {
 };
 
 export const userFollowedArtists = (state) => {
-  let songs = {};
-  let playlists = Object.values(state.entities.playlists);
-  let songlength = Object.values(state.entities.songs).length;
-  return songs;
+  let artists = state.entities.artists;
+  let userArtists = [];
+  let followedArtists = state.entities.users[state.session.id]['followedArtist'];
+  if (Object.values(artists).length > 0 && followedArtists.length > 0) {
+    followedArtists.map ((id) => {
+      userArtists.push(artists[id]);
+    });
+  }
+  return userArtists;
 };
 
 export const userDailyMix = (state) => {
@@ -76,4 +81,30 @@ export const userDailyMix = (state) => {
   }
 
   return Object.values(mixSongs);
+};
+
+
+export const userFollowedAlbums = (state) => {
+  let albums = state.entities.albums;
+  let userAlbums = [];
+  if (Object.values(albums).length > 0 ) {
+    let followedAlbums = state.entities.users[state.session.id]['followedAlbum'];
+    followedAlbums.map ((id) => {
+      userAlbums.push(albums[id]);
+    });
+  }
+  return userAlbums;
+};
+
+export const userFollowedPlaylists = (state) => {
+  let playlists = state.entities.playlists;
+  let userFollowedPlaylists = [];
+  let followedPlaylists = state.entities.users[state.session.id]['followedPlaylist'];
+  if (Object.values(playlists).length > 0 && followedPlaylists.length > 0) {
+    followedPlaylists.map ((id) => {
+      userFollowedPlaylists.push(playlists[id]);
+    });
+  }
+  console.log(userFollowedPlaylists);
+  return userFollowedPlaylists;
 };

@@ -6,7 +6,7 @@ import SongIndexContainer from '../songs/song_index_container';
 import AlbumIndexContainer from '../albums/album_index_container';
 import ArtistIndexContainer from '../artists/artist_index_container';
 import ArtistShow from '../artists/artist_show';
-import PlaylistAllIndex from '../playlists/playlist_all_index';
+import PlaylistAllIndex from '../playlists/playlist_all_container';
 import UsersIndex from '../users/users_index.jsx';
 class HomeIndex extends React.Component {
 
