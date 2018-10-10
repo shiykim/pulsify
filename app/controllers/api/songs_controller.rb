@@ -23,4 +23,10 @@ class Api::SongsController < ApplicationController
     render "api/follows/follow_show"
   end
 
+  def followed_songs
+    @artists = current_user.followed_artist_ids.shuffle.take(5)
+    @songs = Song.with_attached_photo.includes(:artist, album: [photo_attachment: :blob])
+    render "api/songs/dailymix_index"
+  end
+
 end

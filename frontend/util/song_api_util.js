@@ -29,3 +29,10 @@ export const removePlaylistSong = (playlist_id, song_id) => {
     url: `/api/playlist_songs/${playlist_id}/${song_id}`,
   });
 };
+
+export const fetchDailyMix = () => {
+  return $.ajax({
+    method: 'GET',
+    url: `/api/dailymix`,
+  });
+};

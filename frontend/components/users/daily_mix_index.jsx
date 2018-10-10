@@ -3,15 +3,16 @@ import { Link } from 'react-router-dom';
 import SongItemIndex from '../songs/song_item_index';
 
 class DailyMixIndex extends React.Component {
+
   componentDidMount(){
-    this.props.fetchSongs();
+    this.props.fetchDailyMix();
     this.props.fetchArtists();
   }
 
   render () {
     let songs;
     let dailyMix = this.props.songs;
-    if (dailyMix.length > 0){
+    if (dailyMix){
       songs = (
         this.props.songs.map( (song,i) => {
           return (
@@ -24,11 +25,15 @@ class DailyMixIndex extends React.Component {
         })
       );
     } else {
-      songs = null;
+      songs = (
+        <div>
+          Please follow atleast 5 artists so that we can more accurately provide song suggestions.
+        </div>
+      );
     }
-
     return (
       <div className='songs-index'>
+        <div> Play the music you love, without the effort. Packed with your favorites and new discoveries.</div>
         {songs}
       </div>
     );

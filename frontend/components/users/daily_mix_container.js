@@ -1,14 +1,13 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import DailyMixIndex from './daily_mix_index';
-import { fetchSongs, fetchSong } from '../../actions/song_actions';
+import { fetchSongs, fetchSong, fetchDailyMix } from '../../actions/song_actions';
 import { fetchArtists } from '../../actions/artist_actions';
 import { fetchPlayingSong, receiveQueue } from '../../actions/mediaplayer_actions';
-import { userDailyMix } from '../../reducers/selectors';
 
 const mapStateToProps = (state) => {
   return {
-    songs: userDailyMix(state),
+    songs: Object.values(state.ui.dailyMix),
   };
 };
 
@@ -19,6 +18,7 @@ const mapDispatchToProps = dispatch => {
     fetchPlayingSong: (id) => dispatch(fetchPlayingSong(id)),
     fetchSong: (id) => dispatch(fetchSong(id)),
     receiveQueue: (queue) => dispatch(receiveQueue(queue)),
+    fetchDailyMix: () => dispatch(fetchDailyMix()),
   };
 };
 

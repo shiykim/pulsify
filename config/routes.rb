@@ -27,5 +27,7 @@ Rails.application.routes.draw do
      delete '/artists/unfollow/:followable_id', to: 'artists#unfollow'
      post '/artists/follow/:followable_id', to: 'artists#follow'
 
+     get '/dailymix/', to: 'songs#followed_songs'
+
    end
 end

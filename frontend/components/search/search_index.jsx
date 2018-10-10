@@ -160,7 +160,7 @@ class SearchIndex extends React.Component {
       <div className='search-main'>
         <div className='content-main'>
           <section className='modal-playlist'>
-            <div id='search-instruction'>Search for an Artist, Song, Album, Playlist, Podcast or Episode</div>
+            <div id='search-instruction'>Search for an Artist, Song, Album, or Playlist.</div>
               <input
                 id='search-text'
                 onChange={this.handleInput}

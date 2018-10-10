@@ -3,6 +3,7 @@ import * as SongApiUtil from '../util/song_api_util';
 export const RECEIVE_ALL_SONGS = "RECEIVE_ALL_SONGS";
 export const RECEIVE_SONG = 'RECEIVE_SONG';
 export const RECEIVE_PLAYLIST_SONG = 'RECEIVE_PLAYLIST_SONG';
+export const RECEIVE_DAILY_MIX = 'RECEIVE_DAILY_MIX';
 export const REMOVE_PLAYLIST_SONG = 'REMOVE_PLAYLIST_SONG';
 
 const receiveAllSongs = songs => ({
@@ -15,6 +16,10 @@ const receiveSong = song => ({
   song
 });
 
+const receiveDailyMix = songs => ({
+  type: RECEIVE_DAILY_MIX,
+  songs
+});
 
 const receivePlaylistSong = payload => {
   return {
@@ -56,6 +61,14 @@ export const removePlaylistSong = (playlistId, songId) => {
   return dispatch => {
     return SongApiUtil.removePlaylistSong(playlistId, songId).then( payload => {
       return dispatch(deletePlaylistSong(payload));
+    });
+  };
+};
+
+export const fetchDailyMix = () => {
+  return dispatch => {
+    return SongApiUtil.fetchDailyMix().then( songs => {
+      return dispatch(receiveDailyMix(songs));
     });
   };
 };

@@ -8,8 +8,8 @@ import ArtistIndexContainer from '../artists/artist_index_container';
 import ArtistShow from '../artists/artist_show';
 import PlaylistAllIndex from '../playlists/playlist_all_container';
 import UsersIndex from '../users/users_index.jsx';
-class HomeIndex extends React.Component {
 
+class HomeIndex extends React.Component {
 
   render () {
 

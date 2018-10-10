@@ -19,7 +19,7 @@ class BrowseContent extends React.Component {
           <div className='content-main'>
             <ul className='playlist-nav'>
               <li><Link to="/collection/playlists">YOUR PLAYLISTS</Link></li>
-              <li><Link to="/collection/dailymix">DAILY MIX</Link></li>
+              <li><Link to="/collection/dailymix">YOUR DAILY MIX</Link></li>
               <li><Link to="/collection/artists">ARTISTS</Link></li>
               <li><Link to="/collection/albums">ALBUMS</Link></li>
               <li><Link to="/collection/followed_playlists">PLAYLISTS</Link></li>
