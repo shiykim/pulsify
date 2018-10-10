@@ -1869,9 +1869,11 @@ function (_React$Component) {
             receiveQueue: _this.props.receiveQueue
           });
         });
-        queue = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        queue = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+          className: "now-playing"
+        }, "Now Playing"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
           className: "queue-playing"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Now Playing"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_songs_song_item_index__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_songs_song_item_index__WEBPACK_IMPORTED_MODULE_3__["default"], {
           song: this.props.currentSong,
           fetchPlayingSong: this.props.fetchPlayingSong,
           fetchSong: this.props.fetchSong,
@@ -1879,7 +1881,9 @@ function (_React$Component) {
           receiveQueue: this.props.receiveQueue
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
           className: "queue-next"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Next Up"), songs));
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Next Up"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "songs-index"
+        }, songs)));
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

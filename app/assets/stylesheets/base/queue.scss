@@ -6,7 +6,6 @@
   width: 100wh;
   background-size: cover;
   overflow-y: auto;
-  padding-left: 260px;
   padding-right: 50px;
   color: white;
 }
@@ -18,6 +17,7 @@
   font-weight: 500;
   color: white;
   letter-spacing: 1px;
+  padding-left: 260px;
 }
 
 .queue-index > div > section > h2 {
@@ -26,6 +26,7 @@
   font-weight: 300;
   color: white;
   letter-spacing: 1px;
+  padding-left: 290px;
 }
 
 .queue-alert {
@@ -35,8 +36,25 @@
   font-weight: 300;
   color: white;
   letter-spacing: 1px;
+  padding-left: 260px;
 }
 
-.queue-alert > h2 {
+.now-playing {
+  text-align: left;
+  font-size: 20px;
+  font-weight: 300;
+  color: white;
+  letter-spacing: 1px;
+  padding-left: 290px;
+}
 
+.queue-playing {
+  color: white;
+  text-align: center;
+  position: relative;
+  width: 60%;
+  padding-left: 25%;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 200;
+  padding-top: 20px;
 }

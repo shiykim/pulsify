@@ -38,17 +38,19 @@ class QueueIndex extends React.Component {
 
       queue = (
         <div>
+          <h2 className='now-playing'>Now Playing</h2>
           <section className='queue-playing'>
-            <h2>Now Playing</h2>
-              <SongItemIndex song={this.props.currentSong}
-                fetchPlayingSong={this.props.fetchPlayingSong}
-                fetchSong={this.props.fetchSong}
-                queue={this.props.songs}
-                receiveQueue={this.props.receiveQueue}/>
+            <SongItemIndex song={this.props.currentSong}
+              fetchPlayingSong={this.props.fetchPlayingSong}
+              fetchSong={this.props.fetchSong}
+              queue={this.props.songs}
+              receiveQueue={this.props.receiveQueue}/>
           </section>
           <section className='queue-next'>
             <h2>Next Up</h2>
-              {songs}
+              <div className='songs-index'>
+                {songs}
+              </div>
           </section>
         </div>
       );
