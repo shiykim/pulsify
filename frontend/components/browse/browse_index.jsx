@@ -8,6 +8,7 @@ import SearchIndexContainer from '../search/search_index_container';
 import ArtistShow from '../artists/artist_show';
 import AlbumShow from '../albums/album_show';
 import Webplayer from './webplayer_index';
+import QueueIndex from './queue_index';
 
 class Browse extends React.Component {
 
@@ -58,6 +59,7 @@ class Browse extends React.Component {
           <ProtectedRoute path="/collection" component={BrowseContent} />
           <ProtectedRoute path="/search" component={SearchIndexContainer} />
           <ProtectedRoute path="/browse" component={HomeIndex} />
+          <ProtectedRoute path="/queue" component={QueueIndex} />
         </Switch>
     </div>
     );

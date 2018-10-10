@@ -4,7 +4,7 @@ import { LOGOUT_CURRENT_USER } from '../actions/session_actions';
 // import { PLAY } from '../actions/song_actions';
 // import { PLAY_SONG } from '../actions/song_actions';
 
-const mediaPlayerReducer = (state = {playingSong: null, playing: false, queue:[], queue_idx:null}, action) => {
+const mediaPlayerReducer = (state = {playingSong: null, playing: false, queue:[], queue_idx:0}, action) => {
 
   Object.freeze(state);
   let newState;

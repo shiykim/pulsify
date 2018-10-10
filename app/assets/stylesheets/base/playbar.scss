@@ -152,7 +152,7 @@
 .sound-svgs {
   fill: grey;
   bottom: -6px;
-  right: 95px;
+  right: 111%;
   position: absolute;
 }
 
@@ -163,4 +163,13 @@
 
 .sound-svgs:hover {
   fill: white;
+}
+
+.queue-button {
+  height: 20px;
+  display: inline-block;
+  width: 20px;
+  position: absolute;
+  right: 12%;
+  bottom: 26px;
 }

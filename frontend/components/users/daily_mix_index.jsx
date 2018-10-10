@@ -6,6 +6,7 @@ class DailyMixIndex extends React.Component {
 
   componentDidMount(){
     this.props.fetchDailyMix();
+    this.props.fetchSongs();
     this.props.fetchArtists();
   }
 

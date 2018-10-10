@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchPlayingSong } from '../../actions/mediaplayer_actions';
+import { ProtectedRoute } from '../../util/route_util';
+import { queueIndex } from './queue_index';
 
 class Webplayer extends React.Component {
 
@@ -195,7 +197,7 @@ class Webplayer extends React.Component {
         	<path d="M52.026,29.858c0-8.347-5.316-15.76-13.229-18.447c-0.522-0.177-1.091,0.103-1.269,0.626   c-0.177,0.522,0.103,1.091,0.626,1.269c7.101,2.411,11.872,9.063,11.872,16.553c0,7.483-4.762,14.136-11.849,16.554   c-0.522,0.178-0.802,0.746-0.623,1.27c0.142,0.415,0.53,0.677,0.946,0.677c0.107,0,0.216-0.017,0.323-0.054   C46.721,45.611,52.026,38.198,52.026,29.858z"/>
         	<path d="M44.453,6.374c-0.508-0.213-1.095,0.021-1.312,0.53C42.926,7.413,43.163,8,43.672,8.216C52.376,11.909,58,20.405,58,29.858   c0,9.777-5.894,18.38-15.015,21.914c-0.515,0.2-0.771,0.779-0.571,1.294c0.153,0.396,0.532,0.639,0.933,0.639   c0.12,0,0.242-0.021,0.361-0.067C53.605,49.801,60,40.467,60,29.858C60,19.6,53.897,10.382,44.453,6.374z"/>
         	<path d="M43.026,29.858c0-5.972-4.009-11.302-9.749-12.962c-0.53-0.151-1.084,0.152-1.238,0.684   c-0.153,0.53,0.152,1.085,0.684,1.238c4.889,1.413,8.304,5.953,8.304,11.04s-3.415,9.627-8.304,11.04   c-0.531,0.153-0.837,0.708-0.684,1.238c0.127,0.438,0.526,0.723,0.961,0.723c0.092,0,0.185-0.013,0.277-0.039   C39.018,41.159,43.026,35.829,43.026,29.858z"/>
-        </svg>
+          </svg>
         );
       }
 
@@ -205,11 +207,9 @@ class Webplayer extends React.Component {
       {this.songInfo()}
         <div className="player">
           <div className="controls">
-            <button onClick={() => this.shuffleSong()}><img src={window.previous}/></button>
             <button onClick={() => this.previousSong()}><img src={window.previous}/></button>
             <button onClick={() => this.togglePlay()}>{current}</button>
             <button onClick={() => this.nextSong()}><img src={window.forward}/></button>
-            <button onClick={() => this.repeatSong()}><img src={window.forward}/></button>
           </div>
             <div>
             </div>
@@ -223,6 +223,8 @@ class Webplayer extends React.Component {
           {audio}
         </div>
 
+        <Link to="/queue"><img className='queue-button' src={window.playlist}/></Link>
+
         <div className='volume' onClick={this.volumeBarUpdate.bind(this)}>
 
           {volume}
@@ -231,10 +233,13 @@ class Webplayer extends React.Component {
             </div>
 
         </div>
+
       </div>
     );
   }
 }
+// <button onClick={() => this.shuffleSong()}><img src={window.previous}/></button>
+// <button onClick={() => this.repeatSong()}><img src={window.forward}/></button>
 
 const mapStateToProps = (state) => {
   return {
