@@ -20,11 +20,6 @@ class AlbumSongItem extends React.Component {
     this.props.fetchPlayingSong(this.props.song);
   }
 
-  // toggleList(){
-  //   this.setState(prevState => ({
-  //     listOpen: !prevState.listOpen
-  //   }));
-  // }
   toggleList(){
     this.props.fetchSong(this.props.song);
     const {index} = this.props;

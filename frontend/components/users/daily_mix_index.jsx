@@ -13,7 +13,7 @@ class DailyMixIndex extends React.Component {
   render () {
     let songs;
     let dailyMix = this.props.songs;
-    if (dailyMix){
+    if (dailyMix.length > 0){
       songs = (
         this.props.songs.map( (song,i) => {
           return (
@@ -28,13 +28,16 @@ class DailyMixIndex extends React.Component {
     } else {
       songs = (
         <div>
-          Please follow atleast 5 artists so that we can more accurately provide song suggestions.
+          <ul className='mix-alert'>
+            <li>Please follow atleast 5 artists so that we can more accurately provide song suggestions.</li>
+            <li><img className='wifi-image' src={window.wifi}/></li>
+          </ul>
         </div>
       );
     }
     return (
       <div className='songs-index'>
-        <div> Play the music you love, without the effort. Packed with your favorites and new discoveries.</div>
+        <div className='daily-ins'> Play the music you love, without the effort. Packed with your favorites and new discoveries.</div>
         {songs}
       </div>
     );

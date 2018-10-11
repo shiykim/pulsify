@@ -45,9 +45,9 @@ class ArtistShow extends React.Component {
 
 
     if (this.props.user.includes(parseInt(this.props.match.params.id))){
-      follow = <button onClick={() => this.handleUnfollow()} id='btn-pshow-play'>Unfollow</button>;
+      follow = <button onClick={() => this.handleUnfollow()} className='artist-follow'>UNFOLLOW</button>;
     } else {
-      follow = <button onClick={() => this.handleFollow()} id='btn-pshow-play'>Follow</button>;
+      follow = <button onClick={() => this.handleFollow()} className='artist-follow'>FOLLOW</button>;
     }
 
     const artist = this.props.artist;

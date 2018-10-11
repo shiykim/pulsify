@@ -36,7 +36,7 @@
   font-weight: 300;
   color: white;
   letter-spacing: 1px;
-  padding-left: 260px;
+  padding-left: 20%;
 }
 
 .now-playing {
@@ -57,4 +57,24 @@
   font-family: 'Rubik', sans-serif;
   font-weight: 200;
   padding-top: 20px;
+}
+
+.mix-alert {
+  font-size: 23px;
+  padding-top: 85px;
+}
+
+.mix-alert > li {
+  display: block;
+}
+
+.wifi-image {
+  height: 128px;
+  width: 128px;
+  padding-top: 30px;
+  padding-left: 45%;
+}
+
+.daily-ins {
+  padding-bottom: 20px;
 }

@@ -79,11 +79,11 @@ class PlaylistShow extends React.Component {
     if (this.props.playlist.author_id != this.props.currentUser.id){
       if (followedPlaylists.includes(parseInt(this.props.match.params.id))) {
         return (
-          <button onClick={() => this.handleUnfollow()} id='btn-pshow-play'>Unfollow</button>
+          <button onClick={() => this.handleUnfollow()} id='btn-follow'>UNFOLLOW</button>
         );
       } else {
         return (
-          <button onClick={() => this.handleFollow()} id='btn-pshow-play'>Follow</button>
+          <button onClick={() => this.handleFollow()} id='btn-follow'>FOLLOW</button>
         );
       }
     }

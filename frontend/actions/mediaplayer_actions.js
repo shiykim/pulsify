@@ -1,5 +1,6 @@
 import * as SongApiUtil from '../util/song_api_util';
 export const PLAY_SONG = 'PLAY_SONG';
+export const TOGGLE_SONG = 'TOGGLE_SONG';
 export const RECEIVE_SONG_INDEX = 'RECEIVE_SONG_INDEX';
 export const RECEIVE_QUEUE = 'RECEIVE_QUEUE';
 
@@ -8,6 +9,12 @@ export const playSong = (song) => {
   return {
     type: PLAY_SONG,
     song
+  };
+};
+
+export const toggleSong = () => {
+  return {
+    type: TOGGLE_SONG
   };
 };
 

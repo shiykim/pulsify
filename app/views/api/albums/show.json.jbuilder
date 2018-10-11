@@ -5,5 +5,5 @@ json.artist @album.artist, :id, :name
 json.photoUrl url_for(@album.photo)
 
 json.songs @album.songs.each do |song|
-  json.extract! song, :id, :title, :length
+  json.extract! song, :id, :title, :length, :artist, :album
 end

@@ -29,5 +29,6 @@ Rails.application.routes.draw do
 
      get '/dailymix/', to: 'songs#followed_songs'
 
+
    end
 end

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchPlayingSong } from '../../actions/mediaplayer_actions';
+import { fetchPlayingSong, toggleSong } from '../../actions/mediaplayer_actions';
 import { ProtectedRoute } from '../../util/route_util';
 import { queueIndex } from './queue_index';
 
@@ -32,12 +32,14 @@ class Webplayer extends React.Component {
   }
 
   togglePlay(){
-    if (this.state.pause){
+    if (!this.props.playing){
       this.playerRef.current.play();
       this.setState({pause: false});
+      this.props.toggleSong();
     } else {
       this.setState({pause: true});
       this.playerRef.current.pause();
+      this.props.toggleSong();
     }
   }
 
@@ -57,14 +59,6 @@ class Webplayer extends React.Component {
         this.props.fetchPlayingSong(next);
       }
     }
-  }
-
-  shuffleSong(){
-
-  }
-
-  repeatSong(){
-
   }
 
   replaySong(){
@@ -143,9 +137,9 @@ class Webplayer extends React.Component {
     return songinfo;
   }
 
-  queue(){
-
-  }
+  // queue(){
+  //
+  // }
 
   render(){
     let current;
@@ -160,12 +154,10 @@ class Webplayer extends React.Component {
       audio = null;
     }
 
-    if (this.state.pause){
-      current = <img src={window.mainplay}/>;
-    } else if (!this.state.paused && !this.state.playing){
-      current = <img src={window.mainplay}/>;
-    } else {
+    if (this.props.playing){
       current = <img className='play-icon' src={window.pause}/>;
+    } else {
+      current = <img src={window.mainplay}/>;
     }
 
     if (this.state.volume === 0){
@@ -246,12 +238,14 @@ const mapStateToProps = (state) => {
     song: state.ui.mediaplayer.playingSong,
     queue: state.ui.mediaplayer.queue,
     queue_idx: state.ui.mediaplayer.queue_idx,
+    playing: state.ui.mediaplayer.playing,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     fetchPlayingSong: id => dispatch(fetchPlayingSong(id)),
+    toggleSong: () => dispatch(toggleSong()),
   };
 };
 

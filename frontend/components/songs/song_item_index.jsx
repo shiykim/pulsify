@@ -20,11 +20,6 @@ class SongItemIndex extends React.Component {
     this.props.fetchPlayingSong(this.props.song);
   }
 
-  // toggleList(){
-  //   this.setState(prevState => ({
-  //     listOpen: !prevState.listOpen
-  //   }));
-  // }
   toggleList(){
     this.props.fetchSong(this.props.song);
     const {index} = this.props;
@@ -37,12 +32,12 @@ class SongItemIndex extends React.Component {
   }
 
   render () {
-    // debugger
     let songs;
     if (this.setState.listOpen){
       this.toggleList();
     }
     if(this.props.song){
+      // debugger
       songs = (
         <div className='song-whole'>
           <div className='song'>

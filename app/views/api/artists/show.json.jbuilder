@@ -11,6 +11,6 @@ end
 if @artist.songs
 
   json.songs @artist.songs.each do |song|
-      json.extract! song, :id, :title
+      json.extract! song, :id, :title, :album, :artist
   end
 end

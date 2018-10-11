@@ -3,13 +3,11 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import SongItemIndex from '../songs/song_item_index';
 import { fetchSongs, fetchSong } from '../../actions/song_actions';
+import { fetchAlbums } from '../../actions/album_actions';
+import { fetchArtists } from '../../actions/artist_actions';
 import { fetchPlayingSong, receiveQueue } from '../../actions/mediaplayer_actions';
 
 class QueueIndex extends React.Component {
-
-  // componentDidMount(){
-  //   debugger
-  // }
 
   render () {
     let queue;
@@ -17,13 +15,13 @@ class QueueIndex extends React.Component {
 
     if (this.props.songs.length === 0) {
       queue = (
-        <div>
-          <h2 className='queue-alert'>
-            There is nothing in your queue!
-          </h2>
+        <div className='queue-alert'>
+          <h2>There is nothing in your queue!</h2>
+          <img className='wifi-image' src={window.wifi}/>
         </div>
       );
     } else {
+      debugger
       songs = (
         this.props.songs.map( (song,i) => {
           return (
@@ -67,6 +65,7 @@ class QueueIndex extends React.Component {
 
 const mapStateToProps = (state) => {
   let allSongs = Object.values(state.ui.mediaplayer.queue);
+  debugger
   return {
     songs: allSongs.slice(state.ui.mediaplayer.queue_idx + 1, allSongs.length),
     currentSong: state.ui.mediaplayer.playingSong,
@@ -78,6 +77,8 @@ const mapDispatchToProps = dispatch => {
     fetchPlayingSong: (id) => dispatch(fetchPlayingSong(id)),
     fetchSong: id => dispatch(fetchSong(id)),
     receiveQueue: queue => dispatch(receiveQueue(queue)),
+    fetchArtists: () => dispatch(fetchArtists()),
+    fetchAlbums: () => dispatch(fetchAlbums()),
   };
 };
 

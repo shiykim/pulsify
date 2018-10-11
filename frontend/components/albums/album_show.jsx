@@ -76,9 +76,9 @@ class AlbumShow extends React.Component {
     }
 
     if (this.props.user.includes(parseInt(this.props.match.params.id))){
-      follow = <button onClick={() => this.handleUnfollow()} id='btn-pshow-play'>Unfollow</button>;
+      follow = <button onClick={() => this.handleUnfollow()} id='btn-follow'>UNFOLLOW</button>;
     } else {
-      follow = <button onClick={() => this.handleFollow()} id='btn-pshow-play'>Follow</button>;
+      follow = <button onClick={() => this.handleFollow()} id='btn-follow'>FOLLOW</button>;
     }
 
     if(album_songs){

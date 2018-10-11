@@ -19,7 +19,6 @@
   background-size: cover;
   background-repeat: no-repeat;
   position:absolute;
-  padding-right: 30px;
 }
 
 .pshow-info {
@@ -75,8 +74,35 @@
   min-height: 36px;
 }
 
+#btn-follow, .artist-follow {
+  position: relative;
+  opacity: 0.8;
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+  border-radius: 2em;
+  border: 1px solid white;
+  min-width: 125px;
+  min-height: 34px;
+  margin: 20px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-weight: 300;
+}
+
+#btn-follow:hover, .artist-follow:hover {
+  min-width: 127px;
+  min-height: 36px;
+}
+
 .pshow-more{
   display: flex;
   position: absolute;
   left: 46%;
+}
+
+.artist-follow {
+  font-family: 'Roboto', sans-serif;
+  margin-left: 15%;
 }

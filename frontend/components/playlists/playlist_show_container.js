@@ -6,6 +6,7 @@ import { fetchSongs }  from '../../actions/song_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import { selectPlaylistSongs } from '../../reducers/selectors.js';
 import { fetchPlayingSong, receiveQueue } from '../../actions/mediaplayer_actions.js';
+import { unfollow, follow } from '../../actions/follow_actions';
 
 const mapStateToProps = ({ session, entities: { playlists, songs, users }}, ownProps) => {
   const playlist = playlists[ownProps.match.params.id];
