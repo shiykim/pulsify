@@ -17,7 +17,7 @@ const playlistReducer = (state = {}, action) => {
     case REMOVE_PLAYLIST_SONG:
       newState = merge({}, state);
       const songs = newState[action.payload.playlist_id].song_ids;
-      delete songs[songs.indexOf(action.payload.song_id)];
+      songs.splice(songs.indexOf(action.payload.song_id), 1);
       return newState;
     default:
       return state;

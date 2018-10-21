@@ -35,6 +35,12 @@ class SongItemShow extends React.Component {
 
   render () {
     let songs;
+    let dropDown;
+    if (this.props.onlyAdd){
+      dropDown = <MoreDropDown show="open" song={this.props.song} onlyAdd='add' />;
+    } else {
+      dropDown = <MoreDropDown show="open" song={this.props.song}/>;
+    }
 
     if(this.props.song){
       songs = (
@@ -44,7 +50,7 @@ class SongItemShow extends React.Component {
             <li className='song-title'>{this.props.song.title}</li>
             <li id='song-option' onClick={() => this.toggleList()}>
               <div style={{display:"none"}} id={`actual-more-dropdown-${this.props.index}`}>
-                <MoreDropDown show="open" song={this.props.song} />
+                {dropDown}
               </div>
             </li>
             <li className='song-length'>{this.props.song.length}</li>

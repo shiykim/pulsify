@@ -74,6 +74,5 @@ export const userFollowedPlaylists = (state) => {
       userFollowedPlaylists.push(playlists[id]);
     });
   }
-  console.log(userFollowedPlaylists);
   return userFollowedPlaylists;
 };

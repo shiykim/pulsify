@@ -47,6 +47,12 @@ class PlaylistShow extends React.Component {
 
   playlistSongs(){
     let songs;
+    let dropDown;
+    if (this.props.playlist.author_id != this.props.currentUser.id) {
+      dropDown = 'add';
+    } else {
+      dropDown = null;
+    }
     if (this.props.songs[0]){
       songs = (
         this.props.songs.map( (song,i) => {
@@ -55,7 +61,8 @@ class PlaylistShow extends React.Component {
               index={i}
               song={song}
               queue={this.props.songs}
-              receiveQueue={this.props.receiveQueue}  />
+              receiveQueue={this.props.receiveQueue}
+              onlyAdd={dropDown} />
           );
         })
       );

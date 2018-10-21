@@ -19,7 +19,7 @@ class MoreDropDown extends React.Component {
   render() {
     let remove;
     if (!this.props.onlyAdd){
-      remove = <li onClick={() => this.handleDelete()} >Remove From Playlist</li>;
+      remove = <li onClick={() => this.handleDelete()}> Remove From Playlist</li>;
     } else {
       remove = null;
     }
