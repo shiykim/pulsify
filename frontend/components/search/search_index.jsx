@@ -42,7 +42,6 @@ class SearchIndex extends React.Component {
       searchSongs = this.matches(this.props.songs);
       if (searchSongs.length > 0){
         songDisplay = searchSongs.map((song, i) => {
-          // debugger
           return(
           <SongItemIndex song={song} key={i} index={i}
             fetchPlayingSong={this.props.fetchPlayingSong}
