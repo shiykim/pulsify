@@ -21,7 +21,6 @@ class QueueIndex extends React.Component {
         </div>
       );
     } else {
-      debugger
       songs = (
         this.props.songs.map( (song,i) => {
           return (
@@ -65,7 +64,6 @@ class QueueIndex extends React.Component {
 
 const mapStateToProps = (state) => {
   let allSongs = Object.values(state.ui.mediaplayer.queue);
-  debugger
   return {
     songs: allSongs.slice(state.ui.mediaplayer.queue_idx + 1, allSongs.length),
     currentSong: state.ui.mediaplayer.playingSong,

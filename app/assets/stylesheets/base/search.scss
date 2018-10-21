@@ -3,15 +3,15 @@
   height: 100vh;
   background-size: cover;
   overflow-y: auto;
-  padding-left: 220px;
-  // padding-bottom: 50px;
 }
 
 .content-main {
   overflow: hidden;
+  padding-bottom: 50px;
 }
 
 .search-bar {
+  padding-left: 220px;
   height: 150px;
   background-color: #303030;
   text-align: left;
@@ -38,22 +38,12 @@
   caret-color: green;
 }
 
-.song-matches{
+.matches > h2 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 40px;
+  text-align: left;
   color: white;
-  min-height: 130px;
-}
-
-.artist-matches{
-  color: white;
-  min-height: 130px;
-}
-
-.playlist-matches{
-  color: white;
-  min-height: 130px;
-}
-
-.album-matches{
-  color: white;
-  min-height: 130px;
+  padding: 10px;
+  padding-left: 245px;
+  font-weight: 500;
 }

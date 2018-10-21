@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ProtectedRoute } from '../../util/route_util';
+import AlbumIndex from '../albums/album_index';
+import ArtistsIndex from '../artists/artist_index';
+import PlaylistIndex from '../playlists/playlist_all_index';
+import SongItemIndex from '../songs/song_item_index';
 
 class SearchIndex extends React.Component {
 
@@ -9,7 +13,6 @@ class SearchIndex extends React.Component {
     this.state = {
       inputVal: ''
     };
-    // this.selectResponse = this.selectResponse.bind(this);
     this.handleInput = this.handleInput.bind(this);
   }
 
@@ -24,142 +27,114 @@ class SearchIndex extends React.Component {
     this.setState({inputVal: event.currentTarget.value});
   }
 
-  matches(slice) {
-    const matches = [];
-    if (this.state.inputVal.length === 0) {
-      return this.props.names;
-    }
-    slice.forEach(name => {
-      const chars = name.title.toLowerCase().replace(/ /g, '').split('');
-      const input = this.state.inputVal.toLowerCase().replace(/ /g, '').split('');
-      if (chars.includes(input.pop())){
-        matches.push(name);
-      }
-    });
-    if (matches.length === 0) {
-      matches.push('No matches');
-    }
-
-    const results = matches.map((result, i) => {
-     return (
-       <li key={i}>{result.title}</li>
-      );
-    });
-
-    return results;
+  matches(slice){
+    return slice.filter((element) => element.title.toLowerCase().includes(`${this.state.inputVal.toLowerCase()}`));
   }
 
-  nameMatches(slice) {
-    const matches = [];
-    if (this.state.inputVal.length === 0) {
-      return this.props.names;
-    }
-    slice.forEach(search => {
-      const chars = search.name.toLowerCase().replace(/ /g, '').split('');
-      const sub = search.name.slice(0, this.state.inputVal.length).toLowerCase();
-      const input = this.state.inputVal.toLowerCase().replace(/ /g, '').split('');
-
-      if (input.length === 1){
-        if (chars.includes(input.pop())){
-          matches.push(search);
-        }
-      } else {
-        if (sub.toLowerCase() === input.join("")) {
-          matches.push(search);
-        }
-      }
-    });
-
-    if (matches.length === 0) {
-      matches.push('No matches');
-    }
-
-    const results = matches.map((result, i) => {
-     return (
-       <li key={i}>{result.name}</li>
-      );
-    });
-
-    return results;
+  nameMatch(slice){
+    return slice.filter((element) => element.name.toLowerCase().includes(`${this.state.inputVal.toLowerCase()}`));
   }
 
   songMatches(){
-    let songs;
+    let searchSongs;
+    let songDisplay;
     if(this.props.songs){
-      songs = this.matches(this.props.songs);
-      if (songs){
-        songs = (
-        <ul className='song-matches'>
-          <h2 className='headers-artists'> Songs</h2>
-          {songs}
+      searchSongs = this.matches(this.props.songs);
+      if (searchSongs.length > 0){
+        songDisplay = searchSongs.map((song, i) => {
+          // debugger
+          return(
+          <SongItemIndex song={song} key={i} index={i}
+            fetchPlayingSong={this.props.fetchPlayingSong}
+            fetchSong={this.props.fetchSong}
+            queue={searchSongs}
+            receiveQueue={this.props.receiveQueue}/>
+          );
+        });
+        searchSongs = (
+        <ul className='matches'>
+          <h2 >Songs</h2>
+            <div className='songs-index'>
+              {songDisplay}
+            </div>
         </ul>
       );
     } else {
-      songs = null;
+      searchSongs = null;
     }
-    return songs;
+    return searchSongs;
   }
 }
 
   albumMatches() {
-    let albums;
+    let searchAlbums;
     if(this.props.albums){
-      albums = this.matches(this.props.albums);
-      if (albums){
-        albums = (
-          <ul className='album-matches'>
-            <h2 className='headers-artists'> Albums</h2>
-            {albums}
+      searchAlbums = this.matches(this.props.albums);
+      if (searchAlbums.length > 0){
+        searchAlbums = (
+          <ul className='matches'>
+            <h2>Albums</h2>
+            <AlbumIndex albums={searchAlbums} fetchAlbums={this.props.fetchAlbums}/>
           </ul>
-      );
-    } else {
-      albums = null;
+        );
+      } else {
+        searchAlbums = null;
+      }
+      return searchAlbums;
     }
-    return albums;
   }
-}
 
   artistMatches(){
-    let artists;
+    let searchArtists;
     if(this.props.artists){
-      artists = this.nameMatches(this.props.artists);
-      if (artists){
-        artists = (
-        <ul className='artist-matches'>
-          <h2 className='headers-artists'> Artists</h2>
-          {artists}
+      searchArtists = this.nameMatch(this.props.artists);
+      if (searchArtists.length > 0){
+        searchArtists = (
+        <ul className='matches'>
+          <h2>Artists</h2>
+          <ArtistsIndex artists={searchArtists} fetchArtists={this.props.fetchArtists}/>
         </ul>
         );
+      } else {
+        searchArtists = null;
       }
-    } else {
-      artists = null;
+      return searchArtists;
     }
-    return artists;
   }
 
   playlistMatches(){
-    let playlists;
+    let searchPlaylists;
     if(this.props.playlists){
-      playlists = this.matches(this.props.playlists);
-      if(playlists){
-        playlists = (
-          <ul className='playlist-matches'>
-            <h2 className='headers-artists'> Playlist</h2>
-            {playlists}
+      searchPlaylists = this.matches(this.props.playlists);
+      if(searchPlaylists.length > 0){
+        searchPlaylists = (
+          <ul className='matches'>
+            <h2>Playlist</h2>
+              <PlaylistIndex playlists={searchPlaylists} fetchPlaylists={this.props.fetchPlaylists}/>
           </ul>
         );
+      } else {
+        searchPlaylists = null;
       }
-    } else {
-      playlists = null;
+      return searchPlaylists;
     }
-    return playlists;
   }
 
   render () {
+    let topSongs;
+    let topAlbums;
+    let topArtists;
+    let topPlaylists;
+    if (this.state.inputVal){
+      topAlbums = this.albumMatches();
+      topSongs = this.songMatches();
+      topArtists = this.artistMatches();
+      topPlaylists = this.playlistMatches();
+    }
     return (
       <div className='search-main'>
         <div className='content-main'>
-          <section className='modal-playlist'>
+          <section className='modal-playlist search-bar'>
             <div id='search-instruction'>Search for an Artist, Song, Album, or Playlist.</div>
               <input
                 id='search-text'
@@ -167,12 +142,10 @@ class SearchIndex extends React.Component {
                 value={this.state.inputVal}
                 placeholder="Start typing..."/>
           </section>
-
-          {this.songMatches()}
-          {this.albumMatches()}
-          {this.artistMatches()}
-          {this.playlistMatches()}
-
+          {topAlbums}
+          {topArtists}
+          {topPlaylists}
+          {topSongs}
         </div>
       </div>
     );

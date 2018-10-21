@@ -230,8 +230,6 @@ class Webplayer extends React.Component {
     );
   }
 }
-// <button onClick={() => this.shuffleSong()}><img src={window.previous}/></button>
-// <button onClick={() => this.repeatSong()}><img src={window.forward}/></button>
 
 const mapStateToProps = (state) => {
   return {

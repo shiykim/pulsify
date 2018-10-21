@@ -6,7 +6,7 @@ class ArtistIndex extends React.Component {
     this.props.fetchArtists();
   }
 
-  artistImage(artist){
+  artistImage(artist, i){
     let cover = artist.photoUrl;
     if (cover) {
       return (
