@@ -36,6 +36,7 @@ progressBarUpdate(e){
 ```
 
 #### Queue
+![queue](app/assets/images/queue.png)
 A queue was implemented so that once a song ends, the next song will play seamlessly. The contents of the queue differ based on which page the user chose to play the song. If a user began playing a song on the album show page, the queue will be populated with songs from that album. The queue also allows users to skip songs and listen to a previous song.
 
 ### `Playlist CRUD`
@@ -58,9 +59,15 @@ post '/playlist_songs', to: 'playlists#add_playlist_song'
 ```
 The playlist cover is also set to be the album cover of the first song of the playlist.
 
-### `Search`
+### `Daily Mix`
+![daily_mix](app/assets/images/dailymix.png)
+A fundamental part most music streaming services are the algorithms they have in place to recommend music to their users. Going into this project, I was highly excited to have in place some type of metric to use as a foundation for music suggestions.
+
+After adding follows functionality, which allows a user to follow an album, artist, or a playlist, I was able to use the follows as a metric to gauge the type of music a user preferred. The daily mix feature, where it stands now, suggests 10 randomized songs to a user based on the artists they currently follow.
+
 
 ## Future Plans
 * Implement ability for users to upload profile pictures
 * Infinite scrolling on the index pages
 * Ability to interact with friends
+* Build upon the daily mix algorithm to make it more robust
