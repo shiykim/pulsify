@@ -124,10 +124,16 @@ class Webplayer extends React.Component {
     if (this.state.playing){
       songinfo = (
           <div className='current-song-info'>
-            <img className='song-info-album' src={this.props.song.photoUrl}  />
+            <Link to={`/albums/${this.props.song.album.id}`}>
+              <img className='song-info-album' src={this.props.song.photoUrl}  />
+            </Link>
             <ul>
-              <li className='playbar-title'> {this.props.song.title}</li>
-              <li className='playbar-username'> {this.props.song.artist.name}</li>
+              <Link to={`/albums/${this.props.song.album.id}`}>
+                <li className='playbar-title'>{this.props.song.title}</li>
+              </Link>
+              <Link to={`/artists/${this.props.song.artist.id}`}>
+                <li className='playbar-username'> {this.props.song.artist.name}</li>
+              </Link>
             </ul>
           </div>
         );
@@ -136,10 +142,6 @@ class Webplayer extends React.Component {
     }
     return songinfo;
   }
-
-  // queue(){
-  //
-  // }
 
   render(){
     let current;
@@ -196,8 +198,8 @@ class Webplayer extends React.Component {
 
     return (
       <div>
-      {this.songInfo()}
         <div className="player">
+          {this.songInfo()}
           <div className="controls">
             <button onClick={() => this.previousSong()}><img src={window.previous}/></button>
             <button onClick={() => this.togglePlay()}>{current}</button>

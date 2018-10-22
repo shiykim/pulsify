@@ -13,7 +13,7 @@ class AlbumIndex extends React.Component {
         return (
           <div key={i}>
             <li className='playlist-li'>
-              <Link to={`/albums/${album.id}`}><img src={album.photoUrl}  /></Link>
+              <Link to={`/albums/${album.id}`}><img src={album.photoUrl}/></Link>
             </li>
             <div className='playlist-title'>{album.title}</div>
             <div className='playlist-username'>{album.artist.name}</div>

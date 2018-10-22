@@ -2131,23 +2131,26 @@ function (_React$Component) {
       if (this.state.playing) {
         songinfo = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "current-song-info"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+          to: "/albums/".concat(this.props.song.album.id)
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           className: "song-info-album",
           src: this.props.song.photoUrl
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+          to: "/albums/".concat(this.props.song.album.id)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           className: "playbar-title"
-        }, " ", this.props.song.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        }, this.props.song.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+          to: "/artists/".concat(this.props.song.artist.id)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           className: "playbar-username"
-        }, " ", this.props.song.artist.name)));
+        }, " ", this.props.song.artist.name))));
       } else {
         songinfo = null;
       }
 
       return songinfo;
-    } // queue(){
-    //
-    // }
-
+    }
   }, {
     key: "render",
     value: function render() {
@@ -2226,9 +2229,9 @@ function (_React$Component) {
         }));
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.songInfo(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "player"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.songInfo(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "controls"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
