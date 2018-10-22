@@ -18,14 +18,14 @@ class ArtistShow extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchArtist(this.props.match.params.id);
+    this.props.fetchArtist(parseInt(this.props.match.params.id));
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.match.params.id !== nextProps.match.params.id) {
-      this.props.fetchArtist(nextProps.match.params.id);
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   if (this.props.match.params.id !== nextProps.match.params.id) {
+  //     this.props.fetchArtist(nextProps.match.params.id);
+  //   }
+  // }
 
   handleFollow(){
     this.props.follow(parseInt(this.props.match.params.id), 'artists');

@@ -1196,7 +1196,7 @@ function (_React$Component) {
 
       var artists;
 
-      if (this.props.artists) {
+      if (this.props.artists.length > 0) {
         artists = this.props.artists.map(function (artist) {
           return _this.artistImage(artist);
         });
@@ -1324,15 +1324,13 @@ function (_React$Component) {
   _createClass(ArtistShow, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchArtist(this.props.match.params.id);
-    }
-  }, {
-    key: "componentWillReceiveProps",
-    value: function componentWillReceiveProps(nextProps) {
-      if (this.props.match.params.id !== nextProps.match.params.id) {
-        this.props.fetchArtist(nextProps.match.params.id);
-      }
-    }
+      this.props.fetchArtist(parseInt(this.props.match.params.id));
+    } // componentWillReceiveProps(nextProps) {
+    //   if (this.props.match.params.id !== nextProps.match.params.id) {
+    //     this.props.fetchArtist(nextProps.match.params.id);
+    //   }
+    // }
+
   }, {
     key: "handleFollow",
     value: function handleFollow() {
@@ -3702,6 +3700,7 @@ function (_React$Component) {
 
       var songs;
       var dropDown;
+      var pauseToggle;
 
       if (this.props.onlyAdd) {
         dropDown = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_more_dropdown__WEBPACK_IMPORTED_MODULE_8__["default"], {

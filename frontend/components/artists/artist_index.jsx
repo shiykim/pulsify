@@ -20,10 +20,9 @@ class ArtistIndex extends React.Component {
     }
   }
 
-
   render () {
     let artists;
-    if (this.props.artists){
+    if (this.props.artists.length > 0){
       artists = this.props.artists.map( (artist) => {
         return (this.artistImage(artist));
       });

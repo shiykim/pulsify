@@ -36,6 +36,8 @@ class SongItemShow extends React.Component {
   render () {
     let songs;
     let dropDown;
+    let pauseToggle;
+    
     if (this.props.onlyAdd){
       dropDown = <MoreDropDown show="open" song={this.props.song} onlyAdd='add' />;
     } else {
