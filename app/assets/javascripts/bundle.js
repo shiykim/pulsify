@@ -6614,10 +6614,10 @@ var addPlaylistSong = function addPlaylistSong(playlistId, songId) {
     }
   });
 };
-var removePlaylistSong = function removePlaylistSong(playlist_id, song_id) {
+var removePlaylistSong = function removePlaylistSong(playlistId, songId) {
   return $.ajax({
     method: 'DELETE',
-    url: "/api/playlist_songs/".concat(playlist_id, "/").concat(song_id)
+    url: "api/playlist_songs/".concat(playlistId, "/").concat(songId)
   });
 };
 var fetchDailyMix = function fetchDailyMix() {
